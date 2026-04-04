@@ -421,7 +421,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
     <li><a href="#" onclick="navTo('book',event)" data-page="book">Book a Call</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="#" onclick="navTo('book',event)" class="btn btn-ghost btn-sm">Log in</a>
     <a href="#" onclick="navTo('book',event)" class="btn btn-primary btn-sm" id="nav-book">Book a call</a>
   </div>
 </nav>
@@ -436,9 +435,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
     <div class="bg-mesh"></div>
     <div class="shapes-bg" id="shapes-home"></div>
     <div style="position:relative;z-index:2;width:100%;max-width:800px">
-      <div class="hero-badge"><div class="hero-badge-dot"></div><span id="hb-txt">AI-POWERED BUSINESS AUTOMATION · DFW</span></div>
-      <h1 class="h1"><span class="l1" id="ht1">Your business deserves systems</span><span class="l2" id="ht2">that work as hard as you do.</span></h1>
-      <p class="hero-sub" id="hsub">Automated replies to every Google review, Instagram DM, and Facebook message — in your voice, 24/7. Set up in 48 hours.</p>
+      <div class="hero-badge"><div class="hero-badge-dot"></div><span id="hb-txt">AI VOICE RECEPTIONIST · FRISCO, TX · DFW</span></div>
+      <h1 class="h1"><span class="l1" id="ht1">Your phone never stops ringing.</span><span class="l2" id="ht2">Now neither do you.</span></h1>
+      <p class="hero-sub" id="hsub">Quest Labs Co builds AI voice receptionists that answer every call, book appointments, qualify leads, and handle FAQs — 24/7, in your brand voice. No hiring. No training. Live in 48 hours.</p>
       <div class="hero-acts">
         <a href="#" onclick="navTo('book',event)" class="btn btn-primary btn-lg" id="h-cta1">Book a free 15-min call</a>
         <a href="#" onclick="navTo('how',event)" class="btn btn-ghost btn-lg">See how it works</a>
@@ -446,12 +445,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
       <p class="hero-note">No contract. Cancel anytime. Live in 48 hrs.</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:1.25rem;flex-wrap:wrap">
         <span style="display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--muted)"><span style="width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s ease infinite"></span>12 DFW businesses joined this month</span>
-        <span style="font-size:.75rem;color:var(--muted)">⭐⭐⭐⭐⭐ <span style="color:var(--text)">5.0</span> avg rating</span>
+        <span style="font-size:.75rem;color:var(--muted)">⭐⭐⭐⭐⭐ <span style="color:var(--text)">4.7</span> avg rating</span>
       </div>
       <div class="stats-row">
-        <div><div class="stat-num">&lt;2hr</div><div class="stat-lbl">Every Google review gets a personalized reply</div></div>
-        <div><div class="stat-num">60s</div><div class="stat-lbl">Every new lead gets a personalized text</div></div>
-        <div><div class="stat-num">24/7</div><div class="stat-lbl">Fully automated — you don't touch any of it</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-lbl">Every call answered — even at 2am</div></div>
+        <div><div class="stat-num">48hr</div><div class="stat-lbl">From yes to fully live — we handle setup</div></div>
+        <div><div class="stat-num">$0</div><div class="stat-lbl">Hiring cost. No salary, no training, no sick days</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO SECTION -->
+  <section style="background:var(--bg);padding:4rem 2rem 3rem">
+    <div style="max-width:950px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:1.75rem">
+        <div class="sec-label reveal" style="display:flex;justify-content:center">SEE IT IN ACTION</div>
+        <h2 class="sec-title reveal" style="text-align:center">Watch the AI handle real calls.</h2>
+        <p style="color:var(--muted);font-size:.95rem;max-width:520px;margin:.75rem auto 0;line-height:1.7" class="reveal rd1">Booking appointments, understanding complex names, routing urgent calls, rescheduling — all handled in seconds, without a human on the line.</p>
+      </div>
+      <div class="reveal rd2" style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(99,130,255,0.2);box-shadow:0 0 60px rgba(99,130,255,0.12),0 0 0 1px rgba(99,130,255,0.1);background:#000;aspect-ratio:16/9">
+        <iframe
+          src="https://www.youtube.com/embed/9yxJkofGRl4?autoplay=1&mute=1&loop=1&playlist=9yxJkofGRl4&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+        <!-- Overlay label -->
+        <div style="position:absolute;bottom:1rem;left:1rem;display:flex;align-items:center;gap:.5rem;background:rgba(7,9,15,0.75);backdrop-filter:blur(8px);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.35rem .85rem;z-index:2">
+          <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s ease infinite;flex-shrink:0"></span>
+          <span style="font-size:.72rem;font-family:'Space Mono',monospace;color:var(--text);letter-spacing:.05em">LIVE CALL DEMO · Powered by Retell AI</span>
+        </div>
+        <!-- Click blocker to prevent accidental YouTube navigation -->
+        <div style="position:absolute;inset:0;z-index:1"></div>
+      </div>
+      <!-- Caption chips -->
+      <div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem" class="reveal rd3">
+        <span style="font-size:.75rem;background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.3rem .85rem;color:var(--muted)">Handles hard-to-spell names</span>
+        <span style="font-size:.75rem;background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.3rem .85rem;color:var(--muted)">Reschedules appointments live</span>
+        <span style="font-size:.75rem;background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.3rem .85rem;color:var(--muted)">Routes urgent calls instantly</span>
+        <span style="font-size:.75rem;background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.3rem .85rem;color:var(--muted)">27 languages supported</span>
       </div>
     </div>
   </section>
@@ -475,8 +508,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
     <div class="sec-label reveal">THE PROBLEM</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
       <div>
-        <h2 class="sec-title reveal">The gaps in your business are costing you more than you think.</h2>
-        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-top:1rem" class="reveal rd1">Unanswered Google reviews driving clients to your competitors. Instagram DMs sitting unread while someone else books the appointment. Facebook messages that never get a reply. <strong style="color:var(--text)">Every missed interaction is a missed booking</strong> — and none of them require your time to fix.</p>
+        <h2 class="sec-title reveal">Every missed call is a missed client. And it happens more than you think.</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-top:1rem" class="reveal rd1">When your phone rings and you're with a client, in a meeting, or asleep — you miss a booking. That caller doesn't leave a voicemail. They call your competitor. <strong style="color:var(--text)">The average local service business misses 30–40% of inbound calls.</strong> Our AI Receptionist answers every single one, qualifies the lead, books the appointment, and logs the call — all while you focus on the work.</p>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
         <div class="gc reveal rd1"><div class="stat-num" style="font-size:1.7rem">2.8×</div><p style="font-size:.8rem;color:var(--muted);margin-top:.4rem;line-height:1.5">More revenue for social media responders</p></div>
@@ -493,13 +526,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
   <section><div class="wrap">
     <div class="mockup-grid">
       <div>
-        <div class="sec-label reveal">AI THAT SOUNDS LIKE YOU</div>
-        <h2 class="sec-title reveal">Your customers can't tell the difference.</h2>
-        <p class="sec-sub reveal rd1" style="margin-bottom:1.75rem">Every response is crafted using your business's tone, past interactions, and specific services. Customers get thoughtful, human-sounding replies around the clock.</p>
+        <div class="sec-label reveal">LIVE DEMO — TRY IT NOW</div>
+        <h2 class="sec-title reveal">Talk to the AI Receptionist. Right now.</h2>
+        <p class="sec-sub reveal rd1" style="margin-bottom:1.25rem">This is the actual AI your customers would talk to. It answers questions, qualifies leads, books appointments — all in your brand voice, around the clock.</p>
+        <div style="background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.25);border-radius:12px;padding:.75rem 1rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:.65rem" class="reveal rd1">
+          <span style="font-size:1.2rem">👇</span>
+          <span style="font-size:.82rem;color:var(--text);font-weight:500">Click the buttons on the chat to ask it a question — it's fully interactive.</span>
+        </div>
         <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.75rem" class="reveal rd2">
-          <span style="font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:.4rem"><span style="color:var(--accent)">✓</span> Custom brand voice</span>
-          <span style="font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:.4rem"><span style="color:var(--accent)">✓</span> Context-aware replies</span>
-          <span style="font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:.4rem"><span style="color:var(--accent)">✓</span> 24/7 availability</span>
+          <span style="font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:.4rem"><span style="color:var(--accent)">✓</span> Sounds human — not robotic</span>
+          <span style="font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:.4rem"><span style="color:var(--accent)">✓</span> Knows your services &amp; pricing</span>
+          <span style="font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:.4rem"><span style="color:var(--accent)">✓</span> Books appointments in real-time</span>
         </div>
         <div class="reveal rd3"><a href="#" onclick="navTo('ai',event)" class="btn btn-primary">Explore AI Receptionist →</a></div>
       </div>
@@ -547,8 +584,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
       <div>
         <div class="sec-label reveal">WHO WE ARE</div>
         <h2 class="sec-title reveal">We build the systems your business should already have.</h2>
-        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:1.5rem" class="reveal rd1">We built Quest Labs Co because great local businesses deserve the same automated systems that enterprise companies take for granted. Your customers are on Google, Instagram, and Facebook — and they expect a response immediately.</p>
-        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:1.75rem" class="reveal rd2">We work with a small number of clients by design — every account gets our full attention. We make sure they always get one, in your voice, around the clock.</p>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:1.5rem" class="reveal rd1">Quest Labs Co is an AI marketing automation agency based in Frisco, TX. We build AI voice receptionists and automated systems for local service businesses across the DFW area — so they never miss a call, a lead, or a booking again.</p>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:1.75rem" class="reveal rd2">Our core product is an AI Voice Receptionist that answers every inbound call 24/7 — qualifying leads, booking appointments, answering FAQs, and routing urgent calls to you. We also automate Google review replies and lead follow-up SMS. The client does nothing after setup.</p>
         <div class="reveal rd3"><a href="#" onclick="navTo('book',event)" class="btn btn-primary">Start Free Trial</a></div>
       </div>
       <div class="reveal rd2">
@@ -652,54 +689,133 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
     <div class="sec-label reveal">WHAT WE DO</div>
     <h2 class="sec-title reveal">Your brand never sleeps. Neither do we.</h2>
     <p class="sec-sub reveal rd1">Three core automations — refined to work flawlessly from day one. No contracts, no setup headaches. Live within 48 hours.</p>
-    <div class="svc-grid">
-      <div class="sc reveal rd1">
-        <div class="svc-num">SERVICE 01</div>
-        <div class="svc-price">$<span class="sp1">299</span><span>/mo</span></div>
-        <div class="svc-name">Google Review Auto-Replies</div>
-        <ul class="svc-feats">
-          <li>Every Google review replied to within 2 hours</li>
-          <li>Written in your brand voice — never templated</li>
-          <li>Boosts your local Google search ranking</li>
-          <li>Runs 24/7 — you never touch it</li>
-          <li>Flags sensitive reviews for human review</li>
-          <li>Monthly performance report</li>
-        </ul>
-        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center">Get started</a></div>
-      </div>
-      <div class="sc reveal rd2">
-        <div class="svc-num">SERVICE 02</div>
-        <div class="svc-price">$<span class="sp2">400</span><span>/mo</span></div>
-        <div class="svc-name">Instagram & Facebook DM Auto-Replies</div>
-        <ul class="svc-feats">
-          <li>Every DM gets a personalized reply within 60 seconds</li>
-          <li>Automatic follow-up if they don't respond</li>
-          <li>Works across Instagram and Facebook simultaneously</li>
-          <li>Turns cold DMs into booked appointments</li>
-          <li>Lead capture and qualification</li>
-          <li>35–50% of sales go to whoever responds first — that's you</li>
-        </ul>
-        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center">Get started</a></div>
-      </div>
-      <div class="sc pop reveal rd3 sticker-wrap" style="position:relative">
-        <div class="sticker" id="sticker1">
+    <!-- CORE SERVICE -->
+    <div style="margin-top:2rem">
+      <div class="sec-label reveal" style="margin-bottom:1.25rem">CORE SERVICE</div>
+      <div class="sc pop reveal" style="max-width:820px;margin:0 auto;position:relative" >
+        <div class="sticker" id="sticker1" style="top:-18px;right:-14px">
           <div class="sticker-inner">
-            <div class="sticker-icon">⭐</div>
-            <div class="sticker-txt">MOST<br>POPULAR<br>BEST<br>VALUE</div>
+            <div class="sticker-icon">📞</div>
+            <div class="sticker-txt">START<br>HERE</div>
           </div>
         </div>
-        <div class="svc-num">BUNDLE</div>
-        <div class="svc-price">$<span class="sp3">600</span><span>/mo</span></div>
-        <div class="svc-name">Full Social Presence Automation</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:2rem">
+          <div style="flex:1;min-width:260px">
+            <div class="svc-num">SERVICE 01</div>
+            <div style="font-size:1.5rem;margin:.5rem 0 .25rem;font-weight:700">AI Voice Receptionist</div>
+            <div class="svc-price" style="margin:.5rem 0">$349<span>/mo</span></div>
+            <p style="font-size:.85rem;color:var(--muted);line-height:1.65;max-width:380px">A 24/7 AI receptionist that answers every inbound call, books appointments, handles FAQs, qualifies leads, and routes urgent calls to the right person. Works around the clock — no breaks, no sick days, no training time.</p>
+            <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-primary">Get started →</a></div>
+          </div>
+          <div style="flex:1;min-width:220px">
+            <ul class="svc-feats">
+              <li>Answers every inbound call — 24/7</li>
+              <li>Books appointments directly into your calendar</li>
+              <li>Handles FAQs in your brand voice</li>
+              <li>Qualifies and captures leads automatically</li>
+              <li>Routes urgent calls to the right person</li>
+              <li>Full call transcripts &amp; summaries</li>
+              <li>Integrated with your CRM &amp; calendar</li>
+              <li>Client does nothing after setup</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider" style="margin:3.5rem 0"></div>
+
+    <!-- ADD-ONS -->
+    <div class="sec-label reveal" style="margin-bottom:1.25rem">ADD-ONS</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:2rem">
+      <div class="sc reveal rd1">
+        <div class="svc-num">ADD-ON 01</div>
+        <div class="svc-price" style="margin:.5rem 0">$199<span>/mo</span></div>
+        <div style="font-weight:600;margin-bottom:.75rem">Google Review Auto-Replies</div>
         <ul class="svc-feats">
-          <li>Google review auto-replies within 2 hours</li>
-          <li>Instagram and Facebook DM auto-replies within 60 seconds</li>
-          <li>All platforms covered — Google, Instagram, Facebook</li>
-          <li>All automations run 24/7 — completely hands off</li>
-          <li>Live within 48 hours of signing up</li>
-          <li>No contract. Cancel anytime.</li>
+          <li>Every Google review gets a personalized AI reply within 2 hours</li>
+          <li>Written in your brand voice — never templated</li>
+          <li>Boosts your local Google search ranking</li>
+          <li>Runs 24/7 — completely hands off</li>
+          <li>Flags sensitive reviews for your attention</li>
         </ul>
-        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-primary" style="width:100%;display:flex;justify-content:center">Get started</a></div>
+        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center">Add to plan</a></div>
+      </div>
+      <div class="sc reveal rd2">
+        <div class="svc-num">ADD-ON 02</div>
+        <div class="svc-price" style="margin:.5rem 0">$249<span>/mo</span></div>
+        <div style="font-weight:600;margin-bottom:.75rem">Lead Follow-Up SMS</div>
+        <ul class="svc-feats">
+          <li>Every new lead gets a personalized text within 60 seconds</li>
+          <li>Auto follow-ups at 24 hrs and 72 hrs if no reply</li>
+          <li>Turns cold leads into booked appointments</li>
+          <li>Built on Twilio — reliable, fast delivery</li>
+          <li>Client does nothing after setup</li>
+        </ul>
+        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center">Add to plan</a></div>
+      </div>
+    </div>
+
+    <div class="divider" style="margin:3.5rem 0"></div>
+
+    <!-- BUNDLED TIERS -->
+    <div class="sec-label reveal" style="margin-bottom:.5rem">BUNDLED PLANS</div>
+    <h3 class="reveal" style="font-size:1.4rem;font-weight:700;margin-bottom:.5rem;letter-spacing:-.02em">Bundle and save.</h3>
+    <p class="sec-sub reveal rd1" style="margin-bottom:2rem">Everything runs automatically. The client does nothing after setup.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem">
+      <div class="sc reveal rd1">
+        <div class="svc-num">TIER 01</div>
+        <div style="font-weight:700;font-size:1rem;margin:.4rem 0 .25rem">Starter</div>
+        <div class="svc-price">$349<span>/mo</span></div>
+        <ul class="svc-feats" style="margin-top:1rem">
+          <li>AI Voice Receptionist</li>
+          <li>24/7 call answering</li>
+          <li>Appointment booking</li>
+          <li>Lead qualification</li>
+        </ul>
+        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center;font-size:.78rem">Get started</a></div>
+      </div>
+      <div class="sc pop reveal rd2 sticker-wrap" style="position:relative">
+        <div class="sticker" id="sticker2" style="top:-18px;right:-14px">
+          <div class="sticker-inner">
+            <div class="sticker-icon">🔥</div>
+            <div class="sticker-txt">WE<br>PITCH<br>THIS</div>
+          </div>
+        </div>
+        <div class="svc-num">TIER 02</div>
+        <div style="font-weight:700;font-size:1rem;margin:.4rem 0 .25rem">Core</div>
+        <div class="svc-price">$699<span>/mo</span></div>
+        <ul class="svc-feats" style="margin-top:1rem">
+          <li>Everything in Starter</li>
+          <li>Google Review Auto-Replies</li>
+          <li>Lead Follow-Up SMS</li>
+          <li>Full automation stack</li>
+        </ul>
+        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-primary" style="width:100%;display:flex;justify-content:center;font-size:.78rem">Get started</a></div>
+      </div>
+      <div class="sc reveal rd3">
+        <div class="svc-num">TIER 03</div>
+        <div style="font-weight:700;font-size:1rem;margin:.4rem 0 .25rem">Growth</div>
+        <div class="svc-price">$1,199<span>/mo</span></div>
+        <ul class="svc-feats" style="margin-top:1rem">
+          <li>Everything in Core</li>
+          <li>Instagram comment auto-replies</li>
+          <li>Rebooking SMS for past clients</li>
+          <li>Priority support</li>
+        </ul>
+        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center;font-size:.78rem">Get started</a></div>
+      </div>
+      <div class="sc reveal rd3">
+        <div class="svc-num">TIER 04</div>
+        <div style="font-weight:700;font-size:1rem;margin:.4rem 0 .25rem">Premium</div>
+        <div class="svc-price">$2,200<span>/mo</span></div>
+        <ul class="svc-feats" style="margin-top:1rem">
+          <li>Everything in Growth</li>
+          <li>Website chatbot</li>
+          <li>Monthly AI email newsletter</li>
+          <li>Full client reporting dashboard</li>
+        </ul>
+        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center;font-size:.78rem">Get started</a></div>
       </div>
     </div>
 
@@ -734,7 +850,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
       <span class="l1">AI Receptionist —</span>
       <span class="l2">Never miss a call again.</span>
     </h1>
-    <p style="max-width:580px;margin:1.25rem auto;color:var(--muted);font-size:1rem;line-height:1.75">A 24/7 AI phone receptionist that answers every call, qualifies leads, books appointments, and handles FAQs — all in your brand voice. No hiring, no training, no overtime.</p>
+    <p style="max-width:580px;margin:1.25rem auto;color:var(--muted);font-size:1rem;line-height:1.75">A 24/7 AI voice receptionist that answers every inbound call in your brand voice, qualifies leads, books appointments, handles FAQs, and routes urgent calls to you. No hiring. No training. No overtime. Live in 48 hours.</p>
 
     <!-- AI Phone Mockup -->
     <div class="ai-phone" id="ai-phone">
@@ -754,67 +870,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
   </div>
 
   <div class="wrap" style="padding-top:2rem">
-    <!-- PRICING -->
-    <div class="sec-label reveal">AI RECEPTIONIST PRICING</div>
-    <h2 class="sec-title reveal">Pick your plan.</h2>
-    <div class="svc-grid" style="margin-top:2rem" id="ai-plans-grid">
-      <div class="sc reveal rd1">
-        <div style="font-size:2rem;margin-bottom:1rem">📞</div>
-        <div class="svc-num">PLAN 01 — STARTER</div>
-        <div class="svc-price">$<span class="ai-p1">550</span><span>/mo</span></div>
-        <div class="svc-name">1,000 Minutes / 200+ Calls</div>
-        <ul class="svc-feats">
-          <li>1,000 minutes per month included</li>
-          <li>Handles 200+ inbound calls</li>
-          <li>Lead qualification & capture</li>
-          <li>Appointment booking integration</li>
-          <li>FAQ handling & smart routing</li>
-          <li>Custom brand voice setup</li>
-          <li>Call transcripts & summaries</li>
-        </ul>
-        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center">Get started</a></div>
-      </div>
-      <div class="sc pop reveal rd2 sticker-wrap" style="position:relative">
-        <div class="sticker" id="sticker2">
-          <div class="sticker-inner">
-            <div class="sticker-icon">🔥</div>
-            <div class="sticker-txt">MOST<br>POPULAR</div>
-          </div>
-        </div>
-        <div style="font-size:2rem;margin-bottom:1rem">🤖</div>
-        <div class="svc-num">PLAN 02 — GROWTH</div>
-        <div class="svc-price">$<span class="ai-p2">750</span><span>/mo</span></div>
-        <div class="svc-name">2,000 Minutes / 400+ Calls</div>
-        <ul class="svc-feats">
-          <li>2,000 minutes per month included</li>
-          <li>Handles 400+ inbound calls</li>
-          <li>Everything in Starter</li>
-          <li>Advanced lead scoring</li>
-          <li>Multi-location support</li>
-          <li>Priority onboarding & setup</li>
-          <li>Bi-weekly performance reports</li>
-        </ul>
-        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-primary" style="width:100%;display:flex;justify-content:center">Get started</a></div>
-      </div>
-      <div class="sc reveal rd3">
-        <div style="font-size:2rem;margin-bottom:1rem">⚡</div>
-        <div class="svc-num">PLAN 03 — ENTERPRISE</div>
-        <div class="svc-price">$<span class="ai-p3">1,250</span><span>/mo</span></div>
-        <div class="svc-name">5,000 Minutes / 1,000+ Calls</div>
-        <ul class="svc-feats">
-          <li>5,000 minutes per month included</li>
-          <li>Handles 1,000+ inbound calls</li>
-          <li>Everything in Growth</li>
-          <li>Dedicated account manager</li>
-          <li>Custom CRM & calendar integrations</li>
-          <li>Weekly performance reports</li>
-          <li>Custom escalation workflows</li>
-        </ul>
-        <div style="margin-top:1.5rem"><a href="#" onclick="navTo('book',event)" class="btn btn-ghost" style="width:100%;display:flex;justify-content:center">Get started</a></div>
-      </div>
+    <!-- PRICING CTA -->
+    <div class="reveal" style="text-align:center;background:linear-gradient(135deg,rgba(99,130,255,0.06),rgba(139,92,246,0.06));border:1px solid rgba(99,130,255,0.2);border-radius:20px;padding:3rem 2rem;margin-bottom:4rem">
+      <div class="sec-label" style="justify-content:center;display:flex;margin-bottom:.75rem">PRICING</div>
+      <h2 style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem">Ready to see what it costs?</h2>
+      <p style="color:var(--muted);font-size:.95rem;max-width:420px;margin:0 auto 2rem;line-height:1.7">The AI Receptionist is included in every plan — starting at $349/mo. View all plans and bundles on our Services page.</p>
+      <a href="#" onclick="navTo('services',event)" class="btn btn-primary btn-lg">View pricing &amp; plans →</a>
     </div>
 
-    <div class="divider" style="margin:4rem 0"></div>
+    <div class="divider" style="margin:0 0 4rem"></div>
 
     <!-- FEATURES -->
     <div class="sec-label reveal">WHAT IT DOES</div>
@@ -837,80 +901,343 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- HOW IT WORKS PAGE -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
+<style>
+/* HOW IT WORKS — Redesigned */
+.hiw-hero{text-align:center;padding:5rem 2rem 2rem;max-width:700px;margin:0 auto}
+.flow-section{max-width:1100px;margin:0 auto;padding:3rem 2rem}
+.flow-tab-row{display:flex;gap:.5rem;background:rgba(13,17,23,0.8);border:1px solid var(--border);border-radius:12px;padding:.35rem;margin-bottom:3rem;width:fit-content;margin-left:auto;margin-right:auto}
+.flow-tab{padding:.5rem 1.25rem;border-radius:8px;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .25s;border:none;background:none;font-family:'Outfit',sans-serif;letter-spacing:.02em}
+.flow-tab.active{background:rgba(99,130,255,0.18);color:var(--text);border:1px solid rgba(99,130,255,0.3)}
+.flow-panel{display:none}.flow-panel.active{display:block}
+
+/* Animated vertical timeline */
+.vtl{position:relative;padding-left:3rem}
+.vtl::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),rgba(99,130,255,0.1));opacity:.4}
+.vtl-step{position:relative;margin-bottom:2.5rem;opacity:0;transform:translateX(-18px);transition:opacity .55s ease,transform .55s ease}
+.vtl-step.vstep-vis{opacity:1;transform:none}
+.vtl-step:last-child{margin-bottom:0}
+.vtl-dot{position:absolute;left:-2.45rem;top:.25rem;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid;z-index:2;flex-shrink:0}
+.vtl-dot svg{width:16px;height:16px}
+.vtl-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.6rem;transition:border-color .3s,box-shadow .3s}
+.vtl-card:hover{border-color:rgba(99,130,255,0.32);box-shadow:0 6px 28px rgba(0,0,0,0.3)}
+.vtl-tag{font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .65rem;border-radius:100px;font-weight:700;display:inline-flex;margin-bottom:.65rem}
+.vtl-title{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.vtl-desc{font-size:.84rem;color:var(--muted);line-height:1.65}
+.vtl-meta{margin-top:.75rem;display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.vtl-badge{font-family:'Space Mono',monospace;font-size:.62rem;padding:.22rem .65rem;border-radius:100px;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25)}
+
+/* Animated connector line drawing */
+@keyframes vtlIn{0%{opacity:0;transform:translateX(-18px)}100%{opacity:1;transform:none}}
+
+/* Setup timeline */
+.setup-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:3rem}
+.setup-timeline::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(to right,var(--accent),rgba(99,130,255,0.2));z-index:0}
+.setup-step{text-align:center;position:relative;z-index:1}
+.setup-num{width:56px;height:56px;border-radius:50%;background:var(--surface);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Space Mono',monospace;font-size:.88rem;font-weight:700;color:var(--accent);position:relative;box-shadow:0 0 20px rgba(99,130,255,0.2)}
+.setup-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(99,130,255,0.15);animation:setupPulse 2s ease infinite}
+@keyframes setupPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.12);opacity:.3}}
+.setup-title{font-size:.9rem;font-weight:700;margin-bottom:.45rem}
+.setup-desc{font-size:.78rem;color:var(--muted);line-height:1.55;padding:0 .5rem}
+.setup-time{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--accent);margin-top:.5rem;letter-spacing:.06em}
+
+/* Comparison table */
+.comp-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:2rem;border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.comp-table th{padding:.85rem 1.25rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--surface2);color:var(--muted)}
+.comp-table th:first-child{text-align:left}
+.comp-table td{padding:.85rem 1.25rem;font-size:.83rem;border-top:1px solid var(--border);color:var(--muted);text-align:center}
+.comp-table td:first-child{text-align:left;font-weight:500;color:var(--text)}
+.comp-table tr:hover td{background:rgba(99,130,255,0.03)}
+.comp-yes{color:#4ade80;font-weight:700}
+.comp-no{color:#f87171}
+.comp-col-accent{background:rgba(99,130,255,0.05)}
+</style>
+
 <div class="page" id="page-how">
-  <div class="wrap">
-    <div class="sec-label reveal">HOW IT WORKS</div>
-    <h2 class="sec-title reveal">From message received to reply sent — in seconds.</h2>
-    <p class="sec-sub reveal rd1">Here's exactly what happens the moment a customer reaches out. No human intervention required.</p>
+  <div class="hiw-hero">
+    <div class="sec-label reveal" style="display:flex;justify-content:center">HOW IT WORKS</div>
+    <h1 class="sec-title reveal" style="font-size:clamp(2rem,4vw,3rem)">A call comes in. The AI handles it.<br>You never lift a finger.</h1>
+    <p class="sec-sub reveal rd1" style="margin:0 auto;text-align:center">See exactly what happens the moment a customer calls, texts, or leaves a review — from first ring to booked appointment, in seconds.</p>
+  </div>
 
-    <!-- GOOGLE FLOW -->
-    <div class="flow-wrap reveal" style="margin-top:3rem">
-      <div class="flow-label">GOOGLE REVIEW FLOW</div>
-      <div class="flow">
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3)"><span style="font-size:1.6rem">⭐</span></div><div class="flow-lbl">Customer leaves a Google review</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(99,130,255,0.1);border-color:rgba(99,130,255,0.3)"><span style="font-size:1.6rem">🔔</span></div><div class="flow-lbl">System detects new unanswered review</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.3)"><span style="font-size:1.6rem">✍️</span></div><div class="flow-lbl">AI writes a personal reply in your voice</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.3)"><span style="font-size:1.6rem">✅</span></div><div class="flow-lbl">Reply posted to Google</div><div class="flow-badge">Under 2 hours</div></div>
+  <!-- TAB SWITCHER -->
+  <div class="flow-section">
+    <div class="flow-tab-row reveal">
+      <button class="flow-tab active" onclick="showFlowTab('call',this)">AI Voice Receptionist</button>
+      <button class="flow-tab" onclick="showFlowTab('sms',this)">Lead Follow-Up SMS</button>
+      <button class="flow-tab" onclick="showFlowTab('review',this)">Google Reviews</button>
+    </div>
+
+    <!-- CALL FLOW -->
+    <div class="flow-panel active" id="fp-call">
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start">
+        <div class="vtl" id="vtl-call">
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(56,189,248,0.9)" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.2 1.2 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.91-.91a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.5v2.42z"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(56,189,248,0.1);color:#38bdf8;border:1px solid rgba(56,189,248,0.25)">Step 1 — Inbound Call</div>
+              <div class="vtl-title">A customer calls your business number</div>
+              <div class="vtl-desc">Whether it's 9am or 2am, the call routes instantly to the AI Receptionist. No voicemail. No hold music. No missed opportunity.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Instant</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(99,130,255,0.1);border-color:rgba(99,130,255,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(99,130,255,0.9)" stroke-width="2.2"><circle cx="12" cy="12" r="2"/><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke-dasharray="3 2"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(99,130,255,0.1);color:#6382ff;border:1px solid rgba(99,130,255,0.25)">Step 2 — AI Picks Up</div>
+              <div class="vtl-title">The AI greets them in your voice</div>
+              <div class="vtl-desc">Built on Retell AI, our receptionist uses your custom greeting, your business name, and your exact tone. It sounds exactly like a trained employee — not a robot.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Under 1 second</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.9)" stroke-width="2.2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(139,92,246,0.1);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)">Step 3 — Qualifies & Assists</div>
+              <div class="vtl-title">It qualifies leads, books appointments, answers FAQs</div>
+              <div class="vtl-desc">The AI asks the right questions, checks your live calendar availability, and books the appointment directly — or handles common questions like hours, pricing, and services.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Real-time</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="2.2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.25)">Step 4 — Smart Handoff</div>
+              <div class="vtl-title">Urgent calls escalate to you immediately</div>
+              <div class="vtl-desc">The AI recognizes when a call needs human attention — an emergency, a complaint, or a high-value lead — and transfers it to your phone in real time.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Configurable</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="2.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25)">Step 5 — Logged & Done</div>
+              <div class="vtl-title">Every call transcribed and sent to your dashboard</div>
+              <div class="vtl-desc">Full call recording, transcript, summary, and outcome — automatically logged. You see everything that happened, without being there for any of it.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Automatic</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- Right side: visual stat card -->
+        <div style="position:sticky;top:90px">
+          <div class="gc" style="text-align:center;padding:2rem;margin-bottom:1.25rem">
+            <div style="font-family:'Space Mono',monospace;font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">30–40%</div>
+            <div style="font-size:.85rem;color:var(--muted);margin-top:.5rem;line-height:1.6">of calls go unanswered at the average local service business</div>
+          </div>
+          <div class="gc" style="padding:1.5rem;margin-bottom:1.25rem">
+            <div style="font-size:.75rem;font-family:'Space Mono',monospace;color:var(--accent);margin-bottom:.75rem;letter-spacing:.08em">WHAT THE AI HANDLES</div>
+            <div style="display:flex;flex-direction:column;gap:.5rem">
+              <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem"><span style="color:#4ade80;font-size:.7rem">◆</span> Appointment booking</div>
+              <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem"><span style="color:#4ade80;font-size:.7rem">◆</span> Lead qualification</div>
+              <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem"><span style="color:#4ade80;font-size:.7rem">◆</span> Pricing &amp; services FAQ</div>
+              <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem"><span style="color:#4ade80;font-size:.7rem">◆</span> Hours &amp; directions</div>
+              <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem"><span style="color:#4ade80;font-size:.7rem">◆</span> Urgent call routing</div>
+              <div style="display:flex;align-items:center;gap:.6rem;font-size:.83rem"><span style="color:#4ade80;font-size:.7rem">◆</span> After-hours answering</div>
+            </div>
+          </div>
+          <div class="gc" style="padding:1.5rem">
+            <div style="font-size:.75rem;font-family:'Space Mono',monospace;color:var(--accent);margin-bottom:.75rem;letter-spacing:.08em">BUILT WITH</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem">
+              <div style="font-size:.8rem;color:var(--muted)">Retell AI — Voice infrastructure</div>
+              <div style="font-size:.8rem;color:var(--muted)">Google Calendar / Calendly</div>
+              <div style="font-size:.8rem;color:var(--muted)">CRM Integration</div>
+              <div style="font-size:.8rem;color:var(--muted)">Make.com Automation</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- DM FLOW -->
-    <div class="flow-wrap reveal rd1" style="margin-top:2.5rem">
-      <div class="flow-label">INSTAGRAM & FACEBOOK DM FLOW</div>
-      <div class="flow">
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.3)"><span style="font-size:1.6rem">💬</span></div><div class="flow-lbl">Lead sends a DM on Instagram or Facebook</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3)"><span style="font-size:1.6rem">⚡</span></div><div class="flow-lbl">System triggers instantly</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.3)"><span style="font-size:1.6rem">🤖</span></div><div class="flow-lbl">AI crafts a personalized reply</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.3)"><span style="font-size:1.6rem">📲</span></div><div class="flow-lbl">Reply sent — lead re-engaged</div><div class="flow-badge">Under 60 seconds</div></div>
+    <!-- SMS FLOW -->
+    <div class="flow-panel" id="fp-sms">
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start">
+        <div class="vtl" id="vtl-sms">
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(236,72,153,0.9)" stroke-width="2.2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(236,72,153,0.1);color:#ec4899;border:1px solid rgba(236,72,153,0.25)">Step 1 — New Lead</div>
+              <div class="vtl-title">A lead fills out your contact form</div>
+              <div class="vtl-desc">The moment someone submits your website form, our system fires. No delays, no manual checking required on your end.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Instant trigger</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.25)">Step 2 — Instant Text</div>
+              <div class="vtl-title">They receive a personalized SMS within 60 seconds</div>
+              <div class="vtl-desc">AI-written using their name, their inquiry, and your brand voice — not a template. Sent via Twilio before your competitor even sees the notification.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Under 60 seconds</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(99,130,255,0.1);border-color:rgba(99,130,255,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(99,130,255,0.9)" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(99,130,255,0.1);color:#6382ff;border:1px solid rgba(99,130,255,0.25)">Step 3 — Auto Follow-Up</div>
+              <div class="vtl-title">If no reply, follow-ups go out at 24hr and 72hr</div>
+              <div class="vtl-desc">Most leads don't convert on the first touch. We automatically follow up twice more — each message crafted fresh — so the lead never goes cold.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Automated sequence</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25)">Step 4 — Lead Booked</div>
+              <div class="vtl-title">Lead converts and books — you do nothing</div>
+              <div class="vtl-desc">35–50% of sales go to whoever responds first. Our system makes that always you. The lead books, you get notified, the job is done.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Zero effort</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="position:sticky;top:90px">
+          <div class="gc" style="text-align:center;padding:2rem;margin-bottom:1.25rem">
+            <div style="font-family:'Space Mono',monospace;font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">21×</div>
+            <div style="font-size:.85rem;color:var(--muted);margin-top:.5rem;line-height:1.6">more likely to convert when contacted within 5 minutes</div>
+          </div>
+          <div class="gc" style="padding:1.5rem">
+            <div style="font-size:.75rem;font-family:'Space Mono',monospace;color:var(--accent);margin-bottom:.75rem;letter-spacing:.08em">BUILT WITH</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem">
+              <div style="font-size:.8rem;color:var(--muted)">Twilio — SMS delivery</div>
+              <div style="font-size:.8rem;color:var(--muted)">OpenAI API — Message writing</div>
+              <div style="font-size:.8rem;color:var(--muted)">Make.com — Automation</div>
+              <div style="font-size:.8rem;color:var(--muted)">Tally — Form capture</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- AI CALL FLOW -->
-    <div class="flow-wrap reveal rd2" style="margin-top:2.5rem">
-      <div class="flow-label">AI RECEPTIONIST CALL FLOW</div>
-      <div class="flow">
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(56,189,248,0.1);border-color:rgba(56,189,248,0.3)"><span style="font-size:1.6rem">📞</span></div><div class="flow-lbl">Customer calls your business</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(99,130,255,0.1);border-color:rgba(99,130,255,0.3)"><span style="font-size:1.6rem">🎙️</span></div><div class="flow-lbl">AI answers with your greeting</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.3)"><span style="font-size:1.6rem">🧠</span></div><div class="flow-lbl">AI qualifies, books, or answers FAQ</div></div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step"><div class="flow-icon" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.3)"><span style="font-size:1.6rem">📋</span></div><div class="flow-lbl">Call logged with transcript</div><div class="flow-badge">Real-time</div></div>
+    <!-- REVIEW FLOW -->
+    <div class="flow-panel" id="fp-review">
+      <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:start">
+        <div class="vtl" id="vtl-review">
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(251,191,36,0.9)" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(251,191,36,0.1);color:#fbbf24;border:1px solid rgba(251,191,36,0.25)">Step 1 — New Review</div>
+              <div class="vtl-title">Customer posts a Google review</div>
+              <div class="vtl-desc">Our system monitors your Google Business Profile continuously and detects new reviews the moment they're posted.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Real-time detection</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(139,92,246,0.9)" stroke-width="2.2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(139,92,246,0.1);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)">Step 2 — AI Writes Reply</div>
+              <div class="vtl-title">AI crafts a personal, on-brand response</div>
+              <div class="vtl-desc">Every reply references the reviewer's specific feedback. No templates. No copy-paste. Each response sounds like you wrote it personally — because it's trained on your voice.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Under 2 hours</span></div>
+            </div>
+          </div>
+          <div class="vtl-step">
+            <div class="vtl-dot" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.4)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(74,222,128,0.9)" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.66 0 3.21.45 4.55 1.23"/></svg>
+            </div>
+            <div class="vtl-card">
+              <div class="vtl-tag" style="background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25)">Step 3 — Posted to Google</div>
+              <div class="vtl-title">Reply goes live on your profile automatically</div>
+              <div class="vtl-desc">The reply is posted via the Google Business Profile API. Your profile shows 100% response rate. Your local search ranking improves. You touched nothing.</div>
+              <div class="vtl-meta"><span class="vtl-badge">Fully automated</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="position:sticky;top:90px">
+          <div class="gc" style="text-align:center;padding:2rem;margin-bottom:1.25rem">
+            <div style="font-family:'Space Mono',monospace;font-size:3rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">1.4×</div>
+            <div style="font-size:.85rem;color:var(--muted);margin-top:.5rem;line-height:1.6">higher local Google ranking for businesses that reply to all reviews</div>
+          </div>
+          <div class="gc" style="padding:1.5rem">
+            <div style="font-size:.75rem;font-family:'Space Mono',monospace;color:var(--accent);margin-bottom:.75rem;letter-spacing:.08em">BUILT WITH</div>
+            <div style="display:flex;flex-direction:column;gap:.4rem">
+              <div style="font-size:.8rem;color:var(--muted)">Google Business Profile API</div>
+              <div style="font-size:.8rem;color:var(--muted)">OpenAI API — Reply writing</div>
+              <div style="font-size:.8rem;color:var(--muted)">Make.com — Automation</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="divider" style="margin:4rem 0"></div>
 
-    <!-- SETUP PROCESS -->
-    <div class="sec-label reveal">SETUP PROCESS</div>
-    <h2 class="sec-title reveal">Live in 48 hours — here's how.</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem">
-      <div class="gc reveal rd1">
-        <div style="font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:rgba(99,130,255,0.2);margin-bottom:.5rem">01</div>
-        <div style="font-weight:600;font-size:.9rem;margin-bottom:.4rem">Book a Call</div>
-        <p style="font-size:.8rem;color:var(--muted);line-height:1.5">Schedule a free 15-minute onboarding call with our team</p>
+    <!-- SETUP TIMELINE -->
+    <div class="sec-label reveal" style="text-align:center;display:flex;justify-content:center">GETTING STARTED</div>
+    <h2 class="sec-title reveal" style="text-align:center">Live in 48 hours. Here's exactly how.</h2>
+    <div class="setup-timeline reveal rd1">
+      <div class="setup-step">
+        <div class="setup-num">01</div>
+        <div class="setup-title">Book a Call</div>
+        <div class="setup-desc">Free 15-min discovery call. We learn about your business and which services fit.</div>
+        <div class="setup-time">Day 0</div>
       </div>
-      <div class="gc reveal rd2">
-        <div style="font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:rgba(99,130,255,0.2);margin-bottom:.5rem">02</div>
-        <div style="font-weight:600;font-size:.9rem;margin-bottom:.4rem">Brand Voice Setup</div>
-        <p style="font-size:.8rem;color:var(--muted);line-height:1.5">We learn your tone, services, and how you talk to customers</p>
+      <div class="setup-step">
+        <div class="setup-num">02</div>
+        <div class="setup-title">Voice & Brand Setup</div>
+        <div class="setup-desc">We configure your AI's greeting, tone, services, FAQs, and escalation rules.</div>
+        <div class="setup-time">Day 1</div>
       </div>
-      <div class="gc reveal rd3">
-        <div style="font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:rgba(99,130,255,0.2);margin-bottom:.5rem">03</div>
-        <div style="font-weight:600;font-size:.9rem;margin-bottom:.4rem">Platform Connect</div>
-        <p style="font-size:.8rem;color:var(--muted);line-height:1.5">We connect your Google, Instagram, and Facebook accounts</p>
+      <div class="setup-step">
+        <div class="setup-num">03</div>
+        <div class="setup-title">Integration</div>
+        <div class="setup-desc">We connect your calendar, CRM, phone number, and Google account.</div>
+        <div class="setup-time">Day 1–2</div>
       </div>
-      <div class="gc reveal rd3">
-        <div style="font-family:'Space Mono',monospace;font-size:2rem;font-weight:700;color:rgba(99,130,255,0.2);margin-bottom:.5rem">04</div>
-        <div style="font-weight:600;font-size:.9rem;margin-bottom:.4rem">Go Live</div>
-        <p style="font-size:.8rem;color:var(--muted);line-height:1.5">Your automations go live — usually within 24 hours of setup</p>
+      <div class="setup-step">
+        <div class="setup-num">04</div>
+        <div class="setup-title">Go Live</div>
+        <div class="setup-desc">Your AI Receptionist starts answering calls. You do nothing. We monitor everything.</div>
+        <div class="setup-time">Day 2</div>
       </div>
+    </div>
+
+    <div class="divider" style="margin:4rem 0"></div>
+
+    <!-- VS TABLE -->
+    <div class="sec-label reveal" style="text-align:center;display:flex;justify-content:center">WHY AI VS HIRING</div>
+    <h2 class="sec-title reveal" style="text-align:center">Compare the options.</h2>
+    <table class="comp-table reveal rd1">
+      <thead>
+        <tr>
+          <th style="text-align:left">Feature</th>
+          <th>Human Receptionist</th>
+          <th class="comp-col-accent" style="color:var(--accent)">Quest Labs AI</th>
+          <th>Voicemail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Available 24/7</td><td class="comp-no">No</td><td class="comp-col-accent comp-yes">Yes</td><td class="comp-no">No</td></tr>
+        <tr><td>Answers every call instantly</td><td class="comp-no">No</td><td class="comp-col-accent comp-yes">Yes</td><td class="comp-no">No</td></tr>
+        <tr><td>Books appointments live</td><td class="comp-yes">Yes</td><td class="comp-col-accent comp-yes">Yes</td><td class="comp-no">No</td></tr>
+        <tr><td>No sick days or training</td><td class="comp-no">No</td><td class="comp-col-accent comp-yes">Yes</td><td class="comp-yes">Yes</td></tr>
+        <tr><td>Call transcripts & logs</td><td class="comp-no">Rarely</td><td class="comp-col-accent comp-yes">Every call</td><td class="comp-no">No</td></tr>
+        <tr><td>Cost per month</td><td class="comp-no">$3,000–5,000+</td><td class="comp-col-accent comp-yes">$349/mo</td><td style="color:var(--muted)">Free</td></tr>
+      </tbody>
+    </table>
+
+    <div style="text-align:center;margin-top:3.5rem" class="reveal">
+      <a href="#" onclick="navTo('book',event)" class="btn btn-primary btn-lg">Get your AI Receptionist →</a>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.75rem">Free 7-day trial · No credit card · Live in 48 hours</p>
     </div>
   </div>
 </div>
@@ -978,28 +1305,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
     <h2 class="sec-title reveal" style="text-align:center">Pick a time that works for you.</h2>
     <p style="text-align:center;color:var(--muted);font-size:1rem;margin-bottom:.5rem" class="reveal rd1">Free 15-minute discovery call. No pressure, no credit card required.</p>
     
-    <!-- Urgency nudge -->
-    <div class="reveal rd2" style="text-align:center;margin-bottom:2rem">
-      <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.35rem .85rem;font-size:.75rem;color:var(--muted)">
-        <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s ease infinite;flex-shrink:0"></span>
-        <span id="spots-counter">Only <strong style="color:var(--accent)">3 spots</strong> left this week</span>
-      </span>
-    </div>
-
-    <!-- Quick info form that pre-fills Calendly -->
-    <div id="book-prefill-form" class="reveal rd2" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;margin-bottom:1.5rem">
-      <div style="font-size:.8rem;color:var(--muted);margin-bottom:1.25rem;text-align:center">✦ Fill in your details first — we'll carry them into the scheduler for you</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem">
-        <div><label class="bf-label">Your Name</label><input class="bf-input" type="text" id="cal-name" placeholder="Jane Smith" oninput="updateCalendly()"></div>
-        <div><label class="bf-label">Email Address</label><input class="bf-input" type="email" id="cal-email" placeholder="jane@business.com" oninput="updateCalendly()"></div>
-      </div>
-      <div style="margin-bottom:.75rem">
-        <label class="bf-label">Business Name <span style="color:var(--muted);font-size:.72rem">(optional)</span></label>
-        <input class="bf-input" type="text" id="cal-biz" placeholder="Your Business" oninput="updateCalendly()">
-      </div>
-      <div style="font-size:.74rem;color:var(--muted);text-align:center;margin-top:.5rem">🔒 Your info is only used to pre-fill your booking — never shared or sold.</div>
-    </div>
-
     <!-- Calendly Inline Embed -->
     <div class="reveal rd3" style="background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden">
       <div id="calendly-embed" style="min-width:280px;height:700px;"></div>
@@ -1142,7 +1447,7 @@ buildShapes('shapes-home');
 // ══════════════════════════════════════════════════════
 (function(){
   const track=document.getElementById('mq-track');
-  const txt='Never Miss a Lead · Book More Clients · 24/7 AI Automation · DFW · ';
+  const txt='AI Voice Receptionist · Never Miss a Call · 24/7 · Book More Clients · DFW · Lead Follow-Up SMS · Google Reviews · Retell AI · ';
   const rep=txt.repeat(6);
   track.innerHTML=`<span class="marquee-txt">${rep}</span><span class="marquee-txt">${rep}</span>`;
 
@@ -1380,11 +1685,7 @@ function navTo(page,e){
     document.querySelectorAll('#page-'+page+' .reveal').forEach(el=>io.observe(el));
     addHover('a,button,.faq-q,.gc,.sc,.ts,.cal-day,.chat-bubble-btn,.phone-bubble-btn');
     if(page==='book') {
-      setTimeout(()=>{
-        const name = (document.getElementById('cal-name')||{}).value||'';
-        const email = (document.getElementById('cal-email')||{}).value||'';
-        initCalendly(name,email);
-      }, 400);
+      setTimeout(()=>{ initCalendly('',''); }, 400);
     }
     if(page==='ai') initAIPhone();
   },320);
@@ -1412,15 +1713,21 @@ const aiReplies=[
 function sendHomeMsg(e){
   // Disabled - use bubble clicks only
 }
+const bubbleAnswers={
+  'What services do you offer?': "We offer an AI Voice Receptionist ($349/mo) that answers every call 24/7, books appointments, qualifies leads, and handles FAQs. We also offer Google Review Auto-Replies ($199/mo) and Lead Follow-Up SMS ($249/mo). Our most popular bundle — AI Receptionist + Reviews + SMS — is just $699/mo.",
+  'How much does it cost?': "Our core service, the AI Voice Receptionist, is $349/month. Our most popular plan bundles the receptionist, Google review replies, and lead follow-up SMS for $699/month. We also offer a free 7-day trial — no credit card needed until the trial ends!",
+  'How fast can you set this up?': "Fast. We're typically live within 48 hours of you saying yes. We handle 100% of the setup — you just answer a few questions about your business during a quick onboarding call.",
+  'Do I need to sign a contract?': "No contracts, ever. We're completely month-to-month. If you want to cancel, just email us and we'll handle it immediately — zero fees, zero friction.",
+  'Is there a free trial?': "Yes! We offer a free 7-day trial with no credit card required. You get full access to everything so you can see real results before paying a single dollar. Most clients are hooked within the first week.",
+};
 function sendBubble(msg){
   if(!rl())return;
   const chat=document.getElementById('home-chat');
   chat.innerHTML+=`<div class="cb them">${msg}</div>`;
   chat.scrollTop=chat.scrollHeight;
-  // Disable all bubble buttons temporarily
   document.querySelectorAll('.chat-bubble-btn').forEach(b=>b.disabled=true);
   setTimeout(()=>{
-    const r=aiReplies[Math.floor(Math.random()*aiReplies.length)];
+    const r=bubbleAnswers[msg]||"Great question! We'd love to walk you through everything on a quick 15-min call. Want to book one — it's completely free?";
     chat.innerHTML+=`<div style="align-self:flex-end;max-width:82%"><div class="cb-label">Quest Labs AI · 0.${Math.floor(Math.random()*4+2)}s</div><div class="cb ai">${r}</div></div>`;
     chat.scrollTop=chat.scrollHeight;
     document.querySelectorAll('.chat-bubble-btn').forEach(b=>b.disabled=false);
@@ -1455,6 +1762,12 @@ initAIPhone();
 function simCall(e){
   // Disabled - use phone bubble clicks only
 }
+const phoneAnswers={
+  'I want to book an appointment': "Absolutely! I can get that booked for you right now. What day works best — I have openings this week and next. I'll send a confirmation text as soon as we lock it in.",
+  'What are your hours?': "We're open Monday through Friday, 9am to 6pm, and Saturday from 10am to 4pm. But don't worry — I'm here 24/7, so even outside those hours I can take a message or book you an appointment.",
+  'What services do you offer?': "We offer a full range of services including AI Voice Receptionists, Google review automation, and lead follow-up SMS. Our most popular plan bundles all three for $699 per month with a free 7-day trial. Want me to have someone walk you through everything?",
+  'How much does it cost?': "Our AI Receptionist starts at just $349 per month. We also have bundle plans starting at $699 that include review management and lead follow-up. And we offer a free 7-day trial — no credit card required. Want to learn more?",
+};
 function sendPhoneBubble(msg){
   if(!rl()||!phoneReady)return;
   const chat=document.getElementById('ai-phone-chat');
@@ -1462,7 +1775,7 @@ function sendPhoneBubble(msg){
   chat.scrollTop=chat.scrollHeight;
   document.querySelectorAll('.phone-bubble-btn').forEach(b=>b.disabled=true);
   setTimeout(()=>{
-    const r=phoneReplies[Math.floor(Math.random()*phoneReplies.length)];
+    const r=phoneAnswers[msg]||"Great question! Let me have one of our team members follow up with you on that. Can I grab your name and a good callback number?";
     chat.innerHTML+=`<div class="cb ai" style="max-width:90%;font-size:.73rem">${r}</div>`;
     chat.scrollTop=chat.scrollHeight;
     document.querySelectorAll('.phone-bubble-btn').forEach(b=>b.disabled=false);
@@ -1644,7 +1957,7 @@ function initCalendly(name, email) {
       parentElement: el,
       prefill: prefill,
       pageSettings: {
-        backgroundColor: '0d1117',
+        backgroundColor: '07090f',
         hideEventTypeDetails: false,
         hideLandingPageDetails: false,
         primaryColor: '6382ff',
@@ -1683,19 +1996,7 @@ window.addEventListener('message', function(e) {
   }
 });
 
-// Spots counter animation (social proof + scarcity)
-(function() {
-  const spots = [3, 2, 4, 3, 2, 3];
-  let idx = 0;
-  setInterval(() => {
-    const el = document.getElementById('spots-counter');
-    if(el) {
-      idx = (idx + 1) % spots.length;
-      const s = spots[idx];
-      el.innerHTML = 'Only <strong style="color:var(--accent)">' + s + ' spot' + (s !== 1 ? 's' : '') + '</strong> left this week';
-    }
-  }, 45000);
-})();
+// (spots counter removed)
 
 
 // ══════════════════════════════════════════════════════
@@ -1763,6 +2064,49 @@ document.querySelectorAll('.sticker').forEach(s=>{
     s.style.transform='rotate(15deg)';
   });
 });
+
+// ══════════════════════════════════════════════════════
+// HOW IT WORKS — FLOW TABS
+// ══════════════════════════════════════════════════════
+function showFlowTab(tab, btn) {
+  document.querySelectorAll('.flow-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.flow-tab').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('fp-' + tab);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  // Animate timeline steps
+  setTimeout(() => animateVtl(tab), 80);
+}
+
+function animateVtl(tab) {
+  const vtl = document.getElementById('vtl-' + tab);
+  if (!vtl) return;
+  const steps = vtl.querySelectorAll('.vtl-step');
+  steps.forEach((s, i) => {
+    s.classList.remove('vstep-vis');
+    setTimeout(() => s.classList.add('vstep-vis'), i * 130);
+  });
+}
+
+// Animate the default call timeline on load
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => animateVtl('call'), 400);
+});
+
+// When navigating to how page, animate
+const origNavTo = navTo;
+// (already handled in navTo — we add page-specific init below)
+
+// Also auto-animate when page-how becomes active
+const howObserver = new MutationObserver(() => {
+  const howPage = document.getElementById('page-how');
+  if (howPage && howPage.classList.contains('active')) {
+    setTimeout(() => animateVtl('call'), 200);
+  }
+});
+const howPage = document.getElementById('page-how');
+if (howPage) howObserver.observe(howPage, { attributes: true, attributeFilter: ['class'] });
+
 </script>
 </body>
 </html>

@@ -463,14 +463,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
         <h2 class="sec-title reveal" style="text-align:center">Watch the AI handle real calls.</h2>
         <p style="color:var(--muted);font-size:.95rem;max-width:520px;margin:.75rem auto 0;line-height:1.7" class="reveal rd1">Booking appointments, understanding complex names, routing urgent calls, rescheduling — all handled in seconds, without a human on the line.</p>
       </div>
-      <div class="reveal rd2" style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(99,130,255,0.2);box-shadow:0 0 60px rgba(99,130,255,0.12),0 0 0 1px rgba(99,130,255,0.1);background:#000;aspect-ratio:16/9">
-        <iframe
-          src="https://www.youtube.com/embed/9yxJkofGRl4?autoplay=1&mute=1&loop=1&playlist=9yxJkofGRl4&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&fs=0"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;pointer-events:none"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-          loading="lazy">
-        </iframe>
+      <div class="reveal rd2" style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(99,130,255,0.2);box-shadow:0 0 60px rgba(99,130,255,0.12),0 0 0 1px rgba(99,130,255,0.1);background:#000;aspect-ratio:16/9" id="yt-wrap">
+        <div id="yt-player" style="position:absolute;top:0;left:0;width:100%;height:100%"></div>
         <!-- Overlay label -->
         <div style="position:absolute;bottom:1rem;left:1rem;display:flex;align-items:center;gap:.5rem;background:rgba(7,9,15,0.75);backdrop-filter:blur(8px);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.35rem .85rem;z-index:2">
           <span style="width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s ease infinite;flex-shrink:0"></span>
@@ -479,6 +473,65 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
         <!-- Click blocker to prevent accidental YouTube navigation -->
         <div style="position:absolute;inset:0;z-index:1"></div>
       </div>
+
+      <script>
+        // Load YouTube IFrame API
+        (function(){
+          var tag = document.createElement('script');
+          tag.src = 'https://www.youtube.com/iframe_api';
+          document.head.appendChild(tag);
+        })();
+
+        var ytPlayer, ytReady = false;
+
+        window.onYouTubeIframeAPIReady = function() {
+          ytPlayer = new YT.Player('yt-player', {
+            videoId: '9yxJkofGRl4',
+            playerVars: {
+              autoplay: 0,
+              mute: 0,
+              controls: 0,
+              showinfo: 0,
+              rel: 0,
+              modestbranding: 1,
+              iv_load_policy: 3,
+              disablekb: 1,
+              fs: 0,
+              loop: 1,
+              playlist: '9yxJkofGRl4'
+            },
+            events: {
+              onReady: function() {
+                ytReady = true;
+              }
+            }
+          });
+        };
+
+        // IntersectionObserver — play with audio when in view, pause when not
+        var ytObs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (!ytReady || !ytPlayer) return;
+            if (entry.isIntersecting) {
+              ytPlayer.unMute();
+              ytPlayer.playVideo();
+            } else {
+              ytPlayer.pauseVideo();
+            }
+          });
+        }, { threshold: 0.5 });
+
+        // Start observing once DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+          var wrap = document.getElementById('yt-wrap');
+          if (wrap) ytObs.observe(wrap);
+        });
+        // Also try immediately in case DOM is already loaded
+        (function(){
+          var wrap = document.getElementById('yt-wrap');
+          if (wrap) ytObs.observe(wrap);
+        })();
+      </script>
       <!-- Caption chips -->
       <div style="display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem" class="reveal rd3">
         <span style="font-size:.75rem;background:rgba(99,130,255,0.08);border:1px solid rgba(99,130,255,0.2);border-radius:100px;padding:.3rem .85rem;color:var(--muted)">Handles hard-to-spell names</span>
@@ -989,7 +1042,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
             <div class="vtl-card">
               <div class="vtl-tag" style="background:rgba(99,130,255,0.1);color:#6382ff;border:1px solid rgba(99,130,255,0.25)">Step 2 — AI Picks Up</div>
               <div class="vtl-title">The AI greets them in your voice</div>
-              <div class="vtl-desc"> our receptionist uses your custom greeting, your business name, and your exact tone. It sounds exactly like a trained employee — not a robot.</div>
+              <div class="vtl-desc">Built on Retell AI, our receptionist uses your custom greeting, your business name, and your exact tone. It sounds exactly like a trained employee — not a robot.</div>
               <div class="vtl-meta"><span class="vtl-badge">Under 1 second</span></div>
             </div>
           </div>
@@ -1047,7 +1100,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:f
           <div class="gc" style="padding:1.5rem">
             <div style="font-size:.75rem;font-family:'Space Mono',monospace;color:var(--accent);margin-bottom:.75rem;letter-spacing:.08em">BUILT WITH</div>
             <div style="display:flex;flex-direction:column;gap:.4rem">
-              <div style="font-size:.8rem;color:var(--muted)">In house - Voice infrastructure</div>
+              <div style="font-size:.8rem;color:var(--muted)">Retell AI — Voice infrastructure</div>
               <div style="font-size:.8rem;color:var(--muted)">Google Calendar / Calendly</div>
               <div style="font-size:.8rem;color:var(--muted)">CRM Integration</div>
               <div style="font-size:.8rem;color:var(--muted)">Make.com Automation</div>
@@ -1447,7 +1500,7 @@ buildShapes('shapes-home');
 // ══════════════════════════════════════════════════════
 (function(){
   const track=document.getElementById('mq-track');
-  const txt='AI Voice Receptionist · Never Miss a Call · 24/7 · Book More Clients · DFW · Lead Follow-Up SMS · Google Reviews · Voice AI · ';
+  const txt='AI Voice Receptionist · Never Miss a Call · 24/7 · Book More Clients · DFW · Lead Follow-Up SMS · Google Reviews · Retell AI · ';
   const rep=txt.repeat(6);
   track.innerHTML=`<span class="marquee-txt">${rep}</span><span class="marquee-txt">${rep}</span>`;
 

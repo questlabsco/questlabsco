@@ -2132,7 +2132,7 @@ function initCalendly(name, email) {
   el.innerHTML = '';
   if(window.Calendly) {
     Calendly.initInlineWidget({
-      url: 'https://calendly.com/questlabsco/15-min-discovery-call',
+      url: 'https://calendly.com/questlabsco/questlabs',
       parentElement: el,
       prefill: prefill,
       pageSettings: {
@@ -2146,7 +2146,7 @@ function initCalendly(name, email) {
     calendlyInitialized = true;
   } else {
     // Fallback: iframe with params
-    let url = 'https://calendly.com/questlabsco/15-min-discovery-call?embed_domain=questlabs.co&embed_type=Inline&background_color=0d1117&text_color=e8eaf0&primary_color=6382ff';
+    let url = 'https://calendly.com/questlabsco/questlabs?embed_domain=questlabs.co&embed_type=Inline&background_color=0d1117&text_color=e8eaf0&primary_color=6382ff';
     if(name) url += '&name=' + encodeURIComponent(name);
     if(email) url += '&email=' + encodeURIComponent(email);
     el.innerHTML = '<iframe src="' + url + '" width="100%" height="700" frameborder="0" style="border:none;background:#0d1117"></iframe>';

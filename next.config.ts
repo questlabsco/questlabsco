@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: "standalone",
   turbopack: {
     root: path.resolve(__dirname),
   },
@@ -11,6 +11,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
-
-import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
+export default nextConfig;  

@@ -26,3 +26,11 @@ screenshot*.mjs
 
 # design system output
 design-system/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example

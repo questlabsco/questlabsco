@@ -5,6 +5,9 @@ node_modules/
 .next/
 out/
 
+# Wrangler (Cloudflare Workers CLI local cache)
+.wrangler/
+
 # build
 dist/
 

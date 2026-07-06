@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EDIT-ME: replace questlabsco.com if your final domain differs -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://questlabsco.com/</loc></url>
+  <url><loc>https://questlabsco.com/services/</loc></url>
+  <url><loc>https://questlabsco.com/services/ai-consulting/</loc></url>
+  <url><loc>https://questlabsco.com/services/ai-agents/</loc></url>
+  <url><loc>https://questlabsco.com/services/generative-ai/</loc></url>
+  <url><loc>https://questlabsco.com/services/ai-chatbots/</loc></url>
+  <url><loc>https://questlabsco.com/services/workflow-automation/</loc></url>
+  <url><loc>https://questlabsco.com/services/ai-integration/</loc></url>
+  <url><loc>https://questlabsco.com/services/web-development/</loc></url>
+  <url><loc>https://questlabsco.com/services/ui-ux-design/</loc></url>
+  <url><loc>https://questlabsco.com/industries/</loc></url>
+  <url><loc>https://questlabsco.com/industries/healthcare/</loc></url>
+  <url><loc>https://questlabsco.com/industries/finance/</loc></url>
+  <url><loc>https://questlabsco.com/industries/retail-ecommerce/</loc></url>
+  <url><loc>https://questlabsco.com/industries/logistics/</loc></url>
+  <url><loc>https://questlabsco.com/industries/manufacturing/</loc></url>
+  <url><loc>https://questlabsco.com/industries/legal/</loc></url>
+  <url><loc>https://questlabsco.com/industries/real-estate/</loc></url>
+  <url><loc>https://questlabsco.com/industries/education/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/healthcare-rcm-analytics/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/fintech-trading-automation/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/retail-support-chatbot/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/logistics-document-ai/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/legal-contract-intelligence/</loc></url>
+  <url><loc>https://questlabsco.com/case-studies/ecommerce-personalization/</loc></url>
+  <url><loc>https://questlabsco.com/about/</loc></url>
+  <url><loc>https://questlabsco.com/contact/</loc></url>
+</urlset>

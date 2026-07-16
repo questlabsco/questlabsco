@@ -1,13 +1,7 @@
-// EDIT-ME: case studies. These six are realistic PLACEHOLDER projects
-// written at full reference-site length so you can see exactly how long and
-// how structured each section should be. Replace each with a real Quest Labs
-// project. Edit this file only; the listing page, filters, detail pages,
-// and table of contents all render from here.
-
 export type CaseStudy = {
   slug: string;
   title: string;
-  client: string; // EDIT-ME on every entry
+  client: string;
   industry: string;
   services: string[];
   tech: string[];
@@ -27,7 +21,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "healthcare-rcm-analytics",
     title: "Claims analytics and denial automation for a healthcare network",
-    client: "Confidential (EDIT-ME)",
+    client: "Confidential",
     industry: "Healthcare",
     services: ["Workflow Automation", "AI Consulting"],
     tech: ["Python", "Claude", "PostgreSQL", "Power BI"],
@@ -36,7 +30,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A multi-clinic healthcare network was losing revenue to claim denials that staff had no time to analyze or appeal. We automated denial triage and appeal drafting, and built the analytics to stop denials at the source.",
     aboutClient:
-      "The client is a regional healthcare network operating a dozen outpatient clinics with a central billing office. (EDIT-ME: describe the real client, including size, locations, specialty mix, and how the engagement started.) Their billing team of nine handled every payer interaction manually, from claim submission through denial follow-up, using a mainstream practice-management system supplemented by spreadsheets.",
+      "The client is a regional healthcare network operating a dozen outpatient clinics with a central billing office. Their billing team of nine handled every payer interaction manually, from claim submission through denial follow-up, using a mainstream practice-management system supplemented by spreadsheets.",
     challenge: [
       "Denied claims piled up faster than the billing team could work them. Each denial required reading payer correspondence, cross-referencing the original claim, finding the root cause, and drafting an appeal: 40 or more minutes of skilled work per claim. With hundreds of denials arriving monthly, the team triaged by dollar value and simply wrote off the long tail.",
       "Leadership had no visibility into why denials happened. The same preventable errors (expired authorizations, mismatched codes, missing modifiers) recurred month after month because nobody had time to analyze patterns, let alone feed fixes back to the front desk and coding staff.",
@@ -80,17 +74,17 @@ export const caseStudies: CaseStudy[] = [
       { value: "9 min", label: "average biller time per appeal, from 40+" },
     ],
     resultsNarrative:
-      "Within two quarters the network recovered revenue it had previously written off as a cost of doing business, while the billing team shrank its backlog to zero for the first time in years. The prevention loop is now cutting denials before they happen: front-end fixes driven by the dashboard reduced new denials 18% in the first six months. (EDIT-ME: replace with the real project's outcome story.)",
+      "Within two quarters the network recovered revenue it had previously written off as a cost of doing business, while the billing team shrank its backlog to zero for the first time in years. The prevention loop is now cutting denials before they happen: front-end fixes driven by the dashboard reduced new denials 18% in the first six months.",
     quote: {
       text: "We assumed we needed more billers. What we needed was for the work each biller could do to count three times as much.",
-      author: "Jane Doe (EDIT-ME)",
+      author: "Jane Doe",
       role: "Revenue Cycle Director",
     },
   },
   {
     slug: "fintech-trading-automation",
     title: "Post-trade reconciliation automation for a trading platform",
-    client: "Confidential (EDIT-ME)",
+    client: "Confidential",
     industry: "Finance",
     services: ["AI Agents", "AI Integration"],
     tech: ["Python", "Temporal", "PostgreSQL", "AWS"],
@@ -99,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A brokerage's operations team spent every morning manually reconciling trades across three systems. An automated pipeline with an exception-handling agent now clears the day's book before the team's first coffee.",
     aboutClient:
-      "The client is a mid-sized brokerage offering multi-asset trading to retail and professional clients. (EDIT-ME: describe the real client.) Its operations desk of six reconciled every trading day across an order management system, a custodian feed, and the internal ledger: three systems with three different identifier schemes and three different ideas of when a day ends.",
+      "The client is a mid-sized brokerage offering multi-asset trading to retail and professional clients. Its operations desk of six reconciled every trading day across an order management system, a custodian feed, and the internal ledger: three systems with three different identifier schemes and three different ideas of when a day ends.",
     challenge: [
       "Trades landed in the three systems with mismatched identifiers, timing differences, and occasional partial fills that split one economic trade into several records. Matching them was a spreadsheet exercise that consumed the desk's entire morning: roughly four hours of concentrated, error-prone work before any real operations could start.",
       "The stakes were asymmetric: a routine day produced a handful of legitimate breaks, but missing a single genuine discrepancy meant a mis-stated client position and a potential compliance incident. The desk was forced to treat every one of thousands of rows with the same suspicion, because the process had no way to concentrate attention where it mattered.",
@@ -143,17 +137,17 @@ export const caseStudies: CaseStudy[] = [
       { value: "100%", label: "audit trail coverage on corrections" },
     ],
     resultsNarrative:
-      "The desk's morning reconciliation now takes under twenty minutes of review instead of four hours of matching. Breaks get attention proportional to risk, volume growth no longer drives hiring, and the compliance team gained a better audit trail than the manual process ever produced. (EDIT-ME: replace with the real outcome story.)",
+      "The desk's morning reconciliation now takes under twenty minutes of review instead of four hours of matching. Breaks get attention proportional to risk, volume growth no longer drives hiring, and the compliance team gained a better audit trail than the manual process ever produced.",
     quote: {
       text: "The agent doesn't just flag breaks. It shows up with the evidence and a proposed fix. My team makes decisions now instead of hunting through systems.",
-      author: "John Smith (EDIT-ME)",
+      author: "John Smith",
       role: "Head of Operations",
     },
   },
   {
     slug: "retail-support-chatbot",
     title: "AI support assistant for a growing e-commerce brand",
-    client: "Confidential (EDIT-ME)",
+    client: "Confidential",
     industry: "Retail & E-commerce",
     services: ["AI Chatbots", "AI Integration"],
     tech: ["Claude", "Next.js", "Shopify API", "Zendesk"],
@@ -162,7 +156,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A D2C retailer's support queue doubled every holiday season. A grounded AI assistant now resolves the routine majority (order status, returns, product questions) and hands the rest to agents with full context.",
     aboutClient:
-      "The client is a direct-to-consumer retailer selling through Shopify with a support team of eight on Zendesk. (EDIT-ME: describe the real client.) Support volume tracked revenue growth all year and then doubled every November: a seasonal spike the team could never staff for economically.",
+      "The client is a direct-to-consumer retailer selling through Shopify with a support team of eight on Zendesk. Support volume tracked revenue growth all year and then doubled every November: a seasonal spike the team could never staff for economically.",
     challenge: [
       "Hiring seasonal agents meant training people for six weeks so they could help for eight, and quality suffered anyway: seasonal staff answered from incomplete knowledge, creating escalations that consumed the permanent team's time. In peak season, first response slipped past 24 hours and one-star reviews said so explicitly.",
       "Roughly two-thirds of tickets were variations of the same three questions: where is my order, how do I return this, does this product fit my case, each answerable from data that already existed in Shopify and the brand's policy pages. The team's expertise was being spent on questions that didn't need it.",
@@ -206,17 +200,17 @@ export const caseStudies: CaseStudy[] = [
       { value: "+18", label: "point CSAT improvement in peak season" },
     ],
     resultsNarrative:
-      "The following holiday season was the brand's largest ever and the first with no seasonal support hires. The permanent team now works exceptions and high-touch cases, response-time complaints disappeared from reviews, and the assistant's resolution rate keeps climbing as its knowledge base grows. (EDIT-ME: replace with the real outcome story.)",
+      "The following holiday season was the brand's largest ever and the first with no seasonal support hires. The permanent team now works exceptions and high-touch cases, response-time complaints disappeared from reviews, and the assistant's resolution rate keeps climbing as its knowledge base grows.",
     quote: {
       text: "Last Black Friday broke our support queue. This one, the bot handled two-thirds of it and my team went home on time.",
-      author: "Jane Doe (EDIT-ME)",
+      author: "Jane Doe",
       role: "Co-founder",
     },
   },
   {
     slug: "logistics-document-ai",
     title: "Freight document automation for a logistics provider",
-    client: "Confidential (EDIT-ME)",
+    client: "Confidential",
     industry: "Logistics",
     services: ["Workflow Automation", "AI Agents", "Generative AI"],
     tech: ["Python", "Claude", "n8n", "TMS API"],
@@ -225,7 +219,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A freight forwarder's team re-keyed BOLs, PODs, and carrier invoices into their TMS by hand. Document AI now handles every standard format, and an agent chases the missing paperwork.",
     aboutClient:
-      "The client is a freight forwarding company coordinating shipments across a large carrier network. (EDIT-ME: describe the real client.) Every shipment generated a file of documents (bills of lading, proof-of-delivery slips, carrier invoices, customs paperwork) arriving by email in every imaginable format: clean PDFs, phone photos of paper forms, spreadsheets, and scans of scans.",
+      "The client is a freight forwarding company coordinating shipments across a large carrier network. Every shipment generated a file of documents (bills of lading, proof-of-delivery slips, carrier invoices, customs paperwork) arriving by email in every imaginable format: clean PDFs, phone photos of paper forms, spreadsheets, and scans of scans.",
     challenge: [
       "Four full-time staff did nothing but read incoming documents and re-key their contents into the transportation management system. The work was mind-numbing, turnover in the role was constant, and every new hire meant weeks of training on document quirks.",
       "Manual entry errors surfaced downstream as billing disputes: a transposed weight or wrong reference number meant a carrier invoice that didn't match the shipment record, hours of investigation, and sometimes a written-off difference. Month-end close regularly stalled for days on incomplete files.",
@@ -269,17 +263,17 @@ export const caseStudies: CaseStudy[] = [
       { value: "2 days", label: "faster month-end close" },
     ],
     resultsNarrative:
-      "Data entry as a job function no longer exists at the company: the four staff who did it moved into customer-facing operations roles that had been chronically understaffed. Billing disputes dropped with entry errors, and month-end close now finishes on schedule with complete files. (EDIT-ME: replace with the real outcome story.)",
+      "Data entry as a job function no longer exists at the company: the four staff who did it moved into customer-facing operations roles that had been chronically understaffed. Billing disputes dropped with entry errors, and month-end close now finishes on schedule with complete files.",
     quote: {
       text: "We used to hire for data entry and lose people every six months. That whole job just doesn't exist here anymore.",
-      author: "John Smith (EDIT-ME)",
+      author: "John Smith",
       role: "Operations Director",
     },
   },
   {
     slug: "legal-contract-intelligence",
     title: "Contract review acceleration for a corporate legal team",
-    client: "Confidential (EDIT-ME)",
+    client: "Confidential",
     industry: "Legal",
     services: ["Generative AI", "AI Consulting", "UI/UX Design"],
     tech: ["Claude", "React", "pgvector", "Azure"],
@@ -288,7 +282,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "An in-house legal team reviewed hundreds of vendor agreements a year against the same playbook. A review workspace we designed and built flags deviations, cites clauses, and drafts fallback language: lawyers make the calls.",
     aboutClient:
-      "The client is the in-house legal department of a mid-sized enterprise, a team of five lawyers supporting procurement across the whole business. (EDIT-ME: describe the real client.) Vendor agreements were their highest-volume work: hundreds per year, most reviewed against the same 40-point playbook of required terms, forbidden clauses, and preferred fallbacks.",
+      "The client is the in-house legal department of a mid-sized enterprise, a team of five lawyers supporting procurement across the whole business. Vendor agreements were their highest-volume work: hundreds per year, most reviewed against the same 40-point playbook of required terms, forbidden clauses, and preferred fallbacks.",
     challenge: [
       "Every agreement got a manual read against the full playbook regardless of length or risk. Turnaround stretched to two weeks at busy times, and the business noticed: procurement teams began routing around legal for 'small' contracts, which is exactly how risk enters an organization: through the side door, in volume.",
       "Playbook application was inconsistent by nature. Five lawyers applied 40 points with five levels of experience and five sets of habits; the same clause could pass one review and get negotiated in another. New team members took months to internalize positions that existed mostly as institutional memory.",
@@ -332,17 +326,17 @@ export const caseStudies: CaseStudy[] = [
       { value: "0", label: "off-process contracts since rollout" },
     ],
     resultsNarrative:
-      "Standard vendor agreements now turn around in days, and the business stopped routing around legal: the fast path is the official path. Junior lawyers apply the full playbook from their first week, and the team's negotiating positions are strengthening as the analytics reveal what actually works. (EDIT-ME: replace with the real outcome story.)",
+      "Standard vendor agreements now turn around in days, and the business stopped routing around legal: the fast path is the official path. Junior lawyers apply the full playbook from their first week, and the team's negotiating positions are strengthening as the analytics reveal what actually works.",
     quote: {
       text: "It reads every contract the way our most careful lawyer reads on her best day, and then lets the humans do the actual lawyering.",
-      author: "Jane Doe (EDIT-ME)",
+      author: "Jane Doe",
       role: "General Counsel",
     },
   },
   {
     slug: "ecommerce-personalization",
     title: "Website rebuild with AI personalization for an online retailer",
-    client: "Confidential (EDIT-ME)",
+    client: "Confidential",
     industry: "Retail & E-commerce",
     services: ["Web Development", "UI/UX Design"],
     tech: ["Next.js", "TypeScript", "Tailwind", "Cloudflare"],
@@ -351,7 +345,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A specialty retailer's aging site was slow, hard to edit, and converted poorly on mobile. We redesigned and rebuilt it end to end, adding recommendation and search intelligence the team can tune themselves.",
     aboutClient:
-      "The client is a specialty online retailer with a catalog of several thousand SKUs and a loyal repeat-customer base. (EDIT-ME: describe the real client.) The existing site had grown over seven years on an aging platform: every content change required a developer, page speed had decayed with each added plugin, and mobile (now most of their traffic) was clearly an afterthought.",
+      "The client is a specialty online retailer with a catalog of several thousand SKUs and a loyal repeat-customer base. The existing site had grown over seven years on an aging platform: every content change required a developer, page speed had decayed with each added plugin, and mobile (now most of their traffic) was clearly an afterthought.",
     challenge: [
       "Mobile conversion ran at half of desktop. Sessions were there; sales weren't. Page loads exceeded four seconds on median mobile connections, product discovery relied on exact-match search that returned nothing for natural phrasings, and checkout required pinch-zooming on a form designed for a mouse.",
       "The marketing team was hostage to a developer queue for every banner, landing page, and copy change: a multi-day cycle for edits that should take minutes, which meant campaigns launched late or not at all.",
@@ -395,10 +389,10 @@ export const caseStudies: CaseStudy[] = [
       { value: "+24%", label: "average order value with recommendations" },
     ],
     resultsNarrative:
-      "The relaunch paid for itself within the first quarter on mobile conversion alone. Average order value climbed as the recommendation model matured, campaign velocity roughly tripled once marketing owned its own pages, and the design system has since absorbed two catalog expansions without a redesign. (EDIT-ME: replace with the real outcome story.)",
+      "The relaunch paid for itself within the first quarter on mobile conversion alone. Average order value climbed as the recommendation model matured, campaign velocity roughly tripled once marketing owned its own pages, and the design system has since absorbed two catalog expansions without a redesign.",
     quote: {
       text: "Same traffic, same products. The site just stopped getting in the way of people buying.",
-      author: "John Smith (EDIT-ME)",
+      author: "John Smith",
       role: "Chief Executive Officer",
     },
   },

@@ -5,7 +5,6 @@ import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { recognition } from "@/lib/data/recognition";
 
-// EDIT-ME: entries (including per-slide images) come from lib/data/recognition.ts.
 // No card/border wrapper by design — this sits directly on its parent
 // section's background so it reads as part of the page, not a boxed widget.
 export default function RecognitionCarousel({

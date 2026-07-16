@@ -46,35 +46,76 @@ anything currently on the site.
   commit, but you can delete them from the repo if you'd rather not carry
   ~1 MB of source art in git history.
 
-This repo has **not** been initialized with git yet (no `.git` folder). To push:
+Pushed to `github.com/questlabsco/questlabsco`.
 
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
+## 3. Cloudflare project type: Workers (not classic Pages) — deploy command fix
 
-## 3. Deploying on Cloudflare Pages (free)
+Cloudflare's dashboard created this as a **Workers** project (their newer
+unified "Workers Builds" system), not a classic Pages project. That type
+requires an explicit deploy step after the build — Cloudflare tried to run
+`npm run deploy`, which didn't exist yet and failed with `Missing script:
+"deploy"`.
 
-1. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
-2. Pick the repo you just pushed.
-3. Build settings:
-   - **Framework preset:** Next.js (Static HTML Export) — or "None"
-   - **Build command:** `npm run build`
-   - **Build output directory:** `out`
-   - **Node version:** picked up automatically from `.nvmrc` (20); if Cloudflare
-     doesn't detect it, set the environment variable `NODE_VERSION = 20`
-     manually in the Pages project settings.
-4. No environment variables are required — the Web3Forms access key is a
-   public client-side key by design (that's how Web3Forms works) and is
-   already in `lib/data/site.ts`.
-5. Deploy. Cloudflare gives you a `*.pages.dev` URL immediately.
-6. Add your real domain under the project's **Custom domains** tab and follow
-   Cloudflare's DNS instructions (trivial if the domain is already on
-   Cloudflare; otherwise it'll walk you through it).
+Fixed by adding:
+- **`wrangler.toml`** — tells Wrangler to serve the static `out/` directory as
+  the deployed assets (`[assets] directory = "./out"`). `name` is set to
+  `"questlabsco"` — **double-check this matches your actual Cloudflare project
+  name exactly** (dashboard → your project → Settings), otherwise Wrangler may
+  try to create a new Worker instead of updating the existing one.
+- **`wrangler`** as a devDependency, and a `"deploy": "wrangler deploy"` script
+  in `package.json`.
+- Verified locally with `npx wrangler deploy --dry-run` — it correctly read
+  413 files from `out/` and validated with no errors (no live deploy happens
+  in dry-run, so no auth was needed to check this).
+
+Cloudflare's own build environment is already authenticated to your account
+for this project, so `wrangler deploy` running inside their build pipeline
+needs no extra secrets/API tokens from you.
+
+**Next step:** commit and push these files (`wrangler.toml`, updated
+`package.json`, `package-lock.json`, `.gitignore`) — Cloudflare will pick it up
+and the build + deploy should both succeed.
+
+### Follow-up fix 2: build step wasn't running at all before deploy
+
+Third attempt: Node 22 installed correctly, `npm run deploy` ran wrangler
+successfully — but wrangler immediately errored that `out/` didn't exist. The
+build log confirmed why: it went straight from "Installing project
+dependencies" to "Executing user deploy command", with **no build command
+step in between** — the Cloudflare project's "Build command" dashboard field
+is apparently empty, so `next build` never ran.
+
+Rather than depend on that dashboard field being set correctly, made the
+`deploy` script self-contained: `"deploy": "next build && wrangler deploy"`.
+Now the build always happens right before the deploy regardless of dashboard
+config. Verified locally end-to-end (`next build` → 32/32 pages → wrangler
+dry-run reads all 413 files from `out/` with no errors).
+
+You can still set the dashboard **Build command** to `npm run build` for
+clarity/logging, but it's no longer load-bearing.
+
+### Follow-up fix: wrangler needs Node ≥22
+
+First deploy attempt after the above still failed: `wrangler@4.107.0` itself
+requires Node ≥22, but `.nvmrc` had Node 20 pinned (right for Next.js, too old
+for this wrangler version). Bumped `.nvmrc` and `package.json`'s
+`engines.node` to `22`, rebuilt clean, and re-ran `npx wrangler deploy
+--dry-run` locally on Node 22 — both the Next build and the wrangler dry-run
+succeed. Push this change too; Cloudflare will pick up Node 22 from `.nvmrc`
+for the next build.
+
+### Build settings for reference (Settings → Build)
+
+- **Build command:** `npm run build`
+- **Deploy command:** `npm run deploy` (now exists)
+- **Build output directory:** `out` (Wrangler reads this via `wrangler.toml`,
+  not this dashboard field, but leave it set to `out` regardless)
+- **Node version:** picked up from `.nvmrc` (confirmed in the build log:
+  `nodejs@20.20.2`)
+- No environment variables are required — the Web3Forms access key is a
+  public client-side key by design and already lives in `lib/data/site.ts`.
+- Add your real domain under the project's **Custom domains** tab once it's
+  deploying successfully.
 
 ## 4. Still-placeholder content to replace before going fully live
 

@@ -4,28 +4,30 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Reveal from "./Reveal";
 
-// Scroll-driven section: the purple glow behind the headline starts large
-// enough to fill the screen and shrinks continuously toward a point at the
-// bottom of the viewport (not the center, so it doesn't end up sitting in
-// the middle of the text), staying fully opaque throughout.
+// Scroll-driven section: the purple glow behind the headline fills the
+// whole section, holds steady while the headline is readable, then
+// dissolves smoothly to white toward the end of the scroll range (rather
+// than visibly shrinking to a small floating circle).
 export default function GlowStatement() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
   });
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.04]);
+  const scale = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0.75]);
+  const opacity = useTransform(scrollYProgress, [0, 0.65, 1], [1, 1, 0]);
 
   return (
     <section
       ref={ref}
       className="relative bg-white"
-      style={{ height: "110vh" }}
+      style={{ height: "220vh" }}
     >
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <motion.div
           style={{
             scale,
+            opacity,
             x: "-50%",
             backgroundColor: "#7C5FC2",
             filter: "blur(90px)",

@@ -6,15 +6,13 @@ export const metadata: Metadata = {
   description: "Terms governing the use of the Quest Labs Co. website.",
 };
 
-// EDIT-ME: starter terms for the website itself. Service engagements are
-// governed by individual agreements. Have this reviewed before launch.
 export default function TermsPage() {
   return (
     <main className="bg-white">
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-12 md:pb-16">
           <h1 className="text-4xl font-bold tracking-tight">Terms of Service</h1>
-          <p className="mt-3 text-sm text-white/50">Effective date: January 1, 2026 (EDIT-ME)</p>
+          <p className="mt-3 text-sm text-white/50">Effective date: January 1, 2026</p>
         </div>
       </section>
 

@@ -1,7 +1,6 @@
 import { stats } from "@/lib/data/site";
 import Reveal from "./Reveal";
 
-// EDIT-ME: figures come from lib/data/site.ts
 export default function StatsBar() {
   return (
     <section className="bg-ink text-white">

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import SectionHeading from "@/components/site/SectionHeading";
 import RecognitionStrip from "@/components/site/RecognitionStrip";
 import StatsBar from "@/components/site/StatsBar";
-import TestimonialCarousel from "@/components/site/TestimonialCarousel";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
 import { values } from "@/lib/data/site";
@@ -68,16 +67,6 @@ export default function AboutPage() {
         <div className="container-site py-20 md:py-24">
           <SectionHeading title="Independent proof, not self-praise" />
           <RecognitionStrip />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-white">
-        <div className="container-site py-20 md:py-28">
-          <SectionHeading title="What working with us is actually like" />
-          <div className="max-w-4xl">
-            <TestimonialCarousel />
-          </div>
         </div>
       </section>
 

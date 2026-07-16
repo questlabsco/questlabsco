@@ -9,7 +9,6 @@ const icons: Record<Recognition["kind"], typeof Star> = {
   partner: Handshake,
 };
 
-// EDIT-ME: badges come from lib/data/recognition.ts
 export default function RecognitionStrip({ onDark = false }: { onDark?: boolean }) {
   return (
     <div className="flex flex-wrap items-start gap-x-10 gap-y-6">

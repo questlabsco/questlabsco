@@ -5,7 +5,6 @@ import RecognitionCarousel from "@/components/site/RecognitionCarousel";
 import GlowStatement from "@/components/site/GlowStatement";
 import SectionHeading from "@/components/site/SectionHeading";
 import FeaturedCaseStudyCarousel from "@/components/site/FeaturedCaseStudyCarousel";
-import TestimonialCarousel from "@/components/site/TestimonialCarousel";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
 import { caseStudies } from "@/lib/data/case-studies";
@@ -193,16 +192,6 @@ export default function Home() {
           </div>
         </div>
         <FeaturedCaseStudyCarousel items={featured} />
-      </section>
-
-      {/* Testimonials */}
-      <section className="bg-white">
-        <div className="container-site py-16 md:py-24">
-          <SectionHeading title="In their words" />
-          <div className="max-w-4xl">
-            <TestimonialCarousel />
-          </div>
-        </div>
       </section>
 
       <CTABand />

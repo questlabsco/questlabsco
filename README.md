@@ -24,20 +24,18 @@ npm run build    # static export into ./out
 ## Editing content (the important part)
 
 All content lives in `lib/data/` — you edit data files, not page code.
-Everything placeholder is marked with **`EDIT-ME`** comments:
+Some of it is still placeholder content that should be replaced with real
+Quest Labs facts before launch:
 
 | File | What's in it |
 |---|---|
 | `lib/data/site.ts` | Email, Calendly URL, Web3Forms key, social links, **stats**, **office locations**, values |
 | `lib/data/clients.ts` | "Trusted by" company marks (currently placeholder names — replace!) |
 | `lib/data/recognition.ts` | Award/certification badges (placeholders — replace!) |
-| `lib/data/testimonials.ts` | Client quotes (placeholders — replace!) |
 | `lib/data/case-studies.ts` | The six case studies (placeholder projects — replace with real ones) |
 | `lib/data/services.ts` | All nine service pages' copy |
 | `lib/data/industries.ts` | All eight industry pages' copy |
 | `lib/data/process.ts`, `techstack.ts` | Delivery steps and tech-stack tabs |
-
-Find every remaining placeholder with a search for `EDIT-ME`.
 
 - **Images:** `public/images/` (free-licensed Unsplash photos — swap freely).
   Paths are referenced in the data files.

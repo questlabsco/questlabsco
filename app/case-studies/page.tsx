@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SectionHeading from "@/components/site/SectionHeading";
 import CaseStudyGrid from "@/components/site/CaseStudyGrid";
-import TestimonialCarousel from "@/components/site/TestimonialCarousel";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
 
@@ -26,15 +25,6 @@ export default function CaseStudiesPage() {
               involved.
             </p>
           </Reveal>
-        </div>
-      </section>
-
-      {/* Testimonials strip */}
-      <section className="bg-white border-b border-line">
-        <div className="container-site py-16 md:py-20">
-          <div className="max-w-4xl">
-            <TestimonialCarousel />
-          </div>
         </div>
       </section>
 

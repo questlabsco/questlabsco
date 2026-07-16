@@ -6,15 +6,13 @@ export const metadata: Metadata = {
   description: "How Quest Labs Co. collects, uses, and protects your information.",
 };
 
-// EDIT-ME: this is a general-purpose starter policy. Have it reviewed for
-// your jurisdiction and update the effective date before launch.
 export default function PrivacyPage() {
   return (
     <main className="bg-white">
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-12 md:pb-16">
           <h1 className="text-4xl font-bold tracking-tight">Privacy Policy</h1>
-          <p className="mt-3 text-sm text-white/50">Effective date: January 1, 2026 (EDIT-ME)</p>
+          <p className="mt-3 text-sm text-white/50">Effective date: January 1, 2026</p>
         </div>
       </section>
 

@@ -1,6 +1,4 @@
 // Central site configuration.
-// Anything marked EDIT-ME is placeholder content mirroring the reference
-// site's structure. Replace with real Quest Labs facts.
 
 export const siteConfig = {
   name: "Quest Labs Co.",
@@ -12,13 +10,11 @@ export const siteConfig = {
   // (questlabsco@gmail.com) regardless of the public-facing email above.
   web3formsKey: "4aa5d74b-02ad-462b-be9e-c00d0a7aa5ba",
   social: {
-    linkedin: "https://linkedin.com", // EDIT-ME: real LinkedIn URL
-    x: "https://twitter.com", // EDIT-ME: real X/Twitter URL
+    linkedin: "https://linkedin.com",
+    x: "https://twitter.com",
   },
 };
 
-// EDIT-ME: headline stats shown on home + about. Placeholder figures
-// mirroring the reference site. Replace with real Quest Labs numbers.
 export const stats = [
   { value: "23", suffix: " years", label: "of engineering experience" },
   { value: "34", suffix: "%", label: "of talent holds AI certifications" },

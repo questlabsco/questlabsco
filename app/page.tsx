@@ -69,9 +69,6 @@ export default function Home() {
                 Let&apos;s talk
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link href="/case-studies/" className="btn-outline-light !px-8 !py-3">
-                View case studies
-              </Link>
             </div>
           </Reveal>
         </div>
@@ -184,11 +181,6 @@ export default function Home() {
         <div className="container-site pt-16 md:pt-24">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
             <SectionHeading title="Work that shipped, not just a demo" onDark />
-            <Reveal delay={0.1} className="mb-12 md:mb-16">
-              <Link href="/case-studies/" className="btn-outline-light !py-3 !px-6">
-                View all
-              </Link>
-            </Reveal>
           </div>
         </div>
         <FeaturedCaseStudyCarousel items={featured} />

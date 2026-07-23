@@ -5,7 +5,6 @@ import { siteConfig } from "@/lib/data/site";
 
 const companyLinks = [
   { label: "About us", href: "/about/" },
-  { label: "Case studies", href: "/case-studies/" },
   { label: "Contact", href: "/contact/" },
 ];
 

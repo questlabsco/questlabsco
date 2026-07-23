@@ -8,7 +8,6 @@ import { services } from "@/lib/data/services";
 import { industries } from "@/lib/data/industries";
 
 const navLinks = [
-  { label: "Case studies", href: "/case-studies/" },
   { label: "About", href: "/about/" },
 ];
 

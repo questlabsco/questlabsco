@@ -3,11 +3,8 @@ import { ArrowRight } from "lucide-react";
 import WebGLShader from "@/components/site/WebGLShader";
 import RecognitionCarousel from "@/components/site/RecognitionCarousel";
 import GlowStatement from "@/components/site/GlowStatement";
-import SectionHeading from "@/components/site/SectionHeading";
-import FeaturedCaseStudyCarousel from "@/components/site/FeaturedCaseStudyCarousel";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
-import { caseStudies } from "@/lib/data/case-studies";
 import { stats } from "@/lib/data/site";
 
 const principles = [
@@ -47,8 +44,6 @@ const pillars = [
 ];
 
 export default function Home() {
-  const featured = caseStudies.slice(0, 4);
-
   return (
     <main>
       {/* Hero: animated shader background, fills the whole screen on load */}
@@ -175,16 +170,6 @@ export default function Home() {
           </section>
         ))}
       </div>
-
-      {/* Case studies: full-bleed horizontal gallery */}
-      <section className="relative z-10 bg-ink text-white">
-        <div className="container-site pt-16 md:pt-24">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-            <SectionHeading title="Work that shipped, not just a demo" onDark />
-          </div>
-        </div>
-        <FeaturedCaseStudyCarousel items={featured} />
-      </section>
 
       <CTABand />
     </main>

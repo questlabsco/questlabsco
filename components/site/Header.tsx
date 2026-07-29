@@ -41,6 +41,9 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Standalone hidden pages render without the site chrome.
+  if (pathname === "/watch" || pathname === "/watch/") return null;
+
   // Never hide the island while the mobile drawer is open
   const translated = hidden && !mobileOpen;
 

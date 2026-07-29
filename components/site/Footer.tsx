@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { services } from "@/lib/data/services";
 import { industries } from "@/lib/data/industries";
 import { siteConfig } from "@/lib/data/site";
@@ -9,6 +12,10 @@ const companyLinks = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  // Standalone hidden pages render without the site chrome.
+  if (pathname === "/watch" || pathname === "/watch/") return null;
+
   return (
     <footer className="bg-ink-deep text-white">
       <div className="container-site py-16 md:py-20">

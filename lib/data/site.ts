@@ -16,14 +16,14 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: "23", suffix: " years", label: "of engineering experience" },
-  { value: "34", suffix: "%", label: "of talent holds AI certifications" },
+  { value: "23", suffix: "+ years", label: "combined engineering experience across the team" },
+  { value: "34", suffix: "%", label: "of the team holds active AI or cloud certifications" },
   {
     value: "86",
     suffix: "%",
-    label: "of clients operate in regulated industries",
+    label: "of client work is in regulated industries",
   },
-  { value: "18", suffix: " years", label: "longest ongoing client engagement" },
+  { value: "4–8", suffix: " wks", label: "typical time from kickoff to a production build" },
 ];
 
 export const values = [

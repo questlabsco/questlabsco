@@ -8,20 +8,20 @@ export type Recognition = {
 export const recognition: Recognition[] = [
   {
     kind: "rating",
-    title: "4.9 / 5 client rating",
-    detail: "Rated by clients across delivered engagements",
+    title: "4.9 / 5 average client rating",
+    detail: "Based on post-project feedback across delivered engagements",
     image: "/images/recognition/rating.jpg",
   },
   {
     kind: "report",
-    title: "Agentic AI Market Report 2025–2029",
-    detail: "Recognized among notable AI engineering vendors",
+    title: "Every build starts with a priced audit",
+    detail: "A scoped, written roadmap before a line of code, not a guess dressed up as a proposal",
     image: "/images/recognition/report.jpg",
   },
   {
     kind: "partner",
-    title: "AWS · Google Cloud · Microsoft",
-    detail: "Cloud technology partnerships",
+    title: "Model-agnostic by design",
+    detail: "Production experience across Claude, GPT, and Gemini: whichever fits the task",
     image: "/images/recognition/partner.jpg",
   },
 ];

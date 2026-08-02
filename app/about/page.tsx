@@ -65,7 +65,7 @@ export default function AboutPage() {
       {/* Recognition */}
       <section className="bg-tint border-y border-line">
         <div className="container-site py-20 md:py-24">
-          <SectionHeading title="Independent proof, not self-praise" />
+          <SectionHeading title="Proof, not just promises" />
           <RecognitionStrip />
         </div>
       </section>

@@ -45,6 +45,18 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
+          <h2 className="text-xl font-bold text-ink mb-3">Cookies</h2>
+          <p>
+            This site uses a minimal set of cookies: essential ones from our
+            hosting provider, plus cookies set by embedded tools like
+            Calendly and Wistia on the pages that use them. See our{" "}
+            <a href="/cookies/" className="text-primary font-medium">
+              Cookie Policy
+            </a>{" "}
+            for the full breakdown.
+          </p>
+        </section>
+        <section>
           <h2 className="text-xl font-bold text-ink mb-3">Data retention</h2>
           <p>
             We keep inquiry correspondence for as long as needed to serve you

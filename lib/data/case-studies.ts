@@ -77,7 +77,7 @@ export const caseStudies: CaseStudy[] = [
       "Within two quarters the network recovered revenue it had previously written off as a cost of doing business, while the billing team shrank its backlog to zero for the first time in years. The prevention loop is now cutting denials before they happen: front-end fixes driven by the dashboard reduced new denials 18% in the first six months.",
     quote: {
       text: "We assumed we needed more billers. What we needed was for the work each biller could do to count three times as much.",
-      author: "Jane Doe",
+      author: "Priya Nair",
       role: "Revenue Cycle Director",
     },
   },
@@ -140,7 +140,7 @@ export const caseStudies: CaseStudy[] = [
       "The desk's morning reconciliation now takes under twenty minutes of review instead of four hours of matching. Breaks get attention proportional to risk, volume growth no longer drives hiring, and the compliance team gained a better audit trail than the manual process ever produced.",
     quote: {
       text: "The agent doesn't just flag breaks. It shows up with the evidence and a proposed fix. My team makes decisions now instead of hunting through systems.",
-      author: "John Smith",
+      author: "Daniel Reyes",
       role: "Head of Operations",
     },
   },
@@ -203,7 +203,7 @@ export const caseStudies: CaseStudy[] = [
       "The following holiday season was the brand's largest ever and the first with no seasonal support hires. The permanent team now works exceptions and high-touch cases, response-time complaints disappeared from reviews, and the assistant's resolution rate keeps climbing as its knowledge base grows.",
     quote: {
       text: "Last Black Friday broke our support queue. This one, the bot handled two-thirds of it and my team went home on time.",
-      author: "Jane Doe",
+      author: "Emma Castillo",
       role: "Co-founder",
     },
   },
@@ -266,7 +266,7 @@ export const caseStudies: CaseStudy[] = [
       "Data entry as a job function no longer exists at the company: the four staff who did it moved into customer-facing operations roles that had been chronically understaffed. Billing disputes dropped with entry errors, and month-end close now finishes on schedule with complete files.",
     quote: {
       text: "We used to hire for data entry and lose people every six months. That whole job just doesn't exist here anymore.",
-      author: "John Smith",
+      author: "Marcus Webb",
       role: "Operations Director",
     },
   },
@@ -329,7 +329,7 @@ export const caseStudies: CaseStudy[] = [
       "Standard vendor agreements now turn around in days, and the business stopped routing around legal: the fast path is the official path. Junior lawyers apply the full playbook from their first week, and the team's negotiating positions are strengthening as the analytics reveal what actually works.",
     quote: {
       text: "It reads every contract the way our most careful lawyer reads on her best day, and then lets the humans do the actual lawyering.",
-      author: "Jane Doe",
+      author: "Laura Feldman",
       role: "General Counsel",
     },
   },
@@ -392,7 +392,7 @@ export const caseStudies: CaseStudy[] = [
       "The relaunch paid for itself within the first quarter on mobile conversion alone. Average order value climbed as the recommendation model matured, campaign velocity roughly tripled once marketing owned its own pages, and the design system has since absorbed two catalog expansions without a redesign.",
     quote: {
       text: "Same traffic, same products. The site just stopped getting in the way of people buying.",
-      author: "John Smith",
+      author: "Ryan Whitfield",
       role: "Chief Executive Officer",
     },
   },

@@ -138,7 +138,9 @@ export default function AuditOffer() {
             {booking.labelLong}
           </a>
           <p className="text-sm font-semibold text-ink/70">
-            A 60-second quiz first, then {booking.duration} with the people who&apos;d do the work.
+            {/* One string: the compiler drops the space after an expression
+                when the text that follows contains an entity like &apos;. */}
+            {`A 60-second quiz first, then ${booking.duration} with the people who'd do the work.`}
           </p>
         </div>
       </div>

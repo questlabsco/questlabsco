@@ -196,6 +196,14 @@ export function savePains(pains: string[]) {
   save({ step: pains.length > 0 ? 1 : 0, answers, done: false, sent: "" });
 }
 
+// Used by the lead pop-up: keep the email it collected, so the last quiz
+// step arrives already filled in.
+export function saveEmail(email: string) {
+  const prev = loadSaved();
+  const answers = { ...(prev?.answers ?? emptyAnswers), email };
+  save({ step: prev?.step ?? 0, answers, done: false, sent: "" });
+}
+
 export function painsFromQuery(search: string): string[] {
   try {
     const raw = new URLSearchParams(search).get(PAINS_PARAM);

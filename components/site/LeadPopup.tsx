@@ -2,36 +2,38 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { ArrowRight, X } from "lucide-react";
 import Mascot from "@/components/art/Mascot";
 import { Sparkle } from "@/components/art/Doodles";
 import FreeBadge from "@/components/art/offer/FreeBadge";
-import Chip from "@/components/quiz/Chip";
-import { PAINS_PARAM, painOptions, savePains } from "@/components/quiz/questions";
-import { booking } from "@/lib/data/site";
+import { saveEmail } from "@/components/quiz/questions";
+import { booking, siteConfig } from "@/lib/data/site";
 
-// Pop-up that opens the free audit quiz. It asks question 1 right here
-// ("What's eating your team's time?"), then sends the visitor to
-// /free-audit with their picks carried over (saved to sessionStorage, and
-// also in the link as ?pains=... in case storage is blocked). The quiz
-// picks them up and starts at question 2.
+// Email pop-up for the free automation audit. The visitor leaves an email,
+// it is sent to the inbox straight away (so the lead is kept even if they
+// stop there), and they go on to the quiz at /free-audit with the email
+// already filled in on the last step.
 //
 // Shows once per visitor, on whichever comes first:
 //   - desktop exit intent (pointer leaves through the top) after 8s,
-//   - scrolling past 55% of the page,
-//   - 45s on the page.
+//   - scrolling past 30% of the page,
+//   - 20s on the page.
 // Never in the first 6s, never on /contact, /free-audit or /watch, never
 // while the #book section is on screen, and not again for 14 days once it
 // has been shown. Renders nothing until a trigger fires, so it has no
 // effect on first paint or on crawlers.
+//
+// To see it on demand, add ?popup=1 to any page address: that skips the
+// 14-day wait and opens it after a second.
 
 const STORAGE_KEY = "ql-audit-popup";
 const QUIET_DAYS = 14;
 const MIN_MS = 6_000;
 const EXIT_MIN_MS = 8_000;
-const TIMER_MS = 45_000;
-const SCROLL_RATIO = 0.55;
+const TIMER_MS = 20_000;
+const SCROLL_RATIO = 0.3;
+const PREVIEW_PARAM = "popup";
 const EXCLUDED = ["/contact", "/watch", booking.page];
 
 function recentlySeen(): boolean {
@@ -59,10 +61,13 @@ const FOCUSABLE =
 export default function LeadPopup() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [picks, setPicks] = useState<string[]>([]);
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [invalid, setInvalid] = useState(false);
   const shownRef = useRef(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const firstChipRef = useRef<HTMLDivElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const emailId = useId();
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
 
@@ -70,7 +75,13 @@ export default function LeadPopup() {
   useEffect(() => {
     if (shownRef.current) return;
     if (EXCLUDED.some((p) => pathname === p || pathname?.startsWith(`${p}/`))) return;
-    if (recentlySeen()) return;
+    let preview = false;
+    try {
+      preview = new URLSearchParams(window.location.search).has(PREVIEW_PARAM);
+    } catch {
+      // No preview.
+    }
+    if (!preview && recentlySeen()) return;
 
     const start = Date.now();
     let bookOnScreen = false;
@@ -122,7 +133,7 @@ export default function LeadPopup() {
       show();
     };
 
-    const timer = window.setTimeout(() => tryOpen(), TIMER_MS);
+    const timer = window.setTimeout(() => (preview ? show() : tryOpen()), preview ? 1_000 : TIMER_MS);
     window.addEventListener("scroll", onScroll, { passive: true });
     if (finePointer) document.addEventListener("mouseout", onMouseOut);
 
@@ -149,9 +160,9 @@ export default function LeadPopup() {
     if (!open) return;
     const desktop = window.matchMedia("(min-width: 640px)").matches;
 
-    // On desktop focus the first answer; on phones focus the panel, so the
-    // view doesn't jump.
-    if (desktop) firstChipRef.current?.querySelector<HTMLElement>("button")?.focus();
+    // On desktop focus the email field; on phones focus the panel, so the
+    // keyboard doesn't jump up over the offer.
+    if (desktop) emailRef.current?.focus();
     else panelRef.current?.focus();
 
     const prevOverflow = document.body.style.overflow;
@@ -192,17 +203,39 @@ export default function LeadPopup() {
     };
   }, [open, close]);
 
-  function toggle(id: string) {
-    setPicks((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
-  }
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const value = email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      setInvalid(true);
+      emailRef.current?.focus();
+      return;
+    }
+    const bot =
+      (e.currentTarget.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked ?? false;
 
-  // Picks go along in storage and in the link; the quiz reads either.
-  const href =
-    picks.length > 0 ? `${booking.page}?${PAINS_PARAM}=${picks.join(",")}` : booking.page;
+    // Send the lead now and don't wait for it: keepalive lets the request
+    // finish while the visitor moves on to the quiz.
+    void fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: siteConfig.web3formsKey,
+        subject: "Pop-up lead: free audit",
+        from_name: "Quest Labs Website",
+        email: value,
+        Source: "Email pop-up",
+        Page: window.location.pathname,
+        ...(bot ? { botcheck: true } : {}),
+      }),
+    }).catch(() => {
+      // The quiz asks for the email again at the end, so nothing is lost.
+    });
 
-  function start() {
-    savePains(picks);
+    saveEmail(value);
     setOpen(false);
+    router.push(booking.page);
   }
 
   if (!open) return null;
@@ -260,32 +293,75 @@ export default function LeadPopup() {
 
           <FreeBadge />
           <h2 id={titleId} className="mt-4 pr-10 text-[1.6rem] font-extrabold leading-tight sm:text-[1.9rem]">
-            What&apos;s Eating Your <span className="hl-sun">Team&apos;s Time?</span>
+            Get Your Free <span className="hl-sun">Automation Audit</span>
           </h2>
           <p className="mt-2 text-base leading-relaxed text-ink/80">
-            Tap whatever applies. A few more quick questions after this, then
-            you pick a time for your free audit.
+            {`Leave your email and we'll show you which parts of your week software can take over. A 60-second quiz, then ${booking.duration} with the people who'd build it. It costs nothing.`}
           </p>
 
-          <div ref={firstChipRef} className="mt-4 flex flex-wrap gap-2">
-            {painOptions.map((o) => (
-              <Chip
-                key={o.id}
-                label={o.label}
-                multi
-                size="sm"
-                pressed={picks.includes(o.id)}
-                onClick={() => toggle(o.id)}
-              />
+          <ul className="mt-4 space-y-1.5 text-sm font-semibold text-ink/85">
+            {[
+              "Which jobs are worth automating, and which aren't",
+              "Roughly what it would take",
+              "No sales pitch and no follow-up spam",
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-2">
+                <span
+                  aria-hidden="true"
+                  className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full border-2 border-ink bg-mint text-[11px] font-extrabold leading-none"
+                >
+                  ✓
+                </span>
+                {line}
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <Link href={href} onClick={start} className="btn-primary btn-lg group mt-6 w-full">
-            Start My Free Audit
-            <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <form onSubmit={handleSubmit} noValidate className="mt-5">
+            <label htmlFor={emailId} className="text-sm font-bold">
+              Work email
+            </label>
+            <input
+              ref={emailRef}
+              id={emailId}
+              name="email"
+              type="email"
+              inputMode="email"
+              autoComplete="email"
+              placeholder="you@company.com"
+              value={email}
+              aria-invalid={invalid}
+              aria-describedby={invalid ? `${emailId}-error` : undefined}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (invalid) setInvalid(false);
+              }}
+              className="mt-1 w-full rounded-lg border-[3px] border-ink bg-white px-4 py-3 text-base text-ink placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-4 focus:ring-sun"
+            />
+            {invalid && (
+              <p id={`${emailId}-error`} role="alert" className="mt-1.5 text-sm font-bold text-[#B42318]">
+                That email doesn&apos;t look right. Mind checking it?
+              </p>
+            )}
+            {/* Honeypot: people never see or tick this. */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+            />
+            <button type="submit" className="btn-primary btn-lg group mt-4 w-full">
+              Get My Free Audit
+              <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+            </button>
+          </form>
           <p className="mt-3 text-center text-xs text-muted-foreground">
-            Under a minute. {picks.length > 0 ? `${picks.length} picked so far.` : "You can pick more than one."}
+            We use your email for your audit and nothing else.{" "}
+            <Link href="/privacy" className="underline">
+              Privacy policy
+            </Link>
           </p>
         </div>
       </div>

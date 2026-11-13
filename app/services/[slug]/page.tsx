@@ -21,7 +21,8 @@ import { getIndustry } from "@/lib/data/industries";
 import { getEngagement } from "@/lib/data/engagements";
 import { booking } from "@/lib/data/site";
 import { pageMeta } from "@/lib/seo";
-import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema, serviceSchema } from "@/lib/schema";
+import PlainAnswer from "@/components/site/PlainAnswer";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -103,6 +104,7 @@ export default async function ServicePage({
       key: "offerings",
       render: (tone) => (
         <Band tone={tone}>
+          <PlainAnswer answer={service.answer} className="mb-14 md:mb-16" />
           <RecognitionStrip className="mb-16 md:mb-20" />
           <SectionHeading
             title={`Our ${service.name} Services`}
@@ -110,8 +112,9 @@ export default async function ServicePage({
             note="Pick one, or stack a few"
             lede={
               <>
-                Not sure which one you need? That is exactly what the{" "}
-                <AuditLink>{booking.offer}</AuditLink> is for.
+                Not sure which piece you need? That&apos;s what the{" "}
+                <AuditLink>{booking.offer}</AuditLink> is for. Tell us the problem and
+                we&apos;ll point at the part that fits.
               </>
             }
           />
@@ -141,9 +144,9 @@ export default async function ServicePage({
       render: (tone) => (
         <Band tone={tone}>
           <SectionHeading
-            title="What We Build With It"
-            highlight="Build With It"
-            lede="A few of the things this turns into once it is in production."
+            title="What This Turns Into"
+            highlight="Turns Into"
+            lede="Some of the things we build with it, once it's live and doing real work every day."
           />
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {service.solutions.map((s, i) => (
@@ -169,9 +172,9 @@ export default async function ServicePage({
       render: (tone) => (
         <Band tone={tone}>
           <SectionHeading
-            title="Where This Delivers The Most"
-            highlight="The Most"
-            lede="The industries where this work pays back fastest for the teams we build with."
+            title="Where It Pays Off Fastest"
+            highlight="Pays Off Fastest"
+            lede="The industries where we see this kind of work earn its keep the quickest."
           />
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {relatedIndustries.map((ind) => (
@@ -214,14 +217,14 @@ export default async function ServicePage({
       render: (tone) => (
         <Band tone={tone}>
           <SectionHeading
-            title="A Six-Step Path from Idea to Production"
+            title="Six Steps From Idea to Production"
             highlight="Idea to Production"
             note="Same six steps, every project"
             noteSide="right"
             lede={
               <>
                 Step one can be a {booking.durationAdjective} call. Book your{" "}
-                <AuditLink>{booking.offer}</AuditLink> to get it started.
+                <AuditLink>{booking.offer}</AuditLink> and we&apos;ll start there.
               </>
             }
           />
@@ -234,9 +237,9 @@ export default async function ServicePage({
       render: (tone) => (
         <Band tone={tone}>
           <SectionHeading
-            title="The Stack Behind the Work"
-            highlight="Stack"
-            lede="Chosen per project for capability, cost, and your team's ability to own it later, never by vendor allegiance."
+            title="The Tools We Build With"
+            highlight="Build With"
+            lede="We pick tools per project for what they can do, what they cost and whether your team can own them later. No vendor pays us to choose them."
           />
           <Reveal>
             <TechStackTabs />
@@ -253,8 +256,8 @@ export default async function ServicePage({
             highlight="Answered"
             lede={
               <>
-                Still wondering about something? Ask us on the{" "}
-                <AuditLink>{booking.offer}</AuditLink> call.
+                Didn&apos;t see yours? Bring it to the{" "}
+                <AuditLink>{booking.offer}</AuditLink> call and ask us straight.
               </>
             }
           />
@@ -274,7 +277,7 @@ export default async function ServicePage({
           <SectionHeading
             title="Case Studies"
             highlight="Case Studies"
-            lede={`Real client projects that use ${service.name}, with the goal each one was built to hit.`}
+            lede={`Real client projects that use ${service.name}. Each one shows the goal it was built to hit.`}
           />
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
             {examples.map((e) => (
@@ -295,6 +298,7 @@ export default async function ServicePage({
   return (
     <main>
       <JsonLd data={serviceSchema(service)} />
+      {service.faqs.length > 0 && <JsonLd data={faqSchema(service.faqs)} />}
       <JsonLd
         data={breadcrumbSchema([
           { name: "Services", path: "/services" },
@@ -306,8 +310,8 @@ export default async function ServicePage({
       <section className="relative overflow-hidden bg-hero text-white">
         <Cloud className="pointer-events-none absolute left-[3%] top-8 hidden w-24 animate-drift md:block" />
         <Cloud className="pointer-events-none absolute right-[38%] bottom-10 hidden w-16 animate-drift opacity-90 lg:block [animation-delay:-6s]" />
-        <div className="container-site page-hero relative pb-16 md:pb-24">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
+        <div className="container-site relative pb-12 pt-4 md:pb-14 md:pt-8">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
             <div className="text-center lg:text-left">
               <nav aria-label="Breadcrumb">
                 <Link
@@ -317,14 +321,14 @@ export default async function ServicePage({
                   Services
                 </Link>
               </nav>
-              <h1 className="h-page mt-2">
+              <h1 className="h-page mt-1">
                 <span className="hl-blue">{lead}</span>
                 {rest ? ` ${rest}` : ""}
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl lg:mx-0">
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/90 lg:mx-0">
                 {service.intro}
               </p>
-              <div className="mt-9 flex flex-wrap justify-center gap-4 lg:justify-start">
+              <div className="mt-7 flex flex-wrap justify-center gap-4 lg:justify-start">
                 <Link href={booking.anchor} className="btn-primary btn-lg group">
                   {booking.labelLong}
                   <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
@@ -334,7 +338,12 @@ export default async function ServicePage({
                 </Link>
               </div>
             </div>
-            <ServiceHeroScene slug={service.slug} className="hidden lg:block" />
+            {/* Beside the text on desktop; a smaller copy under the buttons on
+                tablets and phones. */}
+            <ServiceHeroScene
+              slug={service.slug}
+              className="max-w-[240px] sm:max-w-[300px] lg:max-w-[420px]"
+            />
           </div>
         </div>
       </section>

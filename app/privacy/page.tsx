@@ -7,7 +7,8 @@ import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
-  description: "How Quest Labs Co. collects, uses, and protects your information.",
+  description:
+    "How Quest Labs Co. collects, uses and protects the information you share through this website, its forms and its booking calendar.",
   path: "/privacy",
 });
 

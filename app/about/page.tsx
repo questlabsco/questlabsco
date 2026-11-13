@@ -7,6 +7,7 @@ import StatsBar from "@/components/site/StatsBar";
 import BookCall from "@/components/site/BookCall";
 import Reveal from "@/components/site/Reveal";
 import Zigzag from "@/components/site/Zigzag";
+import ClientLogos from "@/components/home/ClientLogos";
 import Mascot from "@/components/art/Mascot";
 import { Cloud, Sparkle } from "@/components/art/Doodles";
 import ValueIcon from "@/components/art/pages/ValueIcons";
@@ -16,7 +17,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "About Quest Labs Co.: AI Automation Agency",
   description:
-    "Quest Labs Co. is an AI automation and web development agency with 25+ active clients, measured by the hours and outcomes it delivers.",
+    "Quest Labs Co. is an AI automation and web development agency in Dallas-Fort Worth with 25+ active clients. Here's how we work and who we work with.",
   path: "/about",
   absoluteTitle: true,
 });
@@ -24,7 +25,8 @@ export const metadata: Metadata = pageMeta({
 // Number badges for the values cycle through the accent colours.
 const badgeFills = ["bg-sun", "bg-mint", "bg-brand-sky", "bg-coral", "bg-lilac"];
 
-// Hero (blue) > stats (white) > values (pale) > proof (white) > booking.
+// Hero (blue) > stats (white) > values (pale) > who we work with (white)
+// > proof (pale) > booking.
 export default function AboutPage() {
   return (
     <main>
@@ -33,28 +35,31 @@ export default function AboutPage() {
         <Cloud className="hidden md:block absolute left-[5%] top-14 w-28 animate-drift" />
         <Cloud className="hidden md:block absolute right-[5%] top-24 w-20 animate-drift [animation-delay:-4s]" />
         <Sparkle className="hidden md:block absolute right-[14%] bottom-12 w-8 animate-twinkle" />
+        <Sparkle
+          color="#FFFFFF"
+          className="hidden md:block absolute left-[16%] bottom-16 w-5 animate-twinkle [animation-delay:-1.5s] [animation-duration:3.1s]"
+        />
 
-        <div className="container-site page-hero relative pb-16 md:pb-24 text-center">
-          <div className="mx-auto max-w-3xl">
-            <Mascot wave className="mx-auto mb-5 w-16 md:w-20 animate-float" />
+        <div className="container-site relative pt-8 pb-12 md:pt-10 md:pb-14 text-center">
+          <div className="mx-auto max-w-4xl">
+            <Mascot wave className="mx-auto mb-4 w-16 md:w-20 animate-float" />
             <h1 className="h-page">
-              Bold Enough To Promise Outcomes. Disciplined Enough To{" "}
-              <span className="hl-blue">Deliver Them.</span>
+              Straight Answers Up Front. We Own{" "}
+              <span className="hl-blue">What We Build.</span>
             </h1>
-            <p className="mt-6 mx-auto max-w-2xl text-lg md:text-xl leading-relaxed text-white/90">
-              Quest Labs Co. exists because most businesses don&apos;t need
-              more AI hype. They need someone to find the work worth
-              automating, build the system properly, and stick around to keep
-              it running.
+            <p className="mt-4 mx-auto max-w-2xl text-lg leading-relaxed text-white/90">
+              Most businesses don&apos;t need more AI hype. They need someone to
+              find the work that&apos;s worth automating, build it properly, and
+              still pick up the phone six months later.
             </p>
             {(siteConfig.location || siteConfig.legalName) && (
-              <p className="mt-5 text-sm font-semibold text-white/80">
+              <p className="mt-3 text-sm font-semibold text-white/80">
                 {[siteConfig.legalName, siteConfig.location && `Based in ${siteConfig.location}`]
                   .filter(Boolean)
                   .join(" · ")}
               </p>
             )}
-            <div className="mt-9 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <Link href={booking.anchor} className="btn-primary btn-lg group">
                 {booking.labelLong}
                 <ArrowRight
@@ -76,7 +81,7 @@ export default function AboutPage() {
       <section className="bg-surface">
         <div className="container-site py-16 md:py-24">
           <SectionHeading
-            title="Five Principles We Hire, Build, And Bill By"
+            title="Five Rules We Hire, Build And Bill By"
             highlight="Bill By"
             note="Yes, billing too"
             noteSide="right"
@@ -98,7 +103,8 @@ export default function AboutPage() {
                       >
                         {i + 1}
                       </span>
-                      <ValueIcon index={i} className="w-12 animate-wiggle" />
+                      {/* The icons take turns moving; see ValueIcons. */}
+                      <ValueIcon index={i} className="w-12" />
                     </div>
                     <h3 className="mt-5 text-xl font-extrabold leading-snug text-ink">
                       {v.title}
@@ -113,15 +119,36 @@ export default function AboutPage() {
       </section>
       <Zigzag from="pale" to="white" />
 
-      {/* Recognition */}
+      {/* Who we work with */}
       <section className="bg-white">
         <div className="container-site py-16 md:py-24">
           <SectionHeading
-            title="Proof, Not Just Promises"
-            highlight="Not Just Promises"
+            title="Who We Work With"
+            highlight="Work With"
+            lede="Mostly businesses around Dallas-Fort Worth: landscaping, fire protection, dermatology and med spas, mechanical services, real estate and property management."
+            note="Our neighbors, mostly"
+            noteSide="left"
+          />
+          <ClientLogos />
+          <p className="mx-auto mt-10 max-w-2xl text-center text-base leading-relaxed text-ink/80 md:text-lg">
+            If you run something similar, we&apos;ve probably seen a version of
+            your messiest workflow already. If you don&apos;t, that&apos;s fine
+            too. The problems tend to rhyme.
+          </p>
+        </div>
+      </section>
+      <Zigzag from="white" to="pale" />
+
+      {/* Recognition */}
+      <section className="bg-surface">
+        <div className="container-site py-16 md:py-24">
+          <SectionHeading
+            title="A Few Things You Can Hold Us To"
+            highlight="Hold Us To"
             lede={
               <>
-                Want to see how we work before you commit? Start with a{" "}
+                Want to see how we work before you commit to anything? Start with
+                a{" "}
                 <Link href={booking.anchor} className="text-brand font-bold underline">
                   {booking.offer}
                 </Link>
@@ -137,7 +164,8 @@ export default function AboutPage() {
 
       <BookCall
         title="Work With Us"
-        body="Whether you have a scoped project or a vague suspicion that your team is doing too much by hand, the first conversation costs nothing."
+        highlight="With Us"
+        body="Got a scoped project, or just a hunch your team does too much by hand? Either way, the first call is free and we'll give you a straight answer."
       />
     </main>
   );

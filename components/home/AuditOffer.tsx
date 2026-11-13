@@ -15,27 +15,27 @@ import { booking } from "@/lib/data/site";
 const panels = [
   {
     title: "Your Workflows",
-    body: "Where your team's hours actually go, step by step.",
+    body: "Where your team's hours really go, one step at a time.",
     Icon: IconWorkflows,
   },
   {
     title: "Your Tools",
-    body: "What you already pay for that could be doing more.",
+    body: "The stuff you already pay for that could be pulling more weight.",
     Icon: IconTools,
   },
   {
     title: "Time Sinks",
-    body: "The repetitive work worth automating first.",
+    body: "The boring, repetitive work we'd hand to software first.",
     Icon: IconTimeSinks,
   },
   {
     title: "Quick Wins",
-    body: "What can be fixed without a big build.",
+    body: "Fixes that don't need a big build. Sometimes a better spreadsheet is the answer.",
     Icon: IconQuickWins,
   },
   {
     title: "The Numbers",
-    body: "A rough scope and what it would take.",
+    body: "A rough idea of the scope and what it would take to build.",
     Icon: IconNumbers,
   },
 ];
@@ -54,11 +54,20 @@ const arrows = [
 export default function AuditOffer() {
   return (
     <section className="bg-white py-16 md:py-24">
+      <style>{`
+        @keyframes audit-sway {
+          0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+          50% { transform: rotate(1.5deg) translateY(-4px); }
+        }
+        .audit-sway { animation: audit-sway 6s ease-in-out infinite; transform-origin: 50% 100%; }
+      `}</style>
       <div className="container-site">
         <SectionHeading
-          title="What's In Your Free Automation Audit"
-          highlight="Free Automation Audit"
-          lede="On one short call we look at five things with you, then tell you straight which parts of your work are worth automating and which aren't."
+          title="What We Look At In Your Free Audit"
+          highlight="Free Audit"
+          note="Reason #3: it costs you nothing"
+          noteSide="right"
+          lede={`It starts with a 60-second quiz so we know what your business does. Then we spend ${booking.duration} on a call going through these five things with you, and tell you straight what's worth automating and what isn't.`}
         />
 
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
@@ -69,7 +78,9 @@ export default function AuditOffer() {
             >
               <Reveal className="h-full">
                 <div className="group card-pop h-full p-5 transition-transform duration-200 hover:-translate-y-1">
-                  <p.Icon className="size-12 group-hover:animate-wiggle" />
+                  <span className="inline-block group-hover:animate-wiggle">
+                    <p.Icon className="block size-12" />
+                  </span>
                   <h3 className="mt-4 text-lg font-extrabold text-ink underline decoration-sun decoration-[5px] underline-offset-[5px]">
                     {p.title}
                   </h3>
@@ -105,7 +116,13 @@ export default function AuditOffer() {
         <div className="mt-12 flex items-end justify-center gap-2 sm:gap-4 lg:mt-2">
           <Mascot mood="wow" className="w-24 shrink-0 animate-float sm:w-32 md:w-36" />
           <div className="relative">
-            <AuditClipboard className="w-44 sm:w-52 md:w-56 -rotate-3" />
+            <div className="audit-sway">
+              <AuditClipboard className="w-44 -rotate-3 sm:w-52 md:w-56" />
+            </div>
+            <Sparkle
+              color="#B9A7FF"
+              className="absolute -bottom-1 -right-6 hidden w-5 animate-twinkle [animation-delay:-0.5s] [animation-duration:3.1s] sm:block"
+            />
             <Sparkle
               className="absolute -right-4 -top-2 hidden w-8 animate-twinkle sm:block"
             />
@@ -121,7 +138,7 @@ export default function AuditOffer() {
             {booking.labelLong}
           </a>
           <p className="text-sm font-semibold text-ink/70">
-            {booking.duration}, with the team that would do the work.
+            A 60-second quiz first, then {booking.duration} with the people who&apos;d do the work.
           </p>
         </div>
       </div>

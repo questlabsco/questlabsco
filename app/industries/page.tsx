@@ -15,7 +15,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "AI Automation by Industry",
   description:
-    "AI automation solutions for healthcare, finance, retail, logistics, manufacturing, legal, real estate, and education.",
+    "What we automate with AI in healthcare, finance, retail, logistics, manufacturing, legal, real estate and education, with a real case study for each.",
   path: "/industries",
 });
 
@@ -29,19 +29,23 @@ export default function IndustriesPage() {
         <Cloud className="hidden md:block absolute right-[6%] top-10 w-20 animate-drift [animation-delay:-5s]" />
         <Cloud className="hidden lg:block absolute right-[16%] bottom-10 w-24 animate-drift [animation-delay:-8s]" />
         <Sparkle className="hidden md:block absolute left-[14%] bottom-14 w-8 animate-twinkle" />
+        <Sparkle
+          color="#FFFFFF"
+          className="hidden md:block absolute right-[24%] top-8 w-5 animate-twinkle [animation-delay:-1.3s] [animation-duration:3.1s]"
+        />
 
-        <div className="container-site page-hero relative pb-16 md:pb-24 text-center">
+        <div className="container-site relative pt-8 pb-12 md:pt-10 md:pb-14 text-center">
           <div className="mx-auto max-w-3xl">
-            <Mascot className="xl:hidden mx-auto mb-5 w-16 md:w-20 animate-float" />
+            <Mascot className="xl:hidden mx-auto mb-4 w-16 md:w-20 animate-float" />
             <h1 className="h-page">
               AI That Speaks <span className="hl-blue">Your Industry&apos;s Language</span>
             </h1>
-            <p className="mt-6 mx-auto max-w-2xl text-lg md:text-xl leading-relaxed text-white/90">
-              Generic AI demos are easy; systems that survive your industry&apos;s
-              regulations, formats, and edge cases are not. Here&apos;s where
-              we&apos;ve done the homework.
+            <p className="mt-4 mx-auto max-w-2xl text-lg leading-relaxed text-white/90">
+              AI demos are easy. Getting something to survive your regulations,
+              file formats and odd edge cases is the real work. Here&apos;s where
+              we&apos;ve done it.
             </p>
-            <div className="mt-9 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <Link href={booking.page} className="btn-primary btn-lg group">
                 {booking.labelLong}
                 <ArrowRight
@@ -53,7 +57,7 @@ export default function IndustriesPage() {
           </div>
           <Mascot
             wave
-            className="hidden xl:block absolute right-8 bottom-8 w-28 animate-float"
+            className="hidden xl:block absolute right-8 bottom-6 w-28 animate-float"
           />
         </div>
       </section>
@@ -61,18 +65,18 @@ export default function IndustriesPage() {
 
       {/* The eight industries */}
       <section className="bg-white">
-        <div className="container-site py-16 md:py-24">
+        <div className="container-site py-12 md:py-16">
           <SectionHeading
             title="Eight Industries We Know Inside Out"
             highlight="Inside Out"
             lede={
               <>
-                Pick yours to see what we automate there. Not listed? Ask about it
-                on a{" "}
+                Pick yours to see what we usually take off people&apos;s plates
+                there. Not on the list? Bring it to a{" "}
                 <Link href={booking.page} className="text-brand font-bold underline">
                   {booking.offer}
-                </Link>
-                .
+                </Link>{" "}
+                anyway.
               </>
             }
             note="Each one has a real case study"
@@ -100,7 +104,7 @@ export default function IndustriesPage() {
                       {ind.summary}
                     </p>
                     <span className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-extrabold text-brand">
-                      AI For {ind.name}
+                      See What We Automate
                       <ArrowRight
                         aria-hidden="true"
                         className="size-4 shrink-0 transition-transform group-hover:translate-x-1"
@@ -116,7 +120,7 @@ export default function IndustriesPage() {
 
       <CTABand
         title="Don't See Your Industry?"
-        body={`The patterns transfer. If your teams handle documents, messages, or repetitive decisions, there's almost certainly automation worth doing. Book a ${booking.offer} and tell us what you do; we'll give you a straight answer.`}
+        body={`The patterns carry over. If your team spends its day on documents, messages or the same decision made fifty times, there's probably something worth automating. Tell us what you do on a ${booking.offer} and we'll give you a straight answer.`}
       />
     </main>
   );

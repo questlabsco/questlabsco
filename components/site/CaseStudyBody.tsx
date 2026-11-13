@@ -13,7 +13,7 @@ export default function CaseStudyBody({ e }: { e: Engagement }) {
     <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[320px_1fr] lg:gap-12">
       {/* Scorecard */}
       <aside className="card-pop-lg relative lg:sticky lg:top-28">
-        <BullseyeFace className="absolute -right-4 -top-10 w-20 animate-float md:w-24" />
+        <BullseyeFace className="absolute -right-4 -top-10 w-20 md:w-24" />
         <div className="rounded-t-[13px] border-b-[3px] border-ink bg-sun px-6 py-3.5">
           <p className="text-sm font-extrabold uppercase tracking-[0.12em] text-ink">
             Project Scorecard
@@ -62,7 +62,7 @@ export default function CaseStudyBody({ e }: { e: Engagement }) {
         <Block n={1} color="bg-sun" title="The Business">
           <p>{e.business}</p>
         </Block>
-        <Block n={2} color="bg-coral" title="Before">
+        <Block n={2} color="bg-coral" title="How It Worked Before">
           <p>{e.before}</p>
         </Block>
 
@@ -84,7 +84,7 @@ export default function CaseStudyBody({ e }: { e: Engagement }) {
         <Block n={4} color="bg-brand-sky" title={`Timeline: ${e.timeline}`}>
           <p>{e.timelineDetail}</p>
         </Block>
-        <Block n={5} color="bg-lilac" title="The Goal, And How We Measure It">
+        <Block n={5} color="bg-lilac" title="The Goal, And How We'll Know">
           <p>
             <span className="font-extrabold text-ink">
               Goal: {e.target.value} {e.target.label}.
@@ -92,7 +92,7 @@ export default function CaseStudyBody({ e }: { e: Engagement }) {
             {e.measurement}
           </p>
         </Block>
-        <Block n={6} color="bg-sun" title="What We Check With The Team">
+        <Block n={6} color="bg-sun" title="What We Ask The Team After Launch">
           <ul className="space-y-3">
             {e.feedback.map((f) => (
               <li key={f} className="flex items-start gap-3">

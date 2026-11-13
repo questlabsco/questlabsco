@@ -12,8 +12,9 @@ const icons: Record<Recognition["kind"], typeof Star> = {
 // Coloured icon tiles, cycled per chip.
 const tiles = ["bg-sun", "bg-mint", "bg-lilac", "bg-coral"];
 
-// Three quick proof points as sticker chips: the rating, the priced audit,
-// and model-agnostic delivery.
+// Three quick proof points as sticker chips: the rating, the priced
+// roadmap, and model-agnostic delivery. Each icon rocks gently on its own
+// timing so the strip isn't static.
 export default function RecognitionStrip({
   className,
 }: {
@@ -34,7 +35,11 @@ export default function RecognitionStrip({
                   tiles[i % tiles.length]
                 }`}
               >
-                <Icon className="size-5 text-ink" strokeWidth={2.5} />
+                <Icon
+                  className="size-5 animate-wiggle text-ink"
+                  strokeWidth={2.5}
+                  style={{ animationDuration: `${2.6 + i * 0.7}s`, animationDelay: `${-i * 0.9}s` }}
+                />
               </span>
               <div>
                 <p className="text-base font-extrabold leading-snug text-ink">{r.title}</p>

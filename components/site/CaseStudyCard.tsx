@@ -38,7 +38,7 @@ export default function CaseStudyCard({ e }: { e: Engagement }) {
         </p>
 
         <span className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-extrabold text-brand">
-          Read The Case Study
+          See How We Built It
           <ArrowRight
             aria-hidden="true"
             className="size-4 transition-transform group-hover:translate-x-1"

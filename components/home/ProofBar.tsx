@@ -1,10 +1,11 @@
 import { stats } from "@/lib/data/site";
-import { engagements } from "@/lib/data/engagements";
 import Reveal from "@/components/site/Reveal";
+import ToolLogos from "@/components/site/ToolLogos";
+import { Sparkle } from "@/components/art/Doodles";
 import { FacesDoodle, ClockDoodle, StarDoodle, CalendarDoodle } from "@/components/art/proof/StatDoodles";
 
 // Homepage: the proof right under the hero. Four stat cards, then the tools
-// we build on as a sideways marquee. White section.
+// we build on (logo strip from components/site/ToolLogos). White section.
 
 // One look per stat, in the order of `stats` in lib/data/site.ts.
 const looks = [
@@ -13,21 +14,6 @@ const looks = [
   { Doodle: StarDoodle, strip: "bg-coral", tilt: "-rotate-1" },
   { Doodle: CalendarDoodle, strip: "bg-lilac", tilt: "rotate-1" },
 ];
-
-// Every tool named in a case study, once each.
-const tools = Array.from(new Set(engagements.flatMap((e) => e.tools)));
-
-function ToolList({ hidden = false }: { hidden?: boolean }) {
-  return (
-    <ul className="flex shrink-0" aria-hidden={hidden || undefined}>
-      {tools.map((t) => (
-        <li key={t} className="mr-3">
-          <span className="chip whitespace-nowrap">{t}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
 
 export default function ProofBar() {
   return (
@@ -75,14 +61,23 @@ export default function ProofBar() {
         </Reveal>
 
         <div className="mt-14 md:mt-16">
-          <h2 className="h-section text-center text-2xl text-ink md:text-3xl">
-            We Build On The Tools <span className="hl-sun">You Already Use</span>
-          </h2>
-          <div className="relative mt-7 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-            <div className="flex w-max animate-marquee py-1 hover:[animation-play-state:paused]">
-              <ToolList />
-              <ToolList hidden />
-            </div>
+          <div className="relative mx-auto max-w-2xl text-center">
+            <Sparkle
+              className="pointer-events-none absolute -left-2 -top-4 hidden w-7 animate-twinkle md:block"
+            />
+            <Sparkle
+              color="#FF7B7B"
+              className="pointer-events-none absolute -right-1 top-6 hidden w-5 animate-twinkle [animation-delay:-1.4s] [animation-duration:3.2s] md:block"
+            />
+            <h2 className="h-section text-2xl text-ink md:text-3xl">
+              We Build On The Tools <span className="hl-sun">You Already Use</span>
+            </h2>
+            <p className="mt-3 text-base text-ink/80">
+              Most of the time we wire up what you&apos;ve already got, instead of selling you one more login.
+            </p>
+          </div>
+          <div className="mt-7">
+            <ToolLogos />
           </div>
         </div>
       </div>

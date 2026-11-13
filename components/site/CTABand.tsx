@@ -11,7 +11,7 @@ import { booking } from "@/lib/data/site";
 export default function CTABand({
   title = "Find Out What's Worth Automating",
   highlight,
-  body = `A free ${booking.durationAdjective} audit call with the team that would do the work. We'll tell you what's automatable and whether it's worth doing.`,
+  body = `A free ${booking.durationAdjective} call with the people who'd actually do the work. We'll tell you what can be automated, and whether it's worth paying for.`,
 }: {
   title?: string;
   // Phrase of `title` set in the highlight block (defaults to the last words).

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { services } from "@/lib/data/services";
 import { industries } from "@/lib/data/industries";
 import { engagements } from "@/lib/data/engagements";
+import { posts } from "@/lib/data/blog";
 import { siteConfig } from "@/lib/data/site";
 
 // Generated at build time from the data files, so it cannot drift from the
@@ -18,6 +19,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...industries.map((i) => `/industries/${i.slug}`),
     "/case-studies",
     ...engagements.map((e) => `/case-studies/${e.slug}`),
+    "/blog",
+    ...posts.map((p) => `/blog/${p.slug}`),
+    "/free-audit",
     "/about",
     "/contact",
     "/privacy",

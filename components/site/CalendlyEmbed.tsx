@@ -11,7 +11,11 @@ const EMBED_URL = `${siteConfig.calendlyUrl}?background_color=ffffff&text_color=
 declare global {
   interface Window {
     Calendly?: {
-      initInlineWidget: (opts: { url: string; parentElement: HTMLElement }) => void;
+      initInlineWidget: (opts: {
+        url: string;
+        parentElement: HTMLElement;
+        prefill?: { name?: string; email?: string };
+      }) => void;
     };
   }
 }
@@ -19,7 +23,13 @@ declare global {
 // Inline Calendly calendar. The third-party script only loads once the
 // booking section is near the viewport, so it never slows the first paint.
 // Until then (and with JavaScript off) a plain link to the calendar shows.
-export default function CalendlyEmbed() {
+// `prefill` fills in the name and email on Calendly's booking form (the
+// audit quiz passes what the visitor just typed).
+export default function CalendlyEmbed({
+  prefill,
+}: {
+  prefill?: { name?: string; email?: string };
+} = {}) {
   const holder = useRef<HTMLDivElement>(null);
   const [near, setNear] = useState(false);
   const [ready, setReady] = useState(false);
@@ -45,7 +55,15 @@ export default function CalendlyEmbed() {
     const init = () => {
       const el = holder.current;
       if (!el || !window.Calendly || el.querySelector("iframe")) return;
-      window.Calendly.initInlineWidget({ url: EMBED_URL, parentElement: el });
+      const fill = {
+        ...(prefill?.name ? { name: prefill.name } : {}),
+        ...(prefill?.email ? { email: prefill.email } : {}),
+      };
+      window.Calendly.initInlineWidget({
+        url: EMBED_URL,
+        parentElement: el,
+        ...(Object.keys(fill).length > 0 ? { prefill: fill } : {}),
+      });
       setReady(true);
     };
     if (window.Calendly) {
@@ -63,6 +81,8 @@ export default function CalendlyEmbed() {
     }
     script.addEventListener("load", init);
     return () => script?.removeEventListener("load", init);
+    // The calendar is built once; a later prefill change doesn't rebuild it.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [near]);
 
   return (

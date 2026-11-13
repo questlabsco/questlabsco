@@ -94,8 +94,10 @@ function Sheet({ x, y, missing }: { x: number; y: number; missing?: boolean }) {
       <path d={body} fill="#FFFFFF" stroke={INK} strokeWidth="5" />
       <path d={`M${x + 44} ${y}v16h16`} stroke={INK} strokeWidth="4" />
       <path d={`M${x + 12} ${y + 20}h22`} stroke={INK} strokeWidth="3" opacity="0.5" />
-      <circle cx={x + 22} cy={y + 40} r="3.5" fill={INK} />
-      <circle cx={x + 38} cy={y + 40} r="3.5" fill={INK} />
+      <g className="animate-blink [animation-delay:-1.6s]" style={fillBox}>
+        <circle cx={x + 22} cy={y + 40} r="3.5" fill={INK} />
+        <circle cx={x + 38} cy={y + 40} r="3.5" fill={INK} />
+      </g>
       <path d={`M${x + 23} ${y + 50}q7 6 14 0`} stroke={INK} strokeWidth="3.5" />
     </g>
   );
@@ -105,11 +107,22 @@ function Sheet({ x, y, missing }: { x: number; y: number; missing?: boolean }) {
 export function ChasingDocsArt({ className }: Props) {
   return (
     <svg viewBox="0 0 320 200" className={className} aria-hidden="true" fill="none" strokeLinecap="round" strokeLinejoin="round">
-      {/* "missing" tag */}
-      <rect x="114" y="20" width="92" height="28" rx="14" fill="#FF7B7B" stroke={INK} strokeWidth="4" />
-      <text x="160" y="39" textAnchor="middle" fontSize="13" fontWeight="800" letterSpacing="1.5" fill="#FFFFFF">
-        MISSING
-      </text>
+      {/* "missing" tag, swaying a little */}
+      <g className="prob-tag" style={{ transformBox: "fill-box", transformOrigin: "center top" }}>
+        <rect x="114" y="20" width="92" height="28" rx="14" fill="#FF7B7B" stroke={INK} strokeWidth="4" />
+        <text x="160" y="39" textAnchor="middle" fontSize="13" fontWeight="800" letterSpacing="1.5" fill="#FFFFFF">
+          MISSING
+        </text>
+      </g>
+      {/* sparkle */}
+      <path
+        d="M272 30c1.2 4.5 3 6.5 7.5 7.5-4.5 1.2-6.3 3-7.5 7.5-1.2-4.5-3-6.3-7.5-7.5 4.5-1 6.3-3 7.5-7.5z"
+        fill="#35D6A0"
+        stroke={INK}
+        strokeWidth="3"
+        className="animate-twinkle [animation-delay:-0.9s] [animation-duration:3s]"
+        style={fillBox}
+      />
 
       <Sheet x={50} y={70} />
       <Sheet x={130} y={70} missing />
@@ -188,8 +201,19 @@ export function SameQuestionArt({ className }: Props) {
         className="prob-drip"
         style={fillBox}
       />
+      {/* sparkle */}
+      <path
+        d="M284 30c1.2 4.5 3 6.5 7.5 7.5-4.5 1.2-6.3 3-7.5 7.5-1.2-4.5-3-6.3-7.5-7.5 4.5-1 6.3-3 7.5-7.5z"
+        fill="#FFCB2E"
+        stroke={INK}
+        strokeWidth="3"
+        className="animate-twinkle [animation-duration:2.8s]"
+        style={fillBox}
+      />
       {/* "again" tally marks */}
-      <path d="M30 120v22M40 120v22M50 120v22M60 120v22M24 136l42-10" stroke={INK} strokeWidth="4" opacity="0.35" />
+      <g className="prob-tally" style={{ transformBox: "fill-box", transformOrigin: "center" }}>
+        <path d="M30 120v22M40 120v22M50 120v22M60 120v22M24 136l42-10" stroke={INK} strokeWidth="4" opacity="0.35" />
+      </g>
     </svg>
   );
 }

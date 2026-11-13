@@ -6,7 +6,8 @@ import { siteConfig } from "@/lib/data/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Terms of Service",
-  description: "Terms governing the use of the Quest Labs Co. website.",
+  description:
+    "The terms that apply when you use the Quest Labs Co. website, including its content, forms and booking tools.",
   path: "/terms",
 });
 

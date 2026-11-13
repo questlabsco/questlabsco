@@ -12,6 +12,7 @@ type MenuKey = "services" | "industries";
 
 const navLinks = [
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
 ];
 

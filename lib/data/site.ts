@@ -6,7 +6,7 @@ export const siteConfig = {
   url: "https://questlabsco.com",
   // One-line definition used in metadata, the footer, and structured data.
   description:
-    "Quest Labs Co. is an AI automation and web development agency. We build AI agents, workflow automation, and fast websites that take manual work off your team.",
+    "Quest Labs Co. is an AI automation and web development agency in Dallas-Fort Worth that builds AI agents, workflow automation and fast websites to take manual work off your team.",
   // Displayed publicly across the site (footer, contact page, legal pages).
   email: "info@questlabsco.com",
   calendlyUrl: "https://calendly.com/questlabsco/questlabs",
@@ -36,7 +36,11 @@ export const booking = {
   offer: "free automation audit",
   // Every page that ends with the booking section exposes it at #book.
   anchor: "#book",
-  page: "/contact",
+  // Where "Get Your Free Audit" buttons go on pages without a booking
+  // section: the audit quiz.
+  page: "/free-audit",
+  // The plain calendar, for people who just want to pick a time.
+  calendarPage: "/contact",
   // Must match the length of the Calendly event behind calendlyUrl.
   duration: "15 minutes",
   durationAdjective: "15-minute",
@@ -61,22 +65,22 @@ export const teamStats = [
 export const values = [
   {
     title: "Respect",
-    body: "We treat every client, colleague, and codebase with care. Strong opinions, low egos, and honest conversations at every step.",
+    body: "We're careful with your business, your people and your code. Strong opinions, small egos, and the truth even when it's awkward.",
   },
   {
     title: "Common sense",
-    body: "We recommend the simplest thing that works, not the most billable one. If automation isn't the answer, we'll say so.",
+    body: "We recommend the simplest thing that works, not the one we can bill most for. Sometimes that's a spreadsheet. We'll tell you.",
   },
   {
     title: "Curiosity",
-    body: "The AI landscape changes monthly. We evaluate new models, tools, and techniques constantly so our clients don't have to.",
+    body: "AI tools change every month. We test the new models and techniques as they land, so you don't have to spend your evenings on it.",
   },
   {
     title: "Courage",
-    body: "We give direct advice, flag risks early, and take ownership of outcomes, even when it's uncomfortable.",
+    body: "We give you straight advice, raise risks early and own the result, even when that's the uncomfortable part.",
   },
   {
     title: "Commitment",
-    body: "We measure ourselves on engagements that last years, not invoices that last a month.",
+    body: "We'd rather work with you for years than send one big invoice and disappear.",
   },
 ];

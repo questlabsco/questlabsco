@@ -27,7 +27,8 @@ export async function generateMetadata({
   const e = getEngagement((await params).slug);
   if (!e) return {};
   return pageMeta({
-    title: `${e.title}: Case Study`,
+    // The longest headlines drop the suffix to stay inside a search result.
+    title: e.title.length > 50 ? e.title : `${e.title}: Case Study`,
     description: e.summary,
     path: `/case-studies/${e.slug}`,
     // These headlines are long; the brand suffix would push them past what
@@ -64,8 +65,12 @@ export default async function CaseStudyPage({
         <Cloud className="absolute left-[4%] top-16 hidden w-24 animate-drift md:block" />
         <Cloud className="absolute right-[6%] top-28 hidden w-16 animate-drift [animation-delay:-6s] md:block" />
         <Sparkle className="absolute bottom-14 right-[16%] hidden w-7 animate-twinkle md:block" />
+        <Sparkle
+          color="#FFFFFF"
+          className="absolute left-[18%] top-10 hidden w-5 animate-twinkle [animation-delay:-1.2s] [animation-duration:3.4s] lg:block"
+        />
 
-        <div className="container-site page-hero relative pb-16 text-center md:pb-24">
+        <div className="container-site relative pt-7 pb-10 text-center md:pt-9 md:pb-12">
           <p className="pill">
             Case Study
             {industry && (
@@ -80,11 +85,11 @@ export default async function CaseStudyPage({
               </>
             )}
           </p>
-          <h1 className="h-page mx-auto mt-6 max-w-4xl">{e.title}</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
+          <h1 className="h-page mx-auto mt-4 max-w-4xl md:!text-[2.5rem]">{e.title}</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
             {e.summary}
           </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link href={booking.anchor} className="btn-primary btn-lg group">
               {booking.labelLong}
               <ArrowRight
@@ -101,7 +106,7 @@ export default async function CaseStudyPage({
 
       {/* The write-up */}
       <section className="bg-surface">
-        <div className="container-site py-16 md:py-24">
+        <div className="container-site pt-14 pb-16 md:pt-16 md:pb-24">
           <CaseStudyBody e={e} />
         </div>
       </section>
@@ -114,8 +119,8 @@ export default async function CaseStudyPage({
             highlight="Case Studies"
             lede={
               <>
-                One project per industry. If none of them looks like yours, bring
-                your workflow to a{" "}
+                One project per industry. If none of them looks like your week,
+                bring the workflow to a{" "}
                 <Link href={booking.anchor} className="font-bold text-brand underline">
                   {booking.offer}
                 </Link>

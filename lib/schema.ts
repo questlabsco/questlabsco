@@ -3,7 +3,7 @@
 // only emitted once they are filled in lib/data/site.ts.
 
 import { siteConfig } from "@/lib/data/site";
-import type { Service } from "@/lib/data/services";
+import { services, type Service } from "@/lib/data/services";
 
 const abs = (path: string) => `${siteConfig.url}${path}`;
 const ORG_ID = abs("/#organization");
@@ -40,6 +40,9 @@ export function organizationSchema() {
             }
           : {}),
         sameAs: Object.values(siteConfig.social),
+        // The topics the site covers, so search and AI tools can tell what
+        // the company is a source for.
+        knowsAbout: services.map((s) => s.name),
         contactPoint: {
           "@type": "ContactPoint",
           contactType: "sales",
@@ -90,5 +93,45 @@ export function serviceSchema(service: Service) {
         itemOffered: { "@type": "Service", name: o.title, description: o.body },
       })),
     },
+  };
+}
+
+// Blog article, with the organisation as author and publisher.
+export function articleSchema(post: {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  updated?: string;
+  category?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": abs(`/blog/${post.slug}#article`),
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    mainEntityOfPage: abs(`/blog/${post.slug}`),
+    ...(post.category ? { articleSection: post.category } : {}),
+    isPartOf: { "@id": SITE_ID },
+    image: abs("/og.png"),
+    author: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    inLanguage: "en",
+  };
+}
+
+// Questions and answers that are visible on the page.
+export function faqSchema(items: { q: string; a: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   };
 }

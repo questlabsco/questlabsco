@@ -14,7 +14,9 @@ const industryLinks = industries.map(({ slug, name }) => ({ href: `/industries/$
 const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: booking.label, href: "/contact" },
+  { label: "Blog", href: "/blog" },
+  { label: booking.label, href: booking.page },
+  { label: "Pick A Time", href: booking.calendarPage },
 ];
 
 const legalLinks = [

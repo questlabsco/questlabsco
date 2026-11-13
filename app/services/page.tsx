@@ -5,9 +5,9 @@ import SectionHeading from "@/components/site/SectionHeading";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
 import Zigzag from "@/components/site/Zigzag";
-import Mascot from "@/components/art/Mascot";
 import { Cloud, Sparkle } from "@/components/art/Doodles";
 import ServiceIcon from "@/components/art/services/ServiceIcon";
+import ServicesHubScene from "@/components/art/services/ServicesHubScene";
 import { services, serviceGroups } from "@/lib/data/services";
 import { booking } from "@/lib/data/site";
 import { pageMeta } from "@/lib/seo";
@@ -15,7 +15,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "AI Automation and Web Development Services",
   description:
-    "AI consulting, AI agents, generative AI, chatbots, workflow automation, AI integration, web development, and UI/UX design from one team.",
+    "AI consulting, AI agents, generative AI, chatbots, workflow automation, AI integration, web development and UI/UX design, all from one Dallas-Fort Worth team.",
   path: "/services",
 });
 
@@ -26,13 +26,13 @@ const groupCopy: Record<
   "AI & Automation": {
     title: "AI & Automation Services",
     highlight: "AI & Automation",
-    lede: "From your first feasibility question to autonomous systems in production.",
+    lede: "Everything from \"is this even possible?\" to agents doing real work in production.",
     note: "Most clients start here",
   },
   "Web & Design": {
     title: "Web & Design Services",
     highlight: "Web & Design",
-    lede: "Websites and web products designed and engineered by the same team.",
+    lede: "Websites and web apps, designed and built by the same people, so nothing gets lost between the mockup and the code.",
   },
 };
 
@@ -42,31 +42,31 @@ const tiles = ["bg-sun-light", "bg-surface", "bg-surface-cream"];
 export default function ServicesPage() {
   return (
     <main>
-      {/* Hero */}
+      {/* Hero: compact, with the art beside the text on desktop and under
+          the button on smaller screens, so it shows on the first screen. */}
       <section className="relative overflow-hidden bg-hero text-white">
-        <Cloud className="pointer-events-none absolute left-[4%] top-10 hidden w-28 animate-drift md:block" />
-        <Cloud className="pointer-events-none absolute right-[6%] top-24 hidden w-20 animate-drift opacity-90 md:block [animation-delay:-5s]" />
-        <Sparkle className="pointer-events-none absolute left-[14%] bottom-16 hidden w-8 animate-twinkle lg:block" />
-        <div className="container-site page-hero relative pb-16 md:pb-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="h-page">
-              Everything It Takes to Put AI to Work, <span className="hl-blue">Under One Roof</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
-              Strategy, engineering, and design from a single team. Start with a {booking.offer},
-              then scale to systems your business runs on.
-            </p>
-            <div className="mt-9 flex justify-center">
-              <Link href={booking.page} className="btn-primary btn-lg group">
-                {booking.labelLong}
-                <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
-              </Link>
+        <Cloud className="pointer-events-none absolute left-[3%] top-6 hidden w-24 animate-drift md:block" />
+        <Cloud className="pointer-events-none absolute right-[44%] bottom-8 hidden w-16 animate-drift opacity-90 lg:block [animation-delay:-5s] [animation-duration:13s]" />
+        <Sparkle className="pointer-events-none absolute left-[40%] top-10 hidden w-7 animate-twinkle lg:block [animation-delay:-0.8s]" />
+        <div className="container-site relative pb-12 pt-8 md:pb-14 md:pt-12">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
+            <div className="text-center lg:text-left">
+              <h1 className="h-page">
+                AI, Automation and Web Work, <span className="hl-blue">Under One Roof</span>
+              </h1>
+              <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/90 lg:mx-0">
+                Strategy, builds and design from the same small team. Not sure which one you need?
+                The {booking.offer} sorts that out in {booking.duration}.
+              </p>
+              <div className="mt-7 flex justify-center lg:justify-start">
+                <Link href={booking.page} className="btn-primary btn-lg group">
+                  {booking.labelLong}
+                  <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
+            <ServicesHubScene className="max-w-[260px] sm:max-w-[320px] lg:max-w-[460px]" />
           </div>
-          <Mascot
-            wave
-            className="pointer-events-none absolute bottom-6 right-[4%] hidden w-24 animate-float lg:block"
-          />
         </div>
       </section>
 
@@ -85,11 +85,11 @@ export default function ServicesPage() {
                   note={copy.note}
                   lede={
                     <>
-                      {copy.lede} Not sure which fits? Start with a{" "}
+                      {copy.lede} Can&apos;t tell which one you need? Take the{" "}
                       <Link href={booking.page} className="font-bold text-brand underline">
                         {booking.offer}
-                      </Link>
-                      .
+                      </Link>{" "}
+                      and we&apos;ll tell you.
                     </>
                   }
                 />
@@ -113,7 +113,7 @@ export default function ServicesPage() {
                             <h3 className="mt-5 text-xl font-extrabold text-ink">{s.name}</h3>
                             <p className="mt-2 text-base leading-relaxed text-ink/80">{s.summary}</p>
                             <span className="mt-auto inline-flex items-center gap-2 pt-6 text-sm font-extrabold text-brand">
-                              Explore {s.name}
+                              More on {s.name}
                               <ArrowRight
                                 aria-hidden="true"
                                 className="size-4 transition-transform group-hover:translate-x-1"
@@ -132,7 +132,7 @@ export default function ServicesPage() {
 
       <CTABand
         title="Not Sure Which Service Fits?"
-        body={`Describe the problem instead. On a ${booking.durationAdjective} call we'll tell you what is automatable, roughly what it would take, and whether it is worth doing.`}
+        body={`Skip the menu and tell us what's eating your week. On a ${booking.durationAdjective} call we'll say what can be automated, roughly what it would take, and whether it's worth doing at all.`}
       />
     </main>
   );

@@ -82,11 +82,38 @@ function Commitment() {
 
 const icons = [Respect, CommonSense, Curiosity, Courage, Commitment];
 
+// The icons take turns: one 9s loop, and each icon's hop-and-wiggle starts
+// 1.8s after the one before, so only one is moving at a time. In between
+// they breathe very slightly so none of them is ever completely still.
+const TURN = 1.8;
+const styles = `
+@keyframes vi-turn {
+  0%, 18%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  4% { transform: translateY(-5px) rotate(-9deg) scale(1.06); }
+  8% { transform: translateY(0) rotate(7deg) scale(1); }
+  12% { transform: translateY(-2px) rotate(-4deg); }
+  15% { transform: rotate(2deg); }
+}
+@keyframes vi-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+.vi-turn { animation: vi-turn 9s ease-in-out infinite; }
+.vi-breathe { animation: vi-breathe 3.6s ease-in-out infinite; }
+`;
+
+const pivot = { transformBox: "fill-box", transformOrigin: "center" } as const;
+
 export default function ValueIcon({ index, className }: { index: number; className?: string }) {
   const Icon = icons[index % icons.length];
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true" fill="none">
-      <Icon />
+      <style>{styles}</style>
+      <g className="vi-turn" style={{ ...pivot, animationDelay: `${(index % icons.length) * TURN}s` }}>
+        <g className="vi-breathe" style={{ ...pivot, animationDelay: `${-index * 0.7}s` }}>
+          <Icon />
+        </g>
+      </g>
     </svg>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cloud, Sparkle } from "@/components/art/Doodles";
 import Mascot from "@/components/art/Mascot";
+import { booking } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -22,7 +23,7 @@ export default function NotFound() {
           <Sparkle className="absolute -left-6 top-2 w-8 animate-twinkle" />
           <Sparkle
             color="#FFFFFF"
-            className="absolute -right-5 top-10 w-6 animate-twinkle [animation-delay:-1.2s]"
+            className="absolute -right-5 top-10 w-6 animate-twinkle [animation-delay:-1.2s] [animation-duration:3.2s]"
           />
           <Mascot mood="wow" className="w-full animate-float" />
         </div>
@@ -33,17 +34,24 @@ export default function NotFound() {
           This Page <span className="hl-blue">Wandered Off</span>
         </h1>
         <p className="mt-5 mx-auto max-w-xl text-lg leading-relaxed text-white/90">
-          The link may be outdated. Everything we do is reachable from the
-          homepage.
+          The link might be old, or we moved something and didn&apos;t leave a
+          forwarding address. Everything we do is one click from the homepage.
         </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link href="/" className="btn-primary btn-lg">
             Back To Home
           </Link>
-          <Link href="/case-studies" className="btn-outline-dark btn-lg">
-            See Case Studies
+          <Link href={booking.page} className="btn-outline-dark btn-lg">
+            {booking.labelLong}
           </Link>
         </div>
+        <p className="mt-6 text-base text-white/90">
+          Or have a look at{" "}
+          <Link href="/case-studies" className="font-bold underline underline-offset-2">
+            what we&apos;ve built for clients
+          </Link>
+          .
+        </p>
       </div>
     </main>
   );

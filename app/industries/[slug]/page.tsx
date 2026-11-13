@@ -16,6 +16,7 @@ import { getEngagement } from "@/lib/data/engagements";
 import { booking } from "@/lib/data/site";
 import { pageMeta } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
+import PlainAnswer from "@/components/site/PlainAnswer";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -81,17 +82,18 @@ export default async function IndustryPage({
         <Cloud className="hidden md:block absolute left-[3%] top-10 w-24 animate-drift" />
         <Cloud className="hidden lg:block absolute left-[40%] bottom-8 w-20 animate-drift [animation-delay:-6s]" />
 
-        <div className="container-site page-hero relative pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
+        <div className="container-site relative pt-8 pb-10 md:pt-10 md:pb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-12 items-center">
             <div className="text-center lg:text-left">
+              {/* Long sector names wrap inside the block rather than overflow. */}
               <h1 className="h-page">
                 {headLead}
-                <span className="hl-blue">{headHl}</span>
+                <span className="hl-blue !whitespace-normal">{headHl}</span>
               </h1>
-              <p className="mt-6 mx-auto lg:mx-0 max-w-2xl text-lg md:text-xl leading-relaxed text-white/90">
+              <p className="mt-4 mx-auto lg:mx-0 max-w-2xl text-lg leading-relaxed text-white/90">
                 {industry.intro}
               </p>
-              <div className="mt-9 flex justify-center lg:justify-start">
+              <div className="mt-6 flex justify-center lg:justify-start">
                 <Link href={booking.anchor} className="btn-primary btn-lg group">
                   {booking.labelLong}
                   <ArrowRight
@@ -102,13 +104,22 @@ export default async function IndustryPage({
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-[22rem] sm:max-w-md px-4">
+            <div className="relative mx-auto w-full max-w-[20rem] sm:max-w-sm lg:max-w-[24rem] px-4">
+              {/* The polaroid sways a touch, as if it hangs from its tape. */}
+              <style>{`
+@keyframes ind-sway {
+  0%, 100% { transform: rotate(2deg); }
+  50% { transform: rotate(4.5deg); }
+}
+.ind-sway { animation: ind-sway 6.5s ease-in-out infinite; transform-origin: 50% 0; }
+`}</style>
               <Sparkle className="absolute -top-3 left-0 z-10 w-10 animate-twinkle" />
               <Sparkle
                 color="#FFFFFF"
-                className="absolute -bottom-2 right-1 z-10 w-7 animate-twinkle [animation-delay:-1.1s]"
+                className="absolute -bottom-2 right-1 z-10 w-7 animate-twinkle [animation-delay:-1.1s] [animation-duration:3.3s]"
               />
-              <div className="relative rotate-[3deg] rounded-md border-[3px] border-ink bg-white p-3 pb-4 shadow-pop-lg">
+              <Sparkle className="hidden lg:block absolute top-1/3 -right-3 z-10 w-5 animate-twinkle [animation-delay:-0.6s] [animation-duration:2.7s]" />
+              <div className="ind-sway relative rounded-md border-[3px] border-ink bg-white p-3 pb-4 shadow-pop-lg">
                 {/* strip of tape */}
                 <span
                   aria-hidden="true"
@@ -122,7 +133,7 @@ export default async function IndustryPage({
                     className="block aspect-[4/3] w-full object-cover"
                   />
                 </div>
-                <p aria-hidden="true" className="mt-3 text-center font-hand text-2xl text-ink">
+                <p aria-hidden="true" className="mt-2 text-center font-hand text-2xl text-ink">
                   {industry.name}
                 </p>
               </div>
@@ -135,13 +146,14 @@ export default async function IndustryPage({
       {/* 2. Use cases */}
       <section className="bg-white">
         <div className="container-site py-16 md:py-24">
+          <PlainAnswer answer={industry.answer} className="mb-16 md:mb-20" />
           <SectionHeading
             title={`What We Automate In ${industry.name}`}
             highlight={industry.name}
             lede={
               <>
-                The jobs we most often take off teams in this sector. Not sure
-                which fits yours? Ask on a{" "}
+                The jobs teams in this sector hand us most often. Not sure which
+                one is yours? Ask us on a{" "}
                 <Link href={booking.anchor} className="text-brand font-bold underline">
                   {booking.offer}
                 </Link>
@@ -179,9 +191,9 @@ export default async function IndustryPage({
       <section className="bg-surface">
         <div className="container-site py-16 md:py-24">
           <SectionHeading
-            title="What Automation Delivers In This Sector"
-            highlight="Delivers"
-            note="The bit that pays for it"
+            title="What Changes For Your Team"
+            highlight="Your Team"
+            note="The part that pays for it"
             noteSide="left"
           />
           <div className="mx-auto flex max-w-4xl items-center gap-10">
@@ -211,7 +223,7 @@ export default async function IndustryPage({
               <SectionHeading
                 title="A Case Study In This Industry"
                 highlight="Case Study"
-                lede="A real client project from this sector, with the goal we built it to hit."
+                lede="A real client project from this sector, and the goal we built it to hit."
               />
               <div
                 className={`mx-auto grid grid-cols-1 gap-7 ${

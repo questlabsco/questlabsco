@@ -11,336 +11,393 @@ export type Industry = {
   useCases: { title: string; body: string }[];
   outcomes: string[]; // short result-style bullets
   caseStudySlugs: string[]; // slugs of example engagements in engagements.ts
+  answer?: { q: string; a: string[] }; // Plain definition shown under the hero; written so it can be quoted on its own.
 };
 
 export const industries: Industry[] = [
   {
     slug: "healthcare",
     name: "Healthcare",
-    summary: "Documentation, claims, and patient-flow automation.",
+    summary: "Notes, claims and patient flow, off your staff's plate.",
     title: "AI solutions for healthcare",
     intro:
-      "Healthcare teams drown in documentation and administrative work that never touches a patient. We build AI systems that take on the paperwork (coding, claims, scheduling, and records) while keeping clinicians and compliance in control.",
+      "We take the paperwork off healthcare teams: notes, coding, claims, scheduling and records. Most of it never touches a patient anyway. Clinicians and your compliance people still sign off on anything that needs judgment.",
     image: "/images/industries/healthcare.webp",
     useCases: [
       {
         title: "Clinical documentation support",
-        body: "Visit notes, referral letters, and discharge summaries drafted from dictation or structured data for clinician review.",
+        body: "Visit notes, referral letters and discharge summaries drafted from dictation or structured data. The clinician reads it, fixes what needs fixing and signs.",
       },
       {
-        title: "Revenue cycle & claims automation",
-        body: "Coding suggestions, claim scrubbing, denial triage, and appeal drafting that shorten the path from service to payment.",
+        title: "Claims and revenue cycle",
+        body: "Coding suggestions, claim scrubbing, denial triage and first drafts of appeals, so the money arrives sooner after the visit.",
       },
       {
-        title: "Patient intake & scheduling",
-        body: "Digital intake, insurance verification, appointment reminders, and no-show reduction handled automatically.",
+        title: "Patient intake and scheduling",
+        body: "Digital intake, insurance verification and appointment reminders that go out on their own, which is how you bring no-shows down.",
       },
       {
-        title: "Prior authorization workflows",
-        body: "Requirement lookups, form population, and status chasing: the least loved work in the clinic, automated.",
+        title: "Prior authorizations",
+        body: "Looking up what the payer wants, filling in the forms, chasing the status. Nobody got into healthcare for this part, so we automate it.",
       },
       {
-        title: "Records summarization",
-        body: "Long patient histories condensed into structured, cited summaries before each encounter.",
+        title: "Records summaries",
+        body: "A long patient history boiled down to a structured summary, with citations back to the source, ready before the appointment.",
       },
       {
-        title: "Compliance-first architecture",
-        body: "HIPAA-aligned data handling, audit trails, and human sign-off wherever clinical judgment is involved.",
+        title: "Built around compliance",
+        body: "HIPAA-aligned data handling, audit trails, and a human sign-off anywhere clinical judgment comes into it.",
       },
     ],
     outcomes: [
-      "Hours of documentation returned to clinical staff every week",
-      "Cleaner claims and fewer denials",
-      "Shorter intake and lower no-show rates",
+      "Clinical staff get back the hours each week that used to go on documentation",
+      "Claims go out cleaner, so fewer come back denied",
+      "Intake takes less time, and reminders help keep no-shows down",
     ],
     caseStudySlugs: ["med-spa-front-desk"],
+    answer: {
+      q: "How is AI automation used in healthcare?",
+      a: [
+        "In healthcare, AI automation is mostly used for the administrative work around patient care, not for clinical decisions. Common examples are drafting visit notes and referral letters for a clinician to review, scrubbing claims and drafting denial appeals, and handling intake, insurance checks and appointment reminders. Practices also use AI to summarize long patient histories before an appointment, with citations back to the source records. Healthcare automation suits clinics, specialty practices, dermatology offices and med spas where staff spend much of the day on paperwork and phones.",
+        "Quest Labs Co. builds healthcare automations with permissions, audit trails and a human sign-off anywhere clinical judgment comes into it. Quest Labs Co. doesn't build software that diagnoses patients or makes treatment decisions on its own. AI automation is a poor fit for a practice whose real bottleneck is clinical capacity, because automation frees up staff time but doesn't add clinicians.",
+      ],
+    },
   },
   {
     slug: "finance",
     name: "Finance & Fintech",
-    summary: "Reconciliation, risk, reporting, and client operations.",
+    summary: "Reconciliation, risk checks, reporting and client ops.",
     title: "AI solutions for finance and fintech",
     intro:
-      "Financial firms run on high-volume, high-stakes information work: exactly where AI pays for itself fastest. We build automation for reconciliation, monitoring, reporting, and client operations, engineered for audit trails from day one.",
+      "We automate the high-volume work finance teams can't afford to get wrong: reconciliation, monitoring, reporting and client operations. Every step leaves an audit trail from day one, because someone will ask for it.",
     image: "/images/industries/finance.webp",
     useCases: [
       {
-        title: "Reconciliation & exception handling",
-        body: "Transactions matched across systems automatically, with only true exceptions escalated to people.",
+        title: "Reconciliation and exceptions",
+        body: "Transactions matched across your systems automatically. People only see the ones that really don't line up.",
       },
       {
-        title: "Document & KYC processing",
-        body: "Onboarding documents, statements, and IDs extracted, verified, and filed with full traceability.",
+        title: "Document and KYC processing",
+        body: "IDs, statements and onboarding documents read, checked and filed, with a record of every step.",
       },
       {
-        title: "Risk & fraud monitoring",
-        body: "Automated anomaly scoring that flags risk consistently and explains its reasoning for compliance review.",
+        title: "Risk and fraud monitoring",
+        body: "Anomaly scoring that flags risk the same way every time and says why, so compliance can review the reasoning.",
       },
       {
         title: "Regulatory reporting",
-        body: "Recurring reports assembled from source systems on schedule, with human approval before filing.",
+        body: "Recurring reports built from your source systems on schedule. A person approves each one before it's filed.",
       },
       {
-        title: "Client communication drafting",
-        body: "Portfolio summaries, market commentary, and service responses drafted for advisor review.",
+        title: "Client communication drafts",
+        body: "Portfolio summaries, market commentary and service replies drafted for an advisor to check before they go out.",
       },
       {
         title: "Trading operations support",
-        body: "Order lifecycle monitoring, settlement chasing, and desk reporting automated end to end.",
+        body: "Order lifecycle monitoring, settlement chasing and desk reports, automated from start to finish.",
       },
     ],
     outcomes: [
-      "Reconciliation cycles cut from days to hours",
-      "Faster onboarding with a complete audit trail",
-      "Analyst time moved from assembly to analysis",
+      "Reconciliation takes hours instead of days",
+      "New clients get onboarded faster, with a complete audit trail behind them",
+      "Analysts spend their time on analysis instead of assembling the numbers",
     ],
     caseStudySlugs: ["bookkeeping-document-collection"],
+    answer: {
+      q: "How is AI automation used in finance and fintech?",
+      a: [
+        "In finance and fintech, AI automation is mostly used for high-volume, rules-heavy back-office work where mistakes are expensive. Typical tasks include matching transactions across systems so staff only review the real exceptions, reading and filing KYC and onboarding documents, and building recurring reports on a schedule. Firms also use AI to draft portfolio summaries for an advisor to check. Finance automation suits accounting firms, bookkeepers, lenders, wealth managers and fintech companies with growing transaction or client volumes.",
+        "Quest Labs Co. builds finance automations with an audit trail on every step and a person approving anything that gets filed or sent to a client. When a Quest Labs Co. risk model flags something, the model also records why, so compliance can review the reasoning. AI automation doesn't replace a controller or a compliance officer, and judgment calls on risk and reporting stay with people.",
+      ],
+    },
   },
   {
     slug: "retail-ecommerce",
     name: "Retail & E-commerce",
-    summary: "Support, personalization, and catalog operations at scale.",
+    summary: "Support, personalization and catalog upkeep for busy stores.",
     title: "AI solutions for retail and e-commerce",
     intro:
-      "Margins in retail are won operationally. We build AI that answers customers instantly, keeps catalogs clean, forecasts demand, and personalizes without being creepy, so growth doesn't require growing headcount at the same rate.",
+      "We build AI that answers your customers right away, keeps the catalog clean, forecasts demand and personalizes without being creepy. Retail margin is won in operations, and this lets you grow without hiring at the same rate.",
     image: "/images/industries/retail.webp",
     useCases: [
       {
         title: "Customer support automation",
-        body: "Order status, returns, and product questions resolved by assistants grounded in your real policies and systems.",
+        body: "\"Where's my order?\", returns and product questions answered by an assistant that works from your actual policies and systems.",
       },
       {
-        title: "Catalog & content operations",
-        body: "Product descriptions, attributes, and translations generated and maintained at catalog scale.",
+        title: "Catalog and content",
+        body: "Product descriptions, attributes and translations written and kept up to date across the whole catalog.",
       },
       {
         title: "Demand forecasting",
-        body: "Inventory and purchasing decisions backed by data-driven forecasts instead of last year's spreadsheet.",
+        body: "Buying and inventory decisions based on a real forecast instead of last year's spreadsheet.",
       },
       {
-        title: "Personalization & recommendations",
-        body: "On-site recommendations and email content matched to real browsing behavior.",
+        title: "Personalization and recommendations",
+        body: "On-site recommendations and email content that follow what people actually browse.",
       },
       {
-        title: "Review & feedback intelligence",
-        body: "Thousands of reviews distilled into ranked product and operations issues monthly.",
+        title: "Reviews and feedback",
+        body: "Thousands of reviews turned into a monthly, ranked list of product and operations problems worth fixing.",
       },
       {
         title: "Marketplace operations",
-        body: "Listing sync, repricing inputs, and channel exception handling automated across marketplaces.",
+        body: "Listing sync, repricing inputs and channel exceptions handled automatically on every marketplace you sell on.",
       },
     ],
     outcomes: [
-      "Majority of routine tickets resolved without an agent",
-      "Catalog updates in hours instead of weeks",
-      "Forecast-driven inventory with fewer stockouts",
+      "Most routine tickets get resolved without an agent touching them",
+      "Catalog updates go live in hours, not weeks",
+      "Inventory follows a forecast, so you run out of things less often",
     ],
     caseStudySlugs: ["skincare-support-tickets"],
+    answer: {
+      q: "How is AI used in retail and e-commerce?",
+      a: [
+        "In retail and e-commerce, AI is mostly used to answer customers quickly and keep store operations running without hiring at the same rate as sales grow. Common uses include an assistant that answers order and return questions from the store's real policies, product descriptions kept current across a whole catalog, and demand forecasts that guide buying. Stores also use AI to turn thousands of reviews into a ranked list of problems worth fixing. Retail AI suits online stores and multichannel sellers with a big catalog or a heavy support inbox.",
+        "Quest Labs Co. builds retail assistants that work from a store's own policies and hand tricky cases to a person with the full conversation attached. A small store with a short catalog and a quiet inbox usually doesn't need custom AI, because the built-in tools on platforms like Shopify cover most of that need.",
+      ],
+    },
   },
   {
     slug: "logistics",
     name: "Logistics & Supply Chain",
-    summary: "Documents, tracking, and exception management automated.",
+    summary: "Freight paperwork, tracking and exceptions, handled.",
     title: "AI solutions for logistics and supply chain",
     intro:
-      "Logistics is a document business wearing a transportation costume: BOLs, PODs, customs forms, rate confirmations. We automate the paperwork and the status-chasing so your ops team manages exceptions, not inboxes.",
+      "We automate the BOLs, PODs, customs forms, rate confirmations and status-chasing behind every load. Logistics is a document business in a transportation costume, and your ops team should be working exceptions, not inboxes.",
     image: "/images/industries/logistics.webp",
     useCases: [
       {
         title: "Freight document processing",
-        body: "Bills of lading, PODs, and invoices extracted and entered into your TMS automatically, whatever format they arrive in.",
+        body: "Bills of lading, PODs and invoices read and entered into your TMS automatically, in whatever format they show up.",
       },
       {
-        title: "Shipment tracking & notifications",
-        body: "Status pulled across carriers and pushed to customers proactively, before they email asking.",
+        title: "Tracking and notifications",
+        body: "Status pulled from every carrier and sent to the customer before they email to ask where it is.",
       },
       {
         title: "Exception management",
-        body: "Delays, damages, and discrepancies detected, categorized, and routed with recommended next actions.",
+        body: "Delays, damage and discrepancies spotted, sorted and sent to the right person with a suggested next step.",
       },
       {
-        title: "Quote & rate operations",
-        body: "Rate requests parsed, quotes drafted from your tariffs, and follow-ups tracked automatically.",
+        title: "Quotes and rates",
+        body: "Rate requests read, quotes drafted from your tariffs, and follow-ups tracked so none of them go quiet.",
       },
       {
-        title: "Customs & compliance paperwork",
-        body: "Classification suggestions and document preparation with human review before filing.",
+        title: "Customs and compliance paperwork",
+        body: "Classification suggestions and prepared documents, with a person reviewing them before anything is filed.",
       },
       {
-        title: "Carrier & vendor scorecards",
-        body: "Performance reporting assembled continuously from your operational data.",
+        title: "Carrier and vendor scorecards",
+        body: "Performance reports that keep themselves current from your own operations data.",
       },
     ],
     outcomes: [
-      "Document entry near-eliminated for standard formats",
-      "Customer status queries answered before they're asked",
-      "Ops time concentrated on true exceptions",
+      "Standard-format paperwork barely needs typing in by hand",
+      "Customers hear where their shipment is before they think to ask",
+      "Your ops team spends the day on the loads that actually need a person",
     ],
     caseStudySlugs: ["freight-delivery-paperwork"],
+    answer: {
+      q: "How is AI automation used in logistics and supply chain?",
+      a: [
+        "In logistics and supply chain, AI automation is mostly used to process the paperwork behind every load and keep customers updated without anyone chasing status. Typical tasks include reading bills of lading, PODs and carrier invoices into a TMS, sending customers tracking updates before they ask, and drafting quotes from rate requests. Delays, damage and discrepancies get sorted and sent to the right person with a suggested next step. Logistics automation suits freight brokers, 3PLs, carriers and distributors whose ops teams live in their inboxes.",
+        "Quest Labs Co. builds logistics automations that read documents in whatever format they arrive and send anything unclear to a person. Customs classifications and filings always get human review before submission. AI automation won't fix a weak carrier network or a pricing problem, because automation removes the typing and the chasing while decisions about loads, lanes and customers stay with the ops team.",
+      ],
+    },
   },
   {
     slug: "manufacturing",
     name: "Manufacturing",
-    summary: "Quality, maintenance, and production-floor intelligence.",
+    summary: "Quality checks, maintenance and what's happening on the floor.",
     title: "AI solutions for manufacturing",
     intro:
-      "Manufacturers sit on years of production data that nobody has time to use. We turn it into working systems (quality inspection, maintenance prediction, and planning support) that integrate with the MES and ERP you already run.",
+      "We turn your production data into systems for quality inspection, maintenance prediction and planning that plug into your existing MES and ERP. Most plants have years of that data. What they don't have is time to use it.",
     image: "/images/industries/manufacturing.webp",
     useCases: [
       {
         title: "Visual quality inspection",
-        body: "Camera-based defect detection that inspects every unit consistently, not a sampled fraction.",
+        body: "Cameras check every unit for defects, the same way every time, instead of a sample pulled off the line.",
       },
       {
         title: "Predictive maintenance",
-        body: "Sensor and log data turned into failure predictions, so maintenance happens before downtime.",
+        body: "Sensor and log data turned into failure predictions, so the machine gets fixed before it stops the line.",
       },
       {
         title: "Production planning support",
-        body: "Demand forecasts and constraint-aware scheduling suggestions for planners to approve.",
+        body: "Demand forecasts and schedule suggestions that respect your constraints. Your planners approve them.",
       },
       {
-        title: "Work instruction & SOP assistance",
-        body: "Floor staff query procedures in plain language and get cited answers from your own documentation.",
+        title: "Work instructions and SOPs",
+        body: "Floor staff ask a question in plain language and get an answer from your own procedures, with the source cited.",
       },
       {
-        title: "Supplier document automation",
-        body: "Certs, POs, and delivery paperwork processed automatically with exceptions flagged.",
+        title: "Supplier paperwork",
+        body: "Certs, POs and delivery paperwork processed automatically, with anything odd flagged for a person.",
       },
       {
-        title: "Energy & scrap analytics",
-        body: "Consumption and waste patterns surfaced with ranked, costed reduction opportunities.",
+        title: "Energy and scrap analytics",
+        body: "Where energy and material are going to waste, with the fixes ranked and costed.",
       },
     ],
     outcomes: [
-      "Defects caught at the line, not at the customer",
-      "Unplanned downtime reduced by predicted failures",
-      "Tribal knowledge captured and queryable",
+      "Defects get caught at the line, not by your customer",
+      "Fewer surprise breakdowns, because likely failures show up ahead of time",
+      "What your veterans know gets written down, and anyone can look it up",
     ],
     caseStudySlugs: ["fabrication-quote-intake"],
+    answer: {
+      q: "How is AI used in manufacturing?",
+      a: [
+        "In manufacturing, AI is mostly used to turn production data a plant already collects into quality checks, maintenance warnings and planning support. Common examples include camera-based visual inspection of every unit on the line, predicting equipment failures from sensor and log data, and processing supplier certs, POs and delivery paperwork. Plants also use AI assistants that answer floor staff questions from the plant's own SOPs, with the source cited. Manufacturing AI suits plants and fabrication shops with years of production data and no time to use it.",
+        "Quest Labs Co. builds manufacturing systems that plug into an existing MES and ERP, and planners approve every schedule suggestion before it takes effect. Quest Labs Co. can also start smaller, with supplier paperwork or quote intake, before any sensor work. Predictive maintenance needs a solid history of sensor or log data, so a plant without that history should start somewhere else.",
+      ],
+    },
   },
   {
     slug: "legal",
     name: "Legal",
-    summary: "Contract review, research, and matter operations.",
+    summary: "Contract review, research and matter admin.",
     title: "AI solutions for legal teams",
     intro:
-      "Legal work is reading, comparing, and drafting at volume: a natural fit for AI with a lawyer in the loop. We build systems for firms and in-house teams that accelerate review and drafting while keeping privilege and confidentiality intact.",
+      "We build AI that speeds up contract review, research and drafting for law firms and in-house teams, with a lawyer checking the work. Legal work is mostly reading, comparing and drafting at volume, which suits AI well. Privilege and confidentiality stay intact.",
     image: "/images/industries/legal.webp",
     useCases: [
       {
-        title: "Contract review & extraction",
-        body: "Key terms, obligations, and deviations from your playbook flagged across entire contract sets.",
+        title: "Contract review and extraction",
+        body: "Key terms, obligations and departures from your playbook flagged across a whole set of contracts.",
       },
       {
-        title: "Document drafting support",
-        body: "First drafts of standard agreements and correspondence generated from your templates and matter data.",
+        title: "Drafting support",
+        body: "First drafts of standard agreements and letters, built from your templates and the matter details.",
       },
       {
-        title: "Legal research assistance",
-        body: "Internal knowledge and precedent files searched semantically, with cited answers.",
+        title: "Research assistance",
+        body: "Your own knowledge base and precedent files searched by meaning, not just keywords, with cited answers.",
       },
       {
-        title: "Due diligence acceleration",
-        body: "Data-room documents classified, summarized, and issue-flagged for attorney review.",
+        title: "Due diligence",
+        body: "Data-room documents sorted, summarized and flagged so an attorney can go straight to the issues.",
       },
       {
-        title: "Matter intake & conflicts",
-        body: "Intake information structured, conflicts pre-checked, and engagement letters drafted automatically.",
+        title: "Matter intake and conflicts",
+        body: "Intake details structured, conflicts pre-checked and the engagement letter drafted automatically.",
       },
       {
-        title: "Confidentiality-first deployment",
-        body: "Private deployments and strict data boundaries designed for privileged material.",
+        title: "Confidentiality first",
+        body: "Private deployments and strict data boundaries, set up for privileged material.",
       },
     ],
     outcomes: [
-      "Contract review hours cut dramatically per matter",
-      "Consistent playbook application across reviewers",
-      "Faster intake-to-engagement turnaround",
+      "Reviewers start from flagged terms instead of reading every page cold",
+      "Your playbook gets applied the same way, whoever is reviewing",
+      "New matters get from intake to engagement letter faster",
     ],
     caseStudySlugs: ["law-firm-client-intake"],
+    answer: {
+      q: "How is AI used in law firms and legal teams?",
+      a: [
+        "In legal work, AI is mostly used for the reading, comparing and drafting that lawyers do at volume, with a lawyer checking every result. Typical tasks include flagging key terms and departures from a firm's playbook across a set of contracts, drafting standard agreements and letters from templates, and searching precedent files by meaning with cited answers. Firms also use AI to pre-check conflicts and draft engagement letters. Legal AI suits law firms and in-house legal teams with heavy contract review, due diligence or intake volume.",
+        "Quest Labs Co. builds legal AI on private deployments with strict data boundaries, set up for privileged material. Every output from a Quest Labs Co. legal system goes to an attorney before anyone relies on it. Legal AI doesn't replace an attorney's judgment, and a firm that handles a few matters a month with little repeat paperwork usually gets more from better templates.",
+      ],
+    },
   },
   {
     slug: "real-estate",
     name: "Real Estate",
-    summary: "Listings, leases, and client communication automated.",
+    summary: "Listings, leases and the inbox that never stops.",
     title: "AI solutions for real estate",
     intro:
-      "Real estate teams juggle listings, leases, showings, and a relentless inbox. We automate the document and communication load (for brokerages, property managers, and proptech products) so agents spend their time with clients.",
+      "We automate the paperwork and messages that bury real estate teams: listings, leases, showings and an inbox that never stops. We build it for brokerages, property managers and proptech products, so agents can spend their time with clients.",
     image: "/images/industries/real-estate.webp",
     useCases: [
       {
-        title: "Lease & contract abstraction",
-        body: "Key dates, terms, and obligations extracted from leases into your management system with citations.",
+        title: "Lease and contract abstraction",
+        body: "Key dates, terms and obligations pulled out of leases and into your management system, with citations back to the page.",
       },
       {
-        title: "Listing content generation",
-        body: "Listing descriptions and marketing variants produced on-brand from property data.",
+        title: "Listing content",
+        body: "Listing descriptions and marketing versions written from the property data, in your brand's voice.",
       },
       {
-        title: "Inquiry response & scheduling",
-        body: "Prospect questions answered instantly and showings booked straight into agent calendars.",
+        title: "Inquiry replies and showings",
+        body: "Prospect questions answered straight away, and showings booked right into the agent's calendar.",
       },
       {
-        title: "Tenant & owner communication",
-        body: "Maintenance requests triaged, updates drafted, and recurring notices sent automatically.",
+        title: "Tenant and owner communication",
+        body: "Maintenance requests triaged, updates drafted, and recurring notices sent without anyone having to remember.",
       },
       {
-        title: "Document & compliance workflows",
-        body: "Transaction paperwork checked for completeness and deadlines tracked automatically.",
+        title: "Documents and compliance",
+        body: "Transaction paperwork checked for missing pieces, and deadlines tracked automatically.",
       },
       {
         title: "Portfolio reporting",
-        body: "Owner statements and portfolio summaries assembled from your systems monthly.",
+        body: "Owner statements and portfolio summaries pulled together from your systems every month.",
       },
     ],
     outcomes: [
-      "Lease data extracted in minutes, not afternoons",
-      "Every inquiry answered within seconds",
-      "Deadlines tracked without spreadsheet heroics",
+      "Lease data comes out in minutes, not a whole afternoon",
+      "Every inquiry gets an answer within seconds",
+      "Deadlines get tracked without anyone babysitting a spreadsheet",
     ],
     caseStudySlugs: ["rental-property-reporting"],
+    answer: {
+      q: "How is AI automation used in real estate and property management?",
+      a: [
+        "In real estate and property management, AI automation is mostly used to handle the paperwork and the nonstop messages that bury agents and managers. Common tasks include pulling key dates and terms out of leases into a management system, answering prospect inquiries and booking showings straight into an agent's calendar, and triaging tenant maintenance requests. Property managers also use automation to put together monthly owner statements and portfolio summaries. Real estate automation suits brokerages, property management companies and proptech products with more inquiries and documents than staff.",
+        "Quest Labs Co. builds real estate automations around the systems a team already uses, with a citation back to the lease page for every extracted term. Real estate and property management are among the businesses Quest Labs Co. knows well. Automation shouldn't stand in for an agent in a negotiation or a sensitive tenant conversation, and those moments stay with people.",
+      ],
+    },
   },
   {
     slug: "education",
     name: "Education & eLearning",
-    summary: "Content operations, admissions, and learner support.",
+    summary: "Course ops, admissions and help for learners.",
     title: "AI solutions for education and eLearning",
     intro:
-      "Education organizations serve more learners than staff can personally support. We build AI for course operations, admissions, and learner assistance, designed to support educators' judgment, never to replace it.",
+      "We build AI for course operations, admissions and learner support, so a small staff can look after a lot of learners. It backs up educators' judgment. It doesn't replace it.",
     image: "/images/industries/education.webp",
     useCases: [
       {
         title: "Learner support assistants",
-        body: "Enrollment, schedule, and course questions answered from official sources around the clock.",
+        body: "Questions about enrollment, schedules and courses answered from your official sources, at any hour.",
       },
       {
         title: "Course content operations",
-        body: "Summaries, quizzes, glossaries, and alternative formats generated from existing materials for instructor review.",
+        body: "Summaries, quizzes, glossaries and other formats made from materials you already have, for instructors to review.",
       },
       {
-        title: "Admissions & enrollment workflows",
-        body: "Application documents processed, checklists tracked, and applicant communication automated.",
+        title: "Admissions and enrollment",
+        body: "Application documents processed, checklists tracked and applicants kept in the loop automatically.",
       },
       {
-        title: "Feedback & assessment support",
-        body: "First-pass feedback on structured assignments, with educators making every final call.",
+        title: "Feedback and assessment support",
+        body: "A first pass of feedback on structured assignments. The educator makes every final call.",
       },
       {
-        title: "Accessibility & translation",
-        body: "Captions, transcripts, and translations produced at course scale.",
+        title: "Accessibility and translation",
+        body: "Captions, transcripts and translations for every course, not just the ones someone found time for.",
       },
       {
         title: "Institutional reporting",
-        body: "Retention and engagement reporting assembled automatically each term.",
+        body: "Retention and engagement reports put together automatically each term.",
       },
     ],
     outcomes: [
-      "Learner questions answered around the clock",
-      "Course production time cut substantially",
-      "Admissions processing without seasonal backlogs",
+      "Learners get answers at any hour, including the ones your staff sleep through",
+      "Instructors review course materials instead of building every piece from scratch",
+      "Admissions keeps up in the busy season instead of falling behind",
     ],
     caseStudySlugs: ["tutoring-center-scheduling"],
+    answer: {
+      q: "How is AI used in education and eLearning?",
+      a: [
+        "In education and eLearning, AI is mostly used to help a small staff support a large number of learners, with educators keeping the final say. Common uses include an assistant that answers enrollment, schedule and course questions from official sources, processing admissions documents and tracking application checklists, and producing captions, transcripts and translations for courses. Instructors also use AI to turn existing materials into quizzes and summaries. Education AI suits tutoring centers, training providers, online course businesses and schools with lean admin teams.",
+        "Quest Labs Co. builds education tools that answer only from an institution's approved sources and send all generated course content to an instructor before learners see it. Feedback on assignments from a Quest Labs Co. system is a first pass, and the educator makes every final call. AI isn't the right tool for grading high-stakes work on its own or for replacing the teaching itself.",
+      ],
+    },
   },
 ];
 

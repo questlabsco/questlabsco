@@ -1,5 +1,6 @@
 import SectionHeading from "@/components/site/SectionHeading";
 import Reveal from "@/components/site/Reveal";
+import { Sparkle } from "@/components/art/Doodles";
 import { CalendarArt, RoadmapArt, RocketArt } from "@/components/art/steps/StepArt";
 import { booking } from "@/lib/data/site";
 
@@ -7,28 +8,31 @@ const steps = [
   {
     title: "Get Your Free Audit",
     badge: "bg-sun",
+    bob: "0s",
     Art: CalendarArt,
     lines: [
-      `${booking.duration} with the team that would do the work.`,
-      "You describe the workflow that eats your week. We tell you what's automatable and what isn't worth doing.",
+      `Answer a few quick questions, then hop on a ${booking.durationAdjective} call with the people who'd build it.`,
+      "Tell us which job eats your week. We'll say what software can take off your plate, and what isn't worth the trouble.",
     ],
   },
   {
     title: "Get A Priced Roadmap",
     badge: "bg-mint",
+    bob: "-1.2s",
     Art: RoadmapArt,
     lines: [
-      "A written plan before a line of code, with the cost and the expected return on every item.",
-      "You decide on the numbers.",
+      "Before anyone writes code, you get a written plan with a price and an expected return on every item.",
+      "Then you decide, with the numbers in front of you.",
     ],
   },
   {
     title: "Go Live In 4–8 Weeks",
     badge: "bg-coral",
+    bob: "-2.4s",
     Art: RocketArt,
     lines: [
-      "A working build on your real data, with human review built in.",
-      "Documented, tested, and yours.",
+      "We build it on your real data, with a person checking anything that matters.",
+      "It's tested, documented, and it's yours to keep.",
     ],
   },
 ];
@@ -36,10 +40,18 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section className="bg-surface py-16 md:py-24">
+      <style>{`
+        @keyframes how-badge {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-4px); }
+        }
+      `}</style>
       <div className="container-site">
         <SectionHeading
-          title="From Free Audit To Live System In Three Steps"
+          title="From “Can This Be Automated?” To Live In Three Steps"
           highlight="Three Steps"
+          note="Reason #2: you see the price first"
+          lede="No mystery invoices. You see the plan and what it costs before we build a thing."
         />
 
         <div className="relative">
@@ -65,12 +77,19 @@ export default function HowItWorks() {
             />
           </svg>
 
+          <Sparkle className="pointer-events-none absolute -top-6 left-[6%] hidden w-7 animate-twinkle md:block" />
+          <Sparkle
+            color="#B9A7FF"
+            className="pointer-events-none absolute -top-2 right-[5%] hidden w-5 animate-twinkle [animation-delay:-1.5s] [animation-duration:3.3s] md:block"
+          />
+
           <ol className="relative grid gap-14 md:grid-cols-3 md:gap-10">
             {steps.map((s, i) => (
               <li key={s.title}>
                 <Reveal className="flex flex-col items-center text-center">
                   <span
                     className={`relative z-10 flex size-16 items-center justify-center rounded-full border-[3px] border-ink ${s.badge} text-2xl font-extrabold text-ink shadow-pop-sm`}
+                    style={{ animation: `how-badge 3.6s ease-in-out ${s.bob} infinite` }}
                   >
                     <span className="sr-only">Step </span>
                     {i + 1}

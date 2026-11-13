@@ -3,32 +3,32 @@
 export const process = [
   {
     step: "01",
-    title: "Frame the problem",
-    body: "We start with your business goal, not the technology. Workshops with your team surface the workflows, bottlenecks, and metrics that matter.",
+    title: "Start with the problem",
+    body: "We begin with what you're trying to fix in the business, not the tech. A few working sessions with your team turn up the workflows, bottlenecks and numbers that matter.",
   },
   {
     step: "02",
-    title: "Assess feasibility & ROI",
-    body: "Every candidate use case gets a feasibility check and a dollar figure: expected savings or revenue against build and run cost.",
+    title: "Check it's doable, and worth it",
+    body: "Every idea gets a feasibility check and a dollar figure: what it should save or earn, set against what it costs to build and run.",
   },
   {
     step: "03",
     title: "Prototype fast",
-    body: "A working proof of concept on your real data within weeks, so decisions are made on evidence instead of slideware.",
+    body: "Within weeks you see a working proof of concept on your real data. Decisions get made on that, not on a slide deck.",
   },
   {
     step: "04",
-    title: "Build for production",
-    body: "Security, permissions, monitoring, and human-in-the-loop controls are engineered in from the start, not bolted on later.",
+    title: "Build it for real",
+    body: "Security, permissions, monitoring and human sign-off go in from the start. Bolting them on later never works as well.",
   },
   {
     step: "05",
-    title: "Integrate & launch",
-    body: "We connect the solution to the tools your team already uses, train your people, and launch with clear rollback plans.",
+    title: "Connect and launch",
+    body: "We plug it into the tools your team already uses, show your people how it works, and launch with a clear plan for rolling back if we need to.",
   },
   {
     step: "06",
-    title: "Measure & improve",
-    body: "Post-launch, we track the metrics defined in step one and keep tuning (models, prompts, and workflows) as your business evolves.",
+    title: "Measure and keep tuning",
+    body: "After launch we track the numbers from step one, and keep adjusting models, prompts and workflows as your business changes.",
   },
 ];

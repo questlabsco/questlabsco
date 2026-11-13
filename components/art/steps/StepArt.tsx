@@ -30,6 +30,38 @@ const keyframes = `
   80% { transform: scale(1.22); }
   88% { transform: scale(0.94); }
 }
+@keyframes steps-breathe {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-1.5deg); }
+}
+@keyframes steps-puff {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+@keyframes steps-ring {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+@keyframes audit-node {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.18); }
+}
+@keyframes audit-hand {
+  to { transform: rotate(360deg); }
+}
+@keyframes audit-zap {
+  0%, 62%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  70% { transform: scale(0.82) rotate(-6deg); opacity: 0.55; }
+  80% { transform: scale(1.12) rotate(4deg); opacity: 1; }
+}
+@keyframes audit-bar {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.6); }
+}
+@keyframes audit-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2.5px); }
+}
 @keyframes audit-tick {
   0%, 10% { transform: scale(0); }
   22% { transform: scale(1.25); }
@@ -55,13 +87,14 @@ export function CalendarArt({ className }: { className?: string }) {
       strokeLinejoin="round"
     >
       <Keyframes />
+      <g style={{ ...fb, animation: "steps-breathe 4.4s ease-in-out infinite" }}>
       {/* body */}
       <rect x="40" y="30" width="120" height="110" rx="16" fill="#FFFFFF" stroke={INK} strokeWidth="5" />
       {/* header band */}
       <path d="M40 64V46a16 16 0 0 1 16-16h88a16 16 0 0 1 16 16v18z" fill="#FF7B7B" stroke={INK} strokeWidth="5" />
       {/* rings */}
-      <rect x="64" y="18" width="12" height="26" rx="6" fill="#FFFFFF" stroke={INK} strokeWidth="4.5" />
-      <rect x="124" y="18" width="12" height="26" rx="6" fill="#FFFFFF" stroke={INK} strokeWidth="4.5" />
+      <rect x="64" y="18" width="12" height="26" rx="6" fill="#FFFFFF" stroke={INK} strokeWidth="4.5" style={{ animation: "steps-ring 2.2s ease-in-out infinite" }} />
+      <rect x="124" y="18" width="12" height="26" rx="6" fill="#FFFFFF" stroke={INK} strokeWidth="4.5" style={{ animation: "steps-ring 2.2s ease-in-out -1.1s infinite" }} />
       {/* face */}
       <g style={fb} className="animate-blink">
         <circle cx="82" cy="90" r="5.5" fill={INK} />
@@ -70,6 +103,7 @@ export function CalendarArt({ className }: { className?: string }) {
       <circle cx="70" cy="104" r="5" fill="#FF7B7B" opacity="0.6" />
       <circle cx="130" cy="104" r="5" fill="#FF7B7B" opacity="0.6" />
       <path d="M88 106q12 11 24 0" stroke={INK} strokeWidth="5" />
+      </g>
       {/* tick badge */}
       <g style={{ ...fb, animation: "steps-pop 3.2s cubic-bezier(.2,.9,.3,1.2) infinite" }}>
         <circle cx="150" cy="128" r="21" fill="#35D6A0" stroke={INK} strokeWidth="5" />
@@ -105,10 +139,19 @@ export function RoadmapArt({ className }: { className?: string }) {
       strokeLinejoin="round"
     >
       <Keyframes />
+      {/* sparkle */}
+      <path
+        d="M30 40c1.2 4.5 3 6.5 7.5 7.5-4.5 1.2-6.3 3-7.5 7.5-1.2-4.5-3-6.3-7.5-7.5 4.5-1 6.3-3 7.5-7.5z"
+        fill="#B9A7FF"
+        stroke={INK}
+        strokeWidth="3"
+        style={{ ...fb, animationDelay: "-0.6s", animationDuration: "3s" }}
+        className="animate-twinkle"
+      />
       {/* board */}
       <rect x="44" y="24" width="96" height="128" rx="12" fill="#FFFFFF" stroke={INK} strokeWidth="5" />
       {/* clip */}
-      <rect x="70" y="14" width="44" height="22" rx="8" fill="#A9CBFF" stroke={INK} strokeWidth="4.5" />
+      <rect x="70" y="14" width="44" height="22" rx="8" fill="#A9CBFF" stroke={INK} strokeWidth="4.5" style={{ animation: "steps-ring 3s ease-in-out -0.5s infinite" }} />
       {rows.map((r) => (
         <g key={r.y}>
           <rect x="56" y={r.y - 7} width="14" height="14" rx="3" fill="#F3F6FF" stroke={INK} strokeWidth="3.5" />
@@ -181,7 +224,7 @@ export function RocketArt({ className }: { className?: string }) {
         style={{ ...fb, animationDelay: "-1.1s" }}
         className="animate-twinkle"
       />
-      <circle cx="154" cy="20" r="4" fill="#35D6A0" stroke={INK} strokeWidth="2.5" />
+      <circle cx="154" cy="20" r="4" fill="#35D6A0" stroke={INK} strokeWidth="2.5" style={{ ...fb, animationDelay: "-0.4s", animationDuration: "3.2s" }} className="animate-twinkle" />
 
       <g style={{ animation: "steps-bob 2.6s ease-in-out infinite" }}>
         {/* flame */}
@@ -216,10 +259,10 @@ export function RocketArt({ className }: { className?: string }) {
 
       {/* launch puffs */}
       <g fill="#FFFFFF" stroke={INK} strokeWidth="4">
-        <circle cx="66" cy="150" r="11" />
-        <circle cx="134" cy="150" r="11" />
-        <circle cx="84" cy="154" r="9" />
-        <circle cx="116" cy="154" r="9" />
+        <circle cx="66" cy="150" r="11" style={{ ...fb, animation: "steps-puff 2.6s ease-in-out infinite" }} />
+        <circle cx="134" cy="150" r="11" style={{ ...fb, animation: "steps-puff 2.6s ease-in-out -1.3s infinite" }} />
+        <circle cx="84" cy="154" r="9" style={{ ...fb, animation: "steps-puff 2.2s ease-in-out -0.6s infinite" }} />
+        <circle cx="116" cy="154" r="9" style={{ ...fb, animation: "steps-puff 2.2s ease-in-out -1.7s infinite" }} />
       </g>
     </svg>
   );
@@ -301,7 +344,8 @@ export function AuditClipboard({ className }: { className?: string }) {
   );
 }
 
-// Small icons for the five audit panels (48-unit canvas).
+// Small icons for the five audit panels (48-unit canvas). Each one has its
+// own slow idle loop; the panel around it adds a wiggle on hover.
 type IconProps = { className?: string };
 const iconBase = {
   viewBox: "0 0 48 48",
@@ -311,52 +355,115 @@ const iconBase = {
   "aria-hidden": true,
 };
 
+// Three nodes joined up, each pulsing in turn, the links marching.
 export function IconWorkflows({ className }: IconProps) {
   return (
     <svg {...iconBase} className={className}>
-      <path d="M12 14h24M14 18l8 13M34 18l-8 13" stroke={INK} strokeWidth="3.5" />
-      <circle cx="10" cy="14" r="6" fill="#FFCB2E" stroke={INK} strokeWidth="3.5" />
-      <circle cx="38" cy="14" r="6" fill="#35D6A0" stroke={INK} strokeWidth="3.5" />
-      <circle cx="24" cy="36" r="7" fill="#FF7B7B" stroke={INK} strokeWidth="3.5" />
+      <Keyframes />
+      <path
+        d="M12 14h24M14 18l8 13M34 18l-8 13"
+        stroke={INK}
+        strokeWidth="3.5"
+        strokeDasharray="4 3"
+        className="animate-march [animation-duration:2.4s]"
+      />
+      <circle cx="10" cy="14" r="6" fill="#FFCB2E" stroke={INK} strokeWidth="3.5" style={{ ...fb, animation: "audit-node 3s ease-in-out infinite" }} />
+      <circle cx="38" cy="14" r="6" fill="#35D6A0" stroke={INK} strokeWidth="3.5" style={{ ...fb, animation: "audit-node 3s ease-in-out -1s infinite" }} />
+      <circle cx="24" cy="36" r="7" fill="#FF7B7B" stroke={INK} strokeWidth="3.5" style={{ ...fb, animation: "audit-node 3s ease-in-out -2s infinite" }} />
     </svg>
   );
 }
 
+// A toolbox that bobs, its clasp blinking like a little eye.
 export function IconTools({ className }: IconProps) {
   return (
     <svg {...iconBase} className={className}>
-      <path d="M17 18v-5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v5" stroke={INK} strokeWidth="3.5" />
-      <rect x="5" y="18" width="38" height="24" rx="5" fill="#FF7B7B" stroke={INK} strokeWidth="3.5" />
-      <path d="M5 28h38" stroke={INK} strokeWidth="3.5" />
-      <rect x="20" y="24" width="8" height="8" rx="2" fill="#FFCB2E" stroke={INK} strokeWidth="3" />
+      <Keyframes />
+      <g style={{ animation: "audit-bob 3.4s ease-in-out -0.8s infinite" }}>
+        <path d="M17 18v-5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v5" stroke={INK} strokeWidth="3.5" />
+        <rect x="5" y="18" width="38" height="24" rx="5" fill="#FF7B7B" stroke={INK} strokeWidth="3.5" />
+        <path d="M5 28h38" stroke={INK} strokeWidth="3.5" />
+        <rect
+          x="20"
+          y="24"
+          width="8"
+          height="8"
+          rx="2"
+          fill="#FFCB2E"
+          stroke={INK}
+          strokeWidth="3"
+          className="animate-blink [animation-duration:5.5s]"
+          style={fb}
+        />
+      </g>
     </svg>
   );
 }
 
+// A clock whose minute hand goes round, slowly.
 export function IconTimeSinks({ className }: IconProps) {
   return (
     <svg {...iconBase} className={className}>
+      <Keyframes />
       <circle cx="24" cy="25" r="18" fill="#A9CBFF" stroke={INK} strokeWidth="3.5" />
-      <path d="M24 14v11l7 5" stroke={INK} strokeWidth="3.5" />
+      <path d="M24 25l7 5" stroke={INK} strokeWidth="3.5" />
+      <path
+        d="M24 25V14"
+        stroke={INK}
+        strokeWidth="3.5"
+        style={{ transformBox: "view-box", transformOrigin: "24px 25px", animation: "audit-hand 7s linear infinite" }}
+      />
+      <circle cx="24" cy="25" r="2.2" fill={INK} />
       <path d="M19 4h10" stroke={INK} strokeWidth="3.5" />
     </svg>
   );
 }
 
+// A lightning bolt that flickers now and then.
 export function IconQuickWins({ className }: IconProps) {
   return (
     <svg {...iconBase} className={className}>
-      <path d="M28 3L10 27h12l-4 18 20-26H26l2-16z" fill="#FFCB2E" stroke={INK} strokeWidth="3.5" />
+      <Keyframes />
+      <path
+        d="M28 3L10 27h12l-4 18 20-26H26l2-16z"
+        fill="#FFCB2E"
+        stroke={INK}
+        strokeWidth="3.5"
+        style={{ ...fb, animation: "audit-zap 3.8s ease-in-out -0.5s infinite" }}
+      />
+      <circle cx="40" cy="38" r="2.5" fill="#FF7B7B" className="animate-twinkle [animation-duration:2.6s]" style={fb} />
     </svg>
   );
 }
 
+// Bar chart, bars dipping and rising in turn.
 export function IconNumbers({ className }: IconProps) {
+  const bars = [
+    { x: 8, y: 27, h: 15, fill: "#35D6A0", delay: "0s" },
+    { x: 20, y: 17, h: 25, fill: "#B9A7FF", delay: "-0.7s" },
+    { x: 32, y: 8, h: 34, fill: "#FFCB2E", delay: "-1.4s" },
+  ];
   return (
     <svg {...iconBase} className={className}>
-      <rect x="8" y="27" width="8" height="15" rx="2" fill="#35D6A0" stroke={INK} strokeWidth="3.5" />
-      <rect x="20" y="17" width="8" height="25" rx="2" fill="#B9A7FF" stroke={INK} strokeWidth="3.5" />
-      <rect x="32" y="8" width="8" height="34" rx="2" fill="#FFCB2E" stroke={INK} strokeWidth="3.5" />
+      <Keyframes />
+      {bars.map((b) => (
+        <rect
+          key={b.x}
+          x={b.x}
+          y={b.y}
+          width="8"
+          height={b.h}
+          rx="2"
+          fill={b.fill}
+          stroke={INK}
+          strokeWidth="3.5"
+          style={{
+            transformBox: "fill-box",
+            transformOrigin: "center bottom",
+            animation: `audit-bar 3.6s ease-in-out ${b.delay} infinite`,
+          }}
+        />
+      ))}
       <path d="M4 43h40" stroke={INK} strokeWidth="3.5" />
     </svg>
   );

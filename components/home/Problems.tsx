@@ -9,19 +9,19 @@ import { CopyDataArt, ChasingDocsArt, SameQuestionArt } from "@/components/art/p
 const problems = [
   {
     title: "Copying Data Between Tools",
-    lines: ["The same order, typed into three systems.", "One typo and the numbers stop matching."],
+    lines: ["Same order, typed into three different systems.", "One typo and the numbers stop lining up."],
     Art: CopyDataArt,
     tilt: "md:-rotate-1",
   },
   {
-    title: "Chasing Documents",
-    lines: ["Emailing clients for the form they forgot.", "Then emailing again next week."],
+    title: "Chasing The Same Paperwork",
+    lines: ["You email the client for the form they forgot.", "Next week, you email them again."],
     Art: ChasingDocsArt,
     tilt: "md:rotate-1",
   },
   {
-    title: "Answering The Same Question Again",
-    lines: ["Where is my order? Are you open Sunday?", "Your best people answer it all day long."],
+    title: "Answering The Same Question All Day",
+    lines: ["“Where’s my order?” “Are you open Sunday?”", "Your best person answers it again. And again."],
     Art: SameQuestionArt,
     tilt: "md:-rotate-1",
   },
@@ -60,6 +60,16 @@ export default function Problems() {
           90% { transform: translateY(10px); opacity: 1; }
           100% { transform: translateY(14px); opacity: 0; }
         }
+        @keyframes prob-tag {
+          0%, 100% { transform: rotate(-3deg); }
+          50% { transform: rotate(3deg); }
+        }
+        @keyframes prob-tally {
+          0%, 100% { transform: translateY(0) rotate(0deg); }
+          50% { transform: translateY(-3px) rotate(-3deg); }
+        }
+        .prob-tag { animation: prob-tag 3.6s ease-in-out infinite; }
+        .prob-tally { animation: prob-tally 4.8s ease-in-out -1s infinite; }
         .prob-hop { animation: prob-hop 4.2s ease-in-out infinite; }
         .prob-sweep {
           animation: prob-sweep 5s ease-in-out infinite;
@@ -75,14 +85,15 @@ export default function Problems() {
         <SectionHeading
           title="Is Your Team Still Doing This By Hand?"
           highlight="By Hand"
-          note="Be honest"
+          note="Reason #1 people hire us"
           lede={
             <>
-              Copying, chasing and repeating yourself is work software should be doing. In your{" "}
+              A lot of the week goes to stuff like this, and software can take most of it off your
+              plate. On your{" "}
               <Link href={booking.anchor} className="font-bold text-brand underline">
                 {booking.offer}
               </Link>
-              , we will show you which of it can go.
+              , we&apos;ll point at the parts that can go (and be honest about the parts that can&apos;t).
             </>
           }
         />

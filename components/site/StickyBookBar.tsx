@@ -6,9 +6,12 @@ import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { booking } from "@/lib/data/site";
 
+const HIDDEN_ON = ["/watch", "/contact", booking.page, booking.calendarPage];
+
 // Phones only: once the visitor has scrolled past the hero, keep the
-// booking button within thumb reach. It steps aside while the booking
-// section itself is on screen.
+// booking button within thumb reach. It points at the #book section (the
+// audit quiz) when the page has one, and at the quiz page otherwise. It
+// steps aside while the booking section itself is on screen.
 export default function StickyBookBar() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(false);
@@ -37,7 +40,9 @@ export default function StickyBookBar() {
     };
   }, [pathname]);
 
-  if (pathname === "/watch" || pathname === "/contact") return null;
+  // Pages that are already the booking step (or a video page) don't need it.
+  const path = (pathname || "/").replace(/\/+$/, "") || "/";
+  if (HIDDEN_ON.includes(path)) return null;
 
   return (
     <div

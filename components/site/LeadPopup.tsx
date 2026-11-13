@@ -3,22 +3,28 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AlertCircle, ArrowRight, X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import Mascot from "@/components/art/Mascot";
-import { CheckBadge, Sparkle } from "@/components/art/Doodles";
+import { Sparkle } from "@/components/art/Doodles";
 import FreeBadge from "@/components/art/offer/FreeBadge";
-import { booking, siteConfig } from "@/lib/data/site";
+import Chip from "@/components/quiz/Chip";
+import { PAINS_PARAM, painOptions, savePains } from "@/components/quiz/questions";
+import { booking } from "@/lib/data/site";
 
-// Email-capture pop-up for the free automation audit.
+// Pop-up that opens the free audit quiz. It asks question 1 right here
+// ("What's eating your team's time?"), then sends the visitor to
+// /free-audit with their picks carried over (saved to sessionStorage, and
+// also in the link as ?pains=... in case storage is blocked). The quiz
+// picks them up and starts at question 2.
 //
 // Shows once per visitor, on whichever comes first:
 //   - desktop exit intent (pointer leaves through the top) after 8s,
 //   - scrolling past 55% of the page,
 //   - 45s on the page.
-// Never in the first 6s, never on /contact or /watch, never while the
-// #book section is on screen, and not again for 14 days once it has been
-// shown. Renders nothing until a trigger fires, so it has no effect on
-// first paint or on crawlers.
+// Never in the first 6s, never on /contact, /free-audit or /watch, never
+// while the #book section is on screen, and not again for 14 days once it
+// has been shown. Renders nothing until a trigger fires, so it has no
+// effect on first paint or on crawlers.
 
 const STORAGE_KEY = "ql-audit-popup";
 const QUIET_DAYS = 14;
@@ -26,9 +32,7 @@ const MIN_MS = 6_000;
 const EXIT_MIN_MS = 8_000;
 const TIMER_MS = 45_000;
 const SCROLL_RATIO = 0.55;
-const EXCLUDED = ["/contact", "/watch"];
-
-type Status = "idle" | "submitting" | "success" | "error";
+const EXCLUDED = ["/contact", "/watch", booking.page];
 
 function recentlySeen(): boolean {
   try {
@@ -55,10 +59,10 @@ const FOCUSABLE =
 export default function LeadPopup() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState<Status>("idle");
+  const [picks, setPicks] = useState<string[]>([]);
   const shownRef = useRef(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const firstChipRef = useRef<HTMLDivElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
 
@@ -145,8 +149,9 @@ export default function LeadPopup() {
     if (!open) return;
     const desktop = window.matchMedia("(min-width: 640px)").matches;
 
-    // On phones focus the panel, so the keyboard doesn't jump up at once.
-    if (desktop) emailRef.current?.focus();
+    // On desktop focus the first answer; on phones focus the panel, so the
+    // view doesn't jump.
+    if (desktop) firstChipRef.current?.querySelector<HTMLElement>("button")?.focus();
     else panelRef.current?.focus();
 
     const prevOverflow = document.body.style.overflow;
@@ -187,34 +192,17 @@ export default function LeadPopup() {
     };
   }, [open, close]);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+  function toggle(id: string) {
+    setPicks((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+  }
 
-    setStatus("submitting");
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: siteConfig.web3formsKey,
-          subject: "Free audit request (pop-up)",
-          from_name: "Quest Labs Website",
-          page: pathname,
-          ...data,
-        }),
-      });
-      const json = await res.json();
-      if (json.success) {
-        setStatus("success");
-        form.reset();
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+  // Picks go along in storage and in the link; the quiz reads either.
+  const href =
+    picks.length > 0 ? `${booking.page}?${PAINS_PARAM}=${picks.join(",")}` : booking.page;
+
+  function start() {
+    savePains(picks);
+    setOpen(false);
   }
 
   if (!open) return null;
@@ -243,7 +231,7 @@ export default function LeadPopup() {
         {/* Questy peeking over the top edge, behind the panel */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -top-[58px] left-6 w-[72px] sm:-top-[74px] sm:left-8 sm:w-24"
+          className="pointer-events-none absolute -top-[58px] left-6 w-[72px] animate-float [animation-duration:3.6s] sm:-top-[74px] sm:left-8 sm:w-24"
         >
           <Mascot wave mood="wow" className="w-full" />
         </div>
@@ -259,7 +247,7 @@ export default function LeadPopup() {
           aria-modal="true"
           aria-labelledby={titleId}
           tabIndex={-1}
-          className="card-pop-lg relative z-10 max-h-[70vh] overflow-y-auto rounded-b-none border-b-0 shadow-none px-5 pb-6 pt-8 text-ink focus:outline-none sm:max-h-[90vh] sm:rounded-b-2xl sm:border-b-[3px] sm:shadow-pop-lg sm:px-9 sm:pb-9 sm:pt-10"
+          className="card-pop-lg relative z-10 max-h-[78vh] overflow-y-auto rounded-b-none border-b-0 shadow-none px-5 pb-6 pt-8 text-ink focus:outline-none sm:max-h-[90vh] sm:rounded-b-2xl sm:border-b-[3px] sm:shadow-pop-lg sm:px-8 sm:pb-8 sm:pt-10"
         >
           <button
             type="button"
@@ -270,113 +258,35 @@ export default function LeadPopup() {
             <X aria-hidden="true" className="size-5" strokeWidth={3} />
           </button>
 
-          {status === "success" ? (
-            <div role="status" className="pr-10 text-center sm:pr-0">
-              <CheckBadge className="mx-auto w-14" />
-              <h2 id={titleId} className="mt-4 text-2xl font-extrabold">
-                You&apos;re In.
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-ink/80">
-                We&apos;ll email you within one business day to set up your
-                audit.
-              </p>
-              <Link href={booking.page} onClick={close} className="btn-primary btn-lg mt-6 w-full sm:w-auto">
-                Pick A Time Now
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </Link>
-            </div>
-          ) : (
-            <>
-              <FreeBadge />
-              <h2 id={titleId} className="mt-4 pr-10 text-[1.7rem] font-extrabold leading-tight sm:text-[2rem]">
-                Want Your Team&apos;s <span className="hl-sun">Hours Back?</span>
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-ink/80">
-                On a free {booking.durationAdjective} audit call we look at
-                your workflows and tell you straight what&apos;s worth
-                automating.
-              </p>
+          <FreeBadge />
+          <h2 id={titleId} className="mt-4 pr-10 text-[1.6rem] font-extrabold leading-tight sm:text-[1.9rem]">
+            What&apos;s Eating Your <span className="hl-sun">Team&apos;s Time?</span>
+          </h2>
+          <p className="mt-2 text-base leading-relaxed text-ink/80">
+            Tap whatever applies. A few more quick questions after this, then
+            you pick a time for your free audit.
+          </p>
 
-              <form onSubmit={handleSubmit} className="mt-5 space-y-3">
-                {/* Honeypot for bots */}
-                <input
-                  type="checkbox"
-                  name="botcheck"
-                  className="hidden"
-                  style={{ display: "none" }}
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
-                <div>
-                  <label htmlFor={`${titleId}-email`} className="text-sm font-bold">
-                    Work email
-                  </label>
-                  <input
-                    ref={emailRef}
-                    id={`${titleId}-email`}
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    placeholder="you@company.com"
-                    className="mt-1 w-full rounded-lg border-[3px] border-ink bg-white px-4 py-3 text-base text-ink placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-4 focus:ring-sun"
-                  />
-                </div>
-                <div>
-                  <label htmlFor={`${titleId}-site`} className="text-sm font-bold">
-                    Company website <span className="font-semibold text-muted-foreground">(optional)</span>
-                  </label>
-                  <input
-                    id={`${titleId}-site`}
-                    name="website"
-                    type="text"
-                    inputMode="url"
-                    autoComplete="url"
-                    placeholder="company.com"
-                    className="mt-1 w-full rounded-lg border-[3px] border-ink bg-white px-4 py-3 text-base text-ink placeholder:text-muted-foreground focus:border-brand focus:outline-none focus:ring-4 focus:ring-sun"
-                  />
-                </div>
+          <div ref={firstChipRef} className="mt-4 flex flex-wrap gap-2">
+            {painOptions.map((o) => (
+              <Chip
+                key={o.id}
+                label={o.label}
+                multi
+                size="sm"
+                pressed={picks.includes(o.id)}
+                onClick={() => toggle(o.id)}
+              />
+            ))}
+          </div>
 
-                {status === "error" && (
-                  <p role="alert" className="flex items-start gap-2 text-sm font-semibold text-red-700">
-                    <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
-                    <span>
-                      That didn&apos;t send. Please try again or email us at{" "}
-                      <a href={`mailto:${siteConfig.email}`} className="underline">
-                        {siteConfig.email}
-                      </a>
-                      .
-                    </span>
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={status === "submitting"}
-                  className="btn-primary btn-lg mt-2 w-full disabled:opacity-60"
-                >
-                  {status === "submitting" ? "Sending…" : "Send Me My Free Audit"}
-                </button>
-              </form>
-
-              <p className="mt-3 text-center text-xs text-muted-foreground">
-                No spam, just one email about your audit.{" "}
-                <Link href="/privacy" onClick={close} className="font-semibold underline">
-                  Privacy policy
-                </Link>
-              </p>
-              <p className="mt-3 text-center text-sm">
-                <Link
-                  href={booking.page}
-                  onClick={close}
-                  className="inline-flex min-h-[44px] items-center gap-1 font-bold text-brand underline underline-offset-4"
-                >
-                  Or pick a time now
-                  <ArrowRight aria-hidden="true" className="size-4" />
-                </Link>
-              </p>
-            </>
-          )}
+          <Link href={href} onClick={start} className="btn-primary btn-lg group mt-6 w-full">
+            Start My Free Audit
+            <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <p className="mt-3 text-center text-xs text-muted-foreground">
+            Under a minute. {picks.length > 0 ? `${picks.length} picked so far.` : "You can pick more than one."}
+          </p>
         </div>
       </div>
     </div>

@@ -40,15 +40,13 @@
     outline: 3px solid #3b4cff;
     outline-offset: 3px;
   }
+  /* The site's motion is gentle, looping decoration (bobbing, blinking,
+     drifting). The owner wants it to play for every visitor, so it is not
+     switched off by the operating system's reduce-motion setting. Only the
+     smooth page scroll respects it. */
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
     }
   }
 }
@@ -245,11 +243,9 @@
   }
 }
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: reveal-in linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 18%;
-    }
+  .reveal {
+    animation: reveal-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 18%;
   }
 }

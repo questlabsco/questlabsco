@@ -32,7 +32,7 @@ Quest Labs facts before launch:
 | `lib/data/site.ts` | Email, Calendly URL, Web3Forms key, social links, **stats**, **office locations**, values |
 | `lib/data/clients.ts` | "Trusted by" company marks (currently placeholder names — replace!) |
 | `lib/data/recognition.ts` | Award/certification badges (placeholders — replace!) |
-| `lib/data/case-studies.ts` | The six case studies (placeholder projects — replace with real ones) |
+| `lib/data/engagements.ts` | The eight example engagements at `/examples` (scopes with targets, not client results) |
 | `lib/data/services.ts` | All nine service pages' copy |
 | `lib/data/industries.ts` | All eight industry pages' copy |
 | `lib/data/process.ts`, `techstack.ts` | Delivery steps and tech-stack tabs |
@@ -43,13 +43,20 @@ Quest Labs facts before launch:
   (generated dark variant, used on white).
 - **Contact form:** posts to Web3Forms → questlabsco@gmail.com. Key lives in
   `lib/data/site.ts`.
-- **Sitemap:** `public/sitemap.xml` — update if you add/remove pages or change
-  the domain.
+- **Sitemap:** generated at build time by `app/sitemap.ts` from the data files,
+  so it updates itself when you add or remove pages. The domain lives in
+  `lib/data/site.ts` (`siteConfig.url`).
+- **Booking:** every main button books a call. The Calendly link is
+  `siteConfig.calendlyUrl`; the button label and target are `booking` in the
+  same file.
+- **Images:** served as WebP. After adding or replacing an image, add its pixel
+  size to `lib/image-dims.ts`.
+- **Response headers:** `public/_headers` (security headers and caching).
 
 ## Structure
 
 - `app/` — pages: home, `services/[slug]`, `industries/[slug]`,
-  `case-studies/[slug]`, about, contact, privacy, terms
+  `examples/[slug]`, about, contact, privacy, terms
 - `components/site/` — header (mega-menu), footer, hero canvas animation,
   section components, contact form
 - Fonts: **Mona Sans** via `next/font/google`

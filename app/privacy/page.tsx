@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
   description: "How Quest Labs Co. collects, uses, and protects your information.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
@@ -12,11 +14,24 @@ export default function PrivacyPage() {
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-12 md:pb-16">
           <h1 className="text-4xl font-bold tracking-tight">Privacy Policy</h1>
-          <p className="mt-3 text-sm text-white/50">Effective date: January 1, 2026</p>
+          <p className="mt-3 text-sm text-white/50">
+            Effective date: January 1, 2026 · Last updated: November 12, 2026
+          </p>
         </div>
       </section>
 
       <div className="container-site py-16 max-w-3xl space-y-10 text-sm md:text-base leading-relaxed text-ink/80">
+        <section>
+          <h2 className="text-xl font-bold text-ink mb-3">Who we are</h2>
+          <p>
+            This website is operated by {siteConfig.legalName || siteConfig.name}
+            {siteConfig.location && `, based in ${siteConfig.location}`}. On
+            this site we refer to ourselves as &quot;{siteConfig.name}&quot;,
+            &quot;we&quot;, and &quot;us&quot;.{" "}
+            {siteConfig.legalName || siteConfig.name} is the data controller
+            for the personal information collected through this website.
+          </p>
+        </section>
         <section>
           <h2 className="text-xl font-bold text-ink mb-3">Information we collect</h2>
           <p>

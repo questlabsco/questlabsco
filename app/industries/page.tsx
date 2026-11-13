@@ -5,19 +5,22 @@ import SectionHeading from "@/components/site/SectionHeading";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
 import { industries } from "@/lib/data/industries";
+import Img from "@/components/site/Img";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries",
+export const metadata: Metadata = pageMeta({
+  title: "AI Automation by Industry",
   description:
     "AI automation solutions for healthcare, finance, retail, logistics, manufacturing, legal, real estate, and education.",
-};
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   return (
     <main>
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
-          <Reveal className="max-w-3xl">
+          <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
               AI that speaks your industry&apos;s language
             </h1>
@@ -26,7 +29,7 @@ export default function IndustriesPage() {
               regulations, formats, and edge cases are not. Here&apos;s where
               we&apos;ve done the homework.
             </p>
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -41,12 +44,10 @@ export default function IndustriesPage() {
                   className="group grid grid-cols-1 sm:grid-cols-[200px_1fr] border border-line bg-white hover:border-primary transition-colors h-full"
                 >
                   <div className="aspect-[4/3] sm:aspect-auto sm:h-full overflow-hidden bg-tint">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Img
                       src={ind.image}
-                      alt={ind.name}
+                      alt=""
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                      loading="lazy"
                     />
                   </div>
                   <div className="p-6 md:p-7 flex flex-col">

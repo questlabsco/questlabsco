@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import ContactPageContent from "./ContactPageContent";
+import { booking } from "@/lib/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Let's Talk",
+export const metadata: Metadata = pageMeta({
+  title: "Book a Free Call",
   description:
-    "Tell us about your project. We reply within one business day. Or book a 30-minute call directly.",
-};
+    `Book a free ${booking.durationAdjective} call with Quest Labs Co. to find out what's worth automating, or send us a message. We reply within one business day.`,
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return <ContactPageContent />;

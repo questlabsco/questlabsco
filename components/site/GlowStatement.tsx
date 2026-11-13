@@ -21,7 +21,7 @@ export default function GlowStatement() {
     <section
       ref={ref}
       className="relative bg-white"
-      style={{ height: "220vh" }}
+      style={{ height: "170vh" }}
     >
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         <motion.div

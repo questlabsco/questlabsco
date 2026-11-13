@@ -50,7 +50,8 @@ export function WebGLShader() {
 
     const scene = new THREE.Scene();
     const renderer = new THREE.WebGLRenderer({ canvas });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Capped: a full-screen fragment shader at 2x-3x density is costly on phones.
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setClearColor(new THREE.Color(0x000000));
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, -1);
 
@@ -96,15 +97,34 @@ export function WebGLShader() {
     };
 
     handleResize();
-    // Always animated: this is a purely decorative backdrop (slow color
-    // drift, no flashing), so it intentionally ignores prefers-reduced-motion.
-    animate();
+
+    // Only draw while the hero is on screen and the tab is visible, so the
+    // shader stops costing battery and main-thread time once scrolled past.
+    let onScreen = true;
+    const sync = () => {
+      const shouldRun = onScreen && !document.hidden;
+      if (shouldRun && animationId === null) animate();
+      if (!shouldRun && animationId !== null) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    };
+    sync();
+
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      sync();
+    });
+    io.observe(parent);
+    document.addEventListener("visibilitychange", sync);
 
     const ro = new ResizeObserver(handleResize);
     ro.observe(parent);
 
     return () => {
       if (animationId) cancelAnimationFrame(animationId);
+      io.disconnect();
+      document.removeEventListener("visibilitychange", sync);
       ro.disconnect();
       scene.remove(mesh);
       geometry.dispose();

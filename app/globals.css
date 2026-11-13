@@ -92,3 +92,57 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #6d28d9;
 }
+
+/* ---------------------------------------------------------------------- */
+/* Added with the booking redesign                                         */
+/* ---------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    /* Anchored sections (#book, #message) clear the floating header. */
+    scroll-padding-top: 5rem;
+  }
+  body {
+    /* Backstop against any decorative element pushing the page sideways. */
+    overflow-x: clip;
+  }
+  :focus-visible {
+    outline: 2px solid #8b5cf6;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* Larger button for the main action on a page: 48px tall, easy to tap. */
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+}
+
+/* Scroll reveal. Content is visible by default; browsers with scroll-driven
+   animations fade it in as it enters the viewport. No JavaScript involved,
+   so nothing is ever stuck hidden. */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 16%;
+    }
+  }
+}

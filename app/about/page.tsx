@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import SectionHeading from "@/components/site/SectionHeading";
 import RecognitionStrip from "@/components/site/RecognitionStrip";
 import StatsBar from "@/components/site/StatsBar";
-import CTABand from "@/components/site/CTABand";
+import BookCall from "@/components/site/BookCall";
 import Reveal from "@/components/site/Reveal";
-import { values } from "@/lib/data/site";
+import { siteConfig, values } from "@/lib/data/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
+export const metadata: Metadata = pageMeta({
+  title: "About Quest Labs Co.: AI Automation Agency",
   description:
-    "Quest Labs Co. is an AI automation and web engineering team measured by the outcomes it delivers: meet the principles and people behind the work.",
-};
+    "Quest Labs Co. is an AI automation and web development agency with 25+ active clients, measured by the hours and outcomes it delivers.",
+  path: "/about",
+  absoluteTitle: true,
+});
 
 export default function AboutPage() {
   return (
@@ -18,7 +21,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
-          <Reveal className="max-w-3xl">
+          <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
               Bold enough to promise outcomes. Disciplined enough to deliver
               them.
@@ -29,7 +32,14 @@ export default function AboutPage() {
               automating, build the system properly, and stick around to keep
               it running.
             </p>
-          </Reveal>
+            {(siteConfig.location || siteConfig.legalName) && (
+              <p className="mt-5 text-sm text-white/55">
+                {[siteConfig.legalName, siteConfig.location && `Based in ${siteConfig.location}`]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
@@ -70,7 +80,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CTABand
+      <BookCall
         title="Work with us"
         body="Whether you have a scoped project or a vague suspicion that your team is doing too much by hand, the first conversation costs nothing."
       />

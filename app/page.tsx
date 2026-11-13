@@ -1,11 +1,26 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import WebGLShader from "@/components/site/WebGLShader";
-import RecognitionCarousel from "@/components/site/RecognitionCarousel";
+import HeroShader from "@/components/site/HeroShader";
 import GlowStatement from "@/components/site/GlowStatement";
-import CTABand from "@/components/site/CTABand";
+import BookCall from "@/components/site/BookCall";
+import FAQAccordion from "@/components/site/FAQAccordion";
+import SectionHeading from "@/components/site/SectionHeading";
+import Img from "@/components/site/Img";
 import Reveal from "@/components/site/Reveal";
-import { stats } from "@/lib/data/site";
+import { booking, stats } from "@/lib/data/site";
+import { getEngagement } from "@/lib/data/engagements";
+
+// Three example engagements, read from the examples data so the homepage
+// can never disagree with the full write-up. Their numbers are targets, and
+// the section says so.
+const examples = [
+  "med-spa-front-desk",
+  "freight-delivery-paperwork",
+  "bookkeeping-document-collection",
+].flatMap((slug) => {
+  const e = getEngagement(slug);
+  return e ? [e] : [];
+});
 
 const principles = [
   {
@@ -22,111 +37,253 @@ const principles = [
   },
 ];
 
+const steps = [
+  {
+    title: "Book a free call",
+    body: `${booking.duration} with the team that would do the work. You describe the workflow that eats your week; we tell you what's automatable and what isn't worth doing.`,
+  },
+  {
+    title: "Get a priced audit",
+    body: "A scoped, written roadmap before a line of code, with the cost and the expected return attached to every item. You decide on the numbers.",
+  },
+  {
+    title: "Go live in 4–8 weeks",
+    body: "A working build on your real data, with human review, permissions, and audit trails built in. Documented, tested, and yours.",
+  },
+];
+
 const pillars = [
   {
-    image: "/images/company/laptop-code.jpg",
+    image: "/images/company/laptop-code.webp",
     title: "AI & automation",
     line: "From feasibility audit to autonomous systems in production. We find the workflows worth automating, build the pipeline or agent that handles them, and stay on to keep it accurate as your business changes.",
-    href: "/services/",
+    href: "/services",
+    cta: "AI and automation services",
   },
   {
-    image: "/images/company/laptop-website.jpg",
+    image: "/images/company/laptop-website.webp",
     title: "Web engineering",
     line: "Complete websites and web apps on modern edge stacks. Marketing sites, customer portals, and internal tools built to load fast, rank well, and hand over cleanly to whoever runs them next.",
-    href: "/services/web-development/",
+    href: "/services/web-development",
+    cta: "Web development services",
   },
   {
-    image: "/images/company/design-sketches.jpg",
+    image: "/images/company/design-sketches.webp",
     title: "Design for the web",
     line: "UX and visual design implemented by the same team that builds it. Research, wireframes, and visual systems that survive contact with real engineering constraints, because nothing is lost in handoff.",
-    href: "/services/ui-ux-design/",
+    href: "/services/ui-ux-design",
+    cta: "UI/UX design services",
+  },
+];
+
+const faqs = [
+  {
+    q: "What happens on the free call?",
+    a: `It's ${booking.duration} with the team that would do the work. You describe the workflow that takes the most time, and we tell you what is automatable, roughly what it would take, and whether it's worth doing. There's no obligation and no sales sequence afterwards.`,
+  },
+  {
+    q: "How much does a project cost?",
+    a: "It depends on the workflow, so we don't guess. Every build starts with a priced audit: a scoped, written roadmap with the cost and expected return itemized, so you can decide on the numbers before committing to a build.",
+  },
+  {
+    q: "How long until something is live?",
+    a: "Typically four to eight weeks from kickoff to a production build. You see a working prototype on your own data well before that, so decisions are made on evidence.",
+  },
+  {
+    q: "What if AI isn't the right answer for us?",
+    a: "Then we say so before you spend. We benchmark every AI approach against simpler alternatives and recommend the simplest thing that works, even when that means a smaller project.",
+  },
+  {
+    q: "Is our data safe?",
+    a: "Models are grounded in your own data and wrapped in permissions, audit trails, and human review on anything that matters. 86% of our client work is in regulated industries, so this is how we build by default.",
+  },
+  {
+    q: "Who owns what you build?",
+    a: "You do. Everything is documented, tested, and handed over. Many clients keep us on to run and improve what we built, but that's their choice.",
   },
 ];
 
 export default function Home() {
   return (
     <main>
-      {/* Hero: animated shader background, fills the whole screen on load */}
-      <section className="relative min-h-screen flex items-center bg-ink-deep text-white overflow-hidden">
-        <WebGLShader />
+      {/* Hero: animated shader background, fills the whole screen on load.
+          The text is in the static HTML at full opacity, so it paints
+          before any JavaScript runs. */}
+      <section className="relative min-h-screen flex flex-col bg-ink-deep text-white overflow-hidden">
+        <HeroShader />
         <div className="absolute inset-0 bg-black/50 pointer-events-none" />
-        <div className="container-site relative z-10 py-32 text-center">
-          <Reveal className="max-w-3xl mx-auto">
+
+        <div className="container-site relative z-10 flex-1 flex items-center pt-32 pb-14 text-center">
+          <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight text-white">
-              Work that used to need people, engineered away
+              AI automation, measured by the hours it saves you
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-white leading-relaxed max-w-xl mx-auto">
-              AI automation and modern web products, measured by the hours
-              they save you.
+            <p className="mt-6 text-lg md:text-xl text-white leading-relaxed max-w-2xl mx-auto">
+              Work that used to need people, engineered away. We build AI
+              agents, workflow automation, and fast websites for 25+ active
+              clients.
             </p>
             <div className="mt-9 flex flex-wrap gap-4 justify-center">
-              <Link href="/contact/" className="btn-primary group !px-8 !py-3">
-                Let&apos;s talk
+              <Link href={booking.anchor} className="btn-primary btn-lg group">
+                {booking.label}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
+              <Link href="/examples" className="btn-outline-light btn-lg">
+                See example projects
+              </Link>
             </div>
-          </Reveal>
+            <p className="mt-5 text-sm text-white/60">
+              {booking.duration}. No sales pitch.
+            </p>
+          </div>
+        </div>
+
+        {/* Headline numbers, pinned to the bottom of the first screen */}
+        <div className="relative z-10 border-t border-white/15">
+          <dl className="container-site grid grid-cols-2 lg:grid-cols-4">
+            {stats.map((s, i) => (
+              <div
+                key={s.label}
+                className={`py-6 md:py-8 ${i % 2 === 1 ? "pl-5 border-l border-white/15" : "pr-5"} ${
+                  i >= 2 ? "border-t border-white/15 lg:border-t-0" : ""
+                } ${i > 0 ? "lg:pl-8 lg:border-l lg:border-white/15" : ""}`}
+              >
+                <dt className="text-[11px] font-semibold uppercase tracking-wider text-white/55 leading-snug min-h-[2.4em]">
+                  {s.label}
+                </dt>
+                <dd className="mt-3 text-3xl md:text-4xl font-black text-white">
+                  {s.value}
+                  <span className="text-accent">{s.suffix}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* Industry recognition: carousel only, no surrounding copy */}
+      {/* Example projects, on the purple band */}
       <section
         className="text-white"
         style={{
           background: "linear-gradient(180deg, #2A2153 0%, #241B45 45%, #1E1840 100%)",
         }}
       >
-        <div className="container-site py-14 md:py-20">
-          <RecognitionCarousel onDark />
+        <div className="container-site py-16 md:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-10 md:mb-14">
+            <Reveal className="max-w-2xl">
+              <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold leading-[1.1] text-white">
+                What a typical project looks like
+              </h2>
+              <p className="mt-5 text-base md:text-lg text-white/70 leading-relaxed">
+                Three example engagements. The numbers are the targets we
+                would set, worked out from stated assumptions and measured
+                after launch.
+              </p>
+            </Reveal>
+            <Reveal>
+              <Link href="/examples" className="btn-outline-light">
+                All example projects
+              </Link>
+            </Reveal>
+          </div>
+
+          <div className="border-t border-white/15">
+            {examples.map((e) => (
+              <Reveal key={e.slug}>
+                <Link
+                  href={`/examples/${e.slug}`}
+                  className="group grid grid-cols-1 md:grid-cols-[240px_1fr_auto] items-baseline gap-2 md:gap-10 py-7 md:py-9 border-b border-white/15"
+                >
+                  <span>
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-white/55">
+                      Target
+                    </span>
+                    <span className="mt-2 block text-5xl md:text-6xl font-black leading-none text-white">
+                      {e.target.value}
+                    </span>
+                  </span>
+                  <span>
+                    <span className="block text-lg md:text-xl font-semibold text-white leading-snug">
+                      {e.target.label}
+                    </span>
+                    <span className="mt-2 block text-sm md:text-base text-white/60 group-hover:text-white transition-colors">
+                      {e.title}
+                    </span>
+                  </span>
+                  <ArrowRight className="hidden md:block size-5 self-center text-white/50 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Engineering-first statement: tall, scroll-driven purple glow */}
+      {/* Engineering-first statement: scroll-driven purple glow */}
       <GlowStatement />
 
-      {/* Delivery principles + headline stats */}
+      {/* Delivery principles, then how an engagement runs */}
       <section className="bg-white border-t border-line">
         <div className="container-site py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-16">
             <Reveal>
-              <p className="text-sm font-bold uppercase tracking-wide text-ink">
+              <h2 className="text-sm font-bold uppercase tracking-wide text-ink">
                 Our delivery principles
-              </p>
+              </h2>
             </Reveal>
-            <Reveal delay={0.08}>
+            <Reveal>
               <p className="text-xl md:text-2xl font-semibold text-ink leading-snug max-w-2xl">
                 We own delivery from the first workshop to production
                 support.
               </p>
               <div className="mt-8 border-t border-line">
                 {principles.map((p) => (
-                  <Link
+                  <div
                     key={p.title}
-                    href="/about/"
-                    className="group flex items-center justify-between gap-6 py-5 border-b border-line hover:text-primary transition-colors"
+                    className="grid grid-cols-1 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-2 md:gap-8 py-5 md:py-6 border-b border-line"
                   >
-                    <span className="text-base md:text-lg font-semibold text-ink group-hover:text-primary transition-colors uppercase tracking-tight">
+                    <h3 className="text-base md:text-lg font-semibold text-ink uppercase tracking-tight">
                       {p.title}
-                    </span>
-                    <ArrowRight className="size-5 shrink-0 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                  </Link>
+                    </h3>
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                      {p.body}
+                    </p>
+                  </div>
                 ))}
               </div>
             </Reveal>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {stats.map((s, i) => (
-              <Reveal key={s.label} delay={i * 0.06} className="border border-line p-6">
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground leading-snug min-h-[2.4em]">
-                  {s.label}
-                </p>
-                <p className="mt-4 text-3xl md:text-4xl font-black text-ink">
-                  {s.value}
-                  <span className="text-primary">{s.suffix}</span>
-                </p>
+          <div className="mt-16 md:mt-20 grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-10 lg:gap-16">
+            <Reveal>
+              <h2 className="text-sm font-bold uppercase tracking-wide text-ink">
+                How it works
+              </h2>
+            </Reveal>
+            <div>
+              <ol className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {steps.map((s, i) => (
+                  <li key={s.title} className="border border-line">
+                    <Reveal className="p-6 h-full">
+                      <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                        Step {String(i + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-4 text-xl font-black text-ink leading-tight">
+                        {s.title}
+                      </h3>
+                      <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">
+                        {s.body}
+                      </p>
+                    </Reveal>
+                  </li>
+                ))}
+              </ol>
+              <Reveal className="mt-8">
+                <Link href={booking.anchor} className="btn-primary btn-lg group">
+                  {booking.label}
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Reveal>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -142,12 +299,10 @@ export default function Home() {
             style={{ zIndex: i + 1 }}
           >
             <div className="relative h-[45vh] lg:h-screen">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src={p.image}
-                alt={p.title}
+                alt=""
                 className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
               />
             </div>
             <div className="flex items-center px-6 md:px-14 lg:px-16 xl:px-20 py-14 lg:py-0">
@@ -162,7 +317,7 @@ export default function Home() {
                   href={p.href}
                   className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary group"
                 >
-                  Learn more
+                  {p.cta}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Reveal>
@@ -171,7 +326,21 @@ export default function Home() {
         ))}
       </div>
 
-      <CTABand />
+      {/* Questions people ask before they book */}
+      <section className="relative bg-tint border-y border-line" style={{ zIndex: pillars.length + 1 }}>
+        <div className="container-site py-20 md:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
+            <SectionHeading title="Questions we get on every first call" />
+            <Reveal>
+              <FAQAccordion items={faqs} />
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <div className="relative" style={{ zIndex: pillars.length + 1 }}>
+        <BookCall />
+      </div>
     </main>
   );
 }

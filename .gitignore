@@ -37,3 +37,6 @@ design-system/
 # editor
 .vscode/
 .idea/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

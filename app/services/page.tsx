@@ -5,12 +5,14 @@ import SectionHeading from "@/components/site/SectionHeading";
 import CTABand from "@/components/site/CTABand";
 import Reveal from "@/components/site/Reveal";
 import { services, serviceGroups } from "@/lib/data/services";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = pageMeta({
+  title: "AI Automation and Web Development Services",
   description:
-    "AI consulting, AI agents, generative AI, chatbots, workflow automation, AI integration, web development, and UI/UX design.",
-};
+    "AI consulting, AI agents, generative AI, chatbots, workflow automation, AI integration, web development, and UI/UX design from one team.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
@@ -18,7 +20,7 @@ export default function ServicesPage() {
       {/* Page hero */}
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
-          <Reveal className="max-w-3xl">
+          <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
               Everything it takes to put AI to work, under one roof
             </h1>
@@ -27,7 +29,7 @@ export default function ServicesPage() {
               a conversation or an audit; scale to systems your business runs
               on.
             </p>
-          </Reveal>
+          </div>
         </div>
       </section>
 

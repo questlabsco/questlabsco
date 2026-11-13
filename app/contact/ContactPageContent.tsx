@@ -1,16 +1,14 @@
-"use client";
-
-import Script from "next/script";
 import { Clock, Search, BarChart2, ShieldOff } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
+import CalendlyEmbed from "@/components/site/CalendlyEmbed";
 import Reveal from "@/components/site/Reveal";
-import { siteConfig } from "@/lib/data/site";
+import { booking, siteConfig } from "@/lib/data/site";
 
 const expectations = [
   {
     icon: Clock,
-    title: "Reply within one business day",
-    body: "A real answer from the team that would do the work, not a sales sequence.",
+    title: `${booking.duration}, with the people who do the work`,
+    body: "A real conversation with the team that would build it, not a sales sequence.",
   },
   {
     icon: Search,
@@ -32,88 +30,77 @@ const expectations = [
 export default function ContactPageContent() {
   return (
     <main>
-      {/* Hero + form */}
+      {/* Hero + calendar: booking is the first thing on the page */}
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-12 lg:gap-20 items-start">
+            <div>
               <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
-                Tell us what you&apos;re trying to achieve
+                Book a free call
               </h1>
               <p className="mt-6 text-lg text-white/70 leading-relaxed">
-                A workflow that eats your team&apos;s week, a product idea, a
-                website that needs to work harder: describe it in your own
-                words and we&apos;ll take it from there.
+                Pick a time that works for you. We&apos;ll map your
+                workflows, show you what&apos;s automatable, and attach real
+                numbers.
               </p>
 
               <div className="mt-10 space-y-6">
-                {expectations.map((e, i) => {
+                {expectations.map((e) => {
                   const Icon = e.icon;
                   return (
-                    <Reveal key={e.title} delay={0.1 + i * 0.06}>
-                      <div className="flex items-start gap-4">
-                        <div className="size-10 shrink-0 border border-line-dark bg-ink-soft flex items-center justify-center text-accent">
-                          <Icon className="size-4" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-bold text-white">
-                            {e.title}
-                          </p>
-                          <p className="mt-1 text-sm text-white/50 leading-relaxed">
-                            {e.body}
-                          </p>
-                        </div>
+                    <div key={e.title} className="flex items-start gap-4">
+                      <div className="size-10 shrink-0 border border-line-dark bg-ink-soft flex items-center justify-center text-accent">
+                        <Icon className="size-4" />
                       </div>
-                    </Reveal>
+                      <div>
+                        <p className="text-sm font-bold text-white">{e.title}</p>
+                        <p className="mt-1 text-sm text-white/50 leading-relaxed">
+                          {e.body}
+                        </p>
+                      </div>
+                    </div>
                   );
                 })}
               </div>
 
-              <p className="mt-10 text-sm text-white/40">
+              <p className="mt-10 text-sm text-white/55 leading-relaxed">
+                25+ active clients. Tens of thousands of hours of manual work
+                saved. 4.9 / 5 average client rating.
+              </p>
+            </div>
+
+            <div className="bg-white">
+              <CalendlyEmbed />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Message form, for people who would rather write */}
+      <section id="message" className="bg-white">
+        <div className="container-site py-20 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 items-start">
+            <Reveal>
+              <h2 className="text-3xl md:text-4xl font-bold text-ink leading-tight">
+                Or send us a message
+              </h2>
+              <p className="mt-5 text-base text-muted-foreground leading-relaxed">
+                A workflow that eats your team&apos;s week, a product idea, a
+                website that needs to work harder: describe it in your own
+                words and we&apos;ll reply within one business day.
+              </p>
+              <p className="mt-6 text-sm text-muted-foreground">
                 Prefer email?{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-accent hover:text-white transition-colors"
+                  className="font-semibold text-primary hover:text-primary-hover transition-colors"
                 >
                   {siteConfig.email}
                 </a>
               </p>
             </Reveal>
-
-            <Reveal delay={0.15} className="bg-white p-7 md:p-9 self-start">
-              <h2 className="text-xl font-bold text-ink mb-6">
-                Send us a request
-              </h2>
+            <Reveal className="border border-line p-7 md:p-9">
               <ContactForm />
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Calendly */}
-      <section className="bg-white">
-        <div className="container-site py-20 md:py-24">
-          <Script
-            src="https://assets.calendly.com/assets/external/widget.js"
-            strategy="afterInteractive"
-          />
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 items-start">
-            <Reveal>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink leading-tight">
-                Pick a time that works for you
-              </h2>
-              <p className="mt-5 text-base text-muted-foreground leading-relaxed">
-                30 minutes with the team. We&apos;ll map your workflows, show
-                you what&apos;s automatable, and attach real numbers, no
-                sales pitch.
-              </p>
-            </Reveal>
-            <Reveal delay={0.1} className="border border-line">
-              <div
-                className="calendly-inline-widget"
-                data-url={siteConfig.calendlyUrl}
-                style={{ minWidth: "320px", height: "700px" }}
-              />
             </Reveal>
           </div>
         </div>

@@ -1,0 +1,3 @@
+# The case-studies section became /examples. Send old links there.
+/case-studies /examples 301
+/case-studies/* /examples 301

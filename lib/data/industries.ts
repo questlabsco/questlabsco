@@ -10,7 +10,7 @@ export type Industry = {
   image: string; // /public path
   useCases: { title: string; body: string }[];
   outcomes: string[]; // short result-style bullets
-  caseStudySlugs: string[];
+  caseStudySlugs: string[]; // slugs of example engagements in engagements.ts
 };
 
 export const industries: Industry[] = [
@@ -21,7 +21,7 @@ export const industries: Industry[] = [
     title: "AI solutions for healthcare",
     intro:
       "Healthcare teams drown in documentation and administrative work that never touches a patient. We build AI systems that take on the paperwork (coding, claims, scheduling, and records) while keeping clinicians and compliance in control.",
-    image: "/images/industries/healthcare.jpg",
+    image: "/images/industries/healthcare.webp",
     useCases: [
       {
         title: "Clinical documentation support",
@@ -53,7 +53,7 @@ export const industries: Industry[] = [
       "Cleaner claims and fewer denials",
       "Shorter intake and lower no-show rates",
     ],
-    caseStudySlugs: ["healthcare-rcm-analytics"],
+    caseStudySlugs: ["med-spa-front-desk"],
   },
   {
     slug: "finance",
@@ -62,7 +62,7 @@ export const industries: Industry[] = [
     title: "AI solutions for finance and fintech",
     intro:
       "Financial firms run on high-volume, high-stakes information work: exactly where AI pays for itself fastest. We build automation for reconciliation, monitoring, reporting, and client operations, engineered for audit trails from day one.",
-    image: "/images/industries/finance.jpg",
+    image: "/images/industries/finance.webp",
     useCases: [
       {
         title: "Reconciliation & exception handling",
@@ -94,7 +94,7 @@ export const industries: Industry[] = [
       "Faster onboarding with a complete audit trail",
       "Analyst time moved from assembly to analysis",
     ],
-    caseStudySlugs: ["fintech-trading-automation"],
+    caseStudySlugs: ["bookkeeping-document-collection"],
   },
   {
     slug: "retail-ecommerce",
@@ -103,7 +103,7 @@ export const industries: Industry[] = [
     title: "AI solutions for retail and e-commerce",
     intro:
       "Margins in retail are won operationally. We build AI that answers customers instantly, keeps catalogs clean, forecasts demand, and personalizes without being creepy, so growth doesn't require growing headcount at the same rate.",
-    image: "/images/industries/retail.jpg",
+    image: "/images/industries/retail.webp",
     useCases: [
       {
         title: "Customer support automation",
@@ -135,7 +135,7 @@ export const industries: Industry[] = [
       "Catalog updates in hours instead of weeks",
       "Forecast-driven inventory with fewer stockouts",
     ],
-    caseStudySlugs: ["retail-support-chatbot", "ecommerce-personalization"],
+    caseStudySlugs: ["skincare-support-tickets"],
   },
   {
     slug: "logistics",
@@ -144,7 +144,7 @@ export const industries: Industry[] = [
     title: "AI solutions for logistics and supply chain",
     intro:
       "Logistics is a document business wearing a transportation costume: BOLs, PODs, customs forms, rate confirmations. We automate the paperwork and the status-chasing so your ops team manages exceptions, not inboxes.",
-    image: "/images/industries/logistics.jpg",
+    image: "/images/industries/logistics.webp",
     useCases: [
       {
         title: "Freight document processing",
@@ -176,7 +176,7 @@ export const industries: Industry[] = [
       "Customer status queries answered before they're asked",
       "Ops time concentrated on true exceptions",
     ],
-    caseStudySlugs: ["logistics-document-ai"],
+    caseStudySlugs: ["freight-delivery-paperwork"],
   },
   {
     slug: "manufacturing",
@@ -185,7 +185,7 @@ export const industries: Industry[] = [
     title: "AI solutions for manufacturing",
     intro:
       "Manufacturers sit on years of production data that nobody has time to use. We turn it into working systems (quality inspection, maintenance prediction, and planning support) that integrate with the MES and ERP you already run.",
-    image: "/images/industries/manufacturing.jpg",
+    image: "/images/industries/manufacturing.webp",
     useCases: [
       {
         title: "Visual quality inspection",
@@ -217,7 +217,7 @@ export const industries: Industry[] = [
       "Unplanned downtime reduced by predicted failures",
       "Tribal knowledge captured and queryable",
     ],
-    caseStudySlugs: ["logistics-document-ai"],
+    caseStudySlugs: ["fabrication-quote-intake"],
   },
   {
     slug: "legal",
@@ -226,7 +226,7 @@ export const industries: Industry[] = [
     title: "AI solutions for legal teams",
     intro:
       "Legal work is reading, comparing, and drafting at volume: a natural fit for AI with a lawyer in the loop. We build systems for firms and in-house teams that accelerate review and drafting while keeping privilege and confidentiality intact.",
-    image: "/images/industries/legal.jpg",
+    image: "/images/industries/legal.webp",
     useCases: [
       {
         title: "Contract review & extraction",
@@ -258,7 +258,7 @@ export const industries: Industry[] = [
       "Consistent playbook application across reviewers",
       "Faster intake-to-engagement turnaround",
     ],
-    caseStudySlugs: ["legal-contract-intelligence"],
+    caseStudySlugs: ["law-firm-client-intake"],
   },
   {
     slug: "real-estate",
@@ -267,7 +267,7 @@ export const industries: Industry[] = [
     title: "AI solutions for real estate",
     intro:
       "Real estate teams juggle listings, leases, showings, and a relentless inbox. We automate the document and communication load (for brokerages, property managers, and proptech products) so agents spend their time with clients.",
-    image: "/images/industries/real-estate.jpg",
+    image: "/images/industries/real-estate.webp",
     useCases: [
       {
         title: "Lease & contract abstraction",
@@ -299,7 +299,7 @@ export const industries: Industry[] = [
       "Every inquiry answered within seconds",
       "Deadlines tracked without spreadsheet heroics",
     ],
-    caseStudySlugs: ["legal-contract-intelligence", "ecommerce-personalization"],
+    caseStudySlugs: ["rental-property-reporting"],
   },
   {
     slug: "education",
@@ -308,7 +308,7 @@ export const industries: Industry[] = [
     title: "AI solutions for education and eLearning",
     intro:
       "Education organizations serve more learners than staff can personally support. We build AI for course operations, admissions, and learner assistance, designed to support educators' judgment, never to replace it.",
-    image: "/images/industries/education.jpg",
+    image: "/images/industries/education.webp",
     useCases: [
       {
         title: "Learner support assistants",
@@ -340,7 +340,7 @@ export const industries: Industry[] = [
       "Course production time cut substantially",
       "Admissions processing without seasonal backlogs",
     ],
-    caseStudySlugs: ["retail-support-chatbot"],
+    caseStudySlugs: ["tutoring-center-scheduling"],
   },
 ];
 

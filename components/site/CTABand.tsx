@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
+import { booking } from "@/lib/data/site";
 
+// Compact call-to-action band for pages that don't carry the full booking
+// section (the hubs and legal-adjacent pages).
 export default function CTABand({
-  title = "Have a project in mind?",
-  body = "Tell us what you're trying to achieve. We'll come back within one business day with an honest read on feasibility, approach, and cost.",
+  title = "Find out what's worth automating",
+  body = `Book a free ${booking.durationAdjective} call. We'll come back with an honest read on feasibility, approach, and cost.`,
 }: {
   title?: string;
   body?: string;
@@ -20,12 +23,12 @@ export default function CTABand({
             {body}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/contact/" className="btn-primary group">
-              Let&apos;s talk
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            <Link href={booking.page} className="btn-primary btn-lg group">
+              {booking.label}
+              <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link href="/case-studies/" className="btn-outline-light">
-              View our work
+            <Link href="/examples" className="btn-outline-light btn-lg">
+              See example projects
             </Link>
           </div>
         </Reveal>

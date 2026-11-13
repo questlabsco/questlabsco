@@ -3,11 +3,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check } from "lucide-react";
 import SectionHeading from "@/components/site/SectionHeading";
-import CaseStudyCard from "@/components/site/CaseStudyCard";
-import ContactForm from "@/components/site/ContactForm";
+import ExampleCard from "@/components/site/ExampleCard";
+import BookCall from "@/components/site/BookCall";
+import Img from "@/components/site/Img";
+import JsonLd from "@/components/site/JsonLd";
 import Reveal from "@/components/site/Reveal";
 import { industries, getIndustry } from "@/lib/data/industries";
-import { getCaseStudy } from "@/lib/data/case-studies";
+import { getEngagement } from "@/lib/data/engagements";
+import { booking } from "@/lib/data/site";
+import { pageMeta } from "@/lib/seo";
+import { breadcrumbSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
@@ -20,7 +25,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const industry = getIndustry((await params).slug);
   if (!industry) return {};
-  return { title: industry.title, description: industry.intro };
+  return pageMeta({
+    title: industry.title,
+    description: industry.intro,
+    path: `/industries/${industry.slug}`,
+  });
 }
 
 export default async function IndustryPage({
@@ -31,17 +40,24 @@ export default async function IndustryPage({
   const industry = getIndustry((await params).slug);
   if (!industry) notFound();
 
-  const relatedCases = industry.caseStudySlugs
-    .map(getCaseStudy)
-    .filter((c) => c !== undefined);
+  const examples = industry.caseStudySlugs
+    .map(getEngagement)
+    .filter((e) => e !== undefined);
 
   return (
     <main>
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Industries", path: "/industries" },
+          { name: industry.name, path: `/industries/${industry.slug}` },
+        ])}
+      />
+
       {/* Hero with image */}
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <Reveal>
+            <div>
               <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
                 {industry.title}
               </h1>
@@ -49,20 +65,20 @@ export default async function IndustryPage({
                 {industry.intro}
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
-                <Link href="/contact/" className="btn-primary group">
-                  Let&apos;s talk
+                <Link href={booking.anchor} className="btn-primary btn-lg group">
+                  {booking.label}
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
-            </Reveal>
-            <Reveal delay={0.1} className="hidden lg:block border border-line-dark">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            </div>
+            <div className="hidden lg:block border border-line-dark">
+              <Img
                 src={industry.image}
-                alt={industry.name}
+                alt=""
+                priority
                 className="w-full aspect-[4/3] object-cover"
               />
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>
@@ -75,10 +91,9 @@ export default async function IndustryPage({
               <SectionHeading
                 title={`What we automate in ${industry.name.toLowerCase()}`}
               />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Img
                 src={industry.image}
-                alt={industry.name}
+                alt=""
                 className="hidden lg:block w-full aspect-[4/3] object-cover border border-line -mt-4"
               />
             </Reveal>
@@ -111,7 +126,7 @@ export default async function IndustryPage({
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 items-center">
             <Reveal>
               <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-                What clients in this sector walk away with
+                What automation delivers in this sector
               </h2>
             </Reveal>
             <ul className="space-y-5">
@@ -128,41 +143,28 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* Related case studies */}
-      {relatedCases.length > 0 && (
+      {/* A worked example from this industry */}
+      {examples.length > 0 && (
         <section className="bg-tint border-b border-line">
           <div className="container-site py-20 md:py-28">
             <div className="flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading title="Work in this industry" />
+              <SectionHeading title="An example in this industry" />
               <Reveal delay={0.1} className="mb-12 md:mb-16">
-                <Link href="/case-studies/" className="btn-outline-dark !py-3 !px-6">
-                  View all
+                <Link href="/examples" className="btn-outline-dark !py-3 !px-6">
+                  All examples
                 </Link>
               </Reveal>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-              {relatedCases.map((cs) => (
-                <CaseStudyCard key={cs.slug} cs={cs} />
+              {examples.map((e) => (
+                <ExampleCard key={e.slug} e={e} />
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* Contact */}
-      <section className="bg-white">
-        <div className="container-site py-20 md:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <SectionHeading
-              title={`Bring AI to your ${industry.name.toLowerCase()} operation`}
-              lede="Describe the workflow that eats the most time. We'll tell you what automating it would take, and what it would return."
-            />
-            <Reveal delay={0.1} className="border border-line p-7 md:p-9">
-              <ContactForm />
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <BookCall />
     </main>
   );
 }

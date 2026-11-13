@@ -12,7 +12,7 @@ export type Service = {
   solutions: { title: string; body: string }[]; // grid of what we build
   industrySlugs: string[];
   faqs: { q: string; a: string }[];
-  caseStudySlugs: string[];
+  caseStudySlugs: string[]; // slugs of example engagements in engagements.ts
 };
 
 export const services: Service[] = [
@@ -87,7 +87,7 @@ export const services: Service[] = [
         a: "Usually yes. Many high-value automations need surprisingly little data preparation, and the assessment tells you exactly which ones. Where data work is required, it goes on the roadmap with its own cost.",
       },
     ],
-    caseStudySlugs: ["healthcare-rcm-analytics", "legal-contract-intelligence"],
+    caseStudySlugs: ["bookkeeping-document-collection", "fabrication-quote-intake"],
   },
   {
     slug: "ai-agents",
@@ -156,7 +156,7 @@ export const services: Service[] = [
         a: "A scoped single-task agent typically ships in four to eight weeks including evaluation. Multi-agent systems take longer and are usually rolled out one capability at a time.",
       },
     ],
-    caseStudySlugs: ["logistics-document-ai", "fintech-trading-automation"],
+    caseStudySlugs: ["freight-delivery-paperwork", "skincare-support-tickets"],
   },
   {
     slug: "generative-ai",
@@ -225,7 +225,7 @@ export const services: Service[] = [
         a: "Scoped after a short discovery, since it depends on data sources and integrations. Every proposal itemizes build cost and expected monthly run cost: no single-line 'AI package' totals.",
       },
     ],
-    caseStudySlugs: ["legal-contract-intelligence", "healthcare-rcm-analytics"],
+    caseStudySlugs: ["fabrication-quote-intake", "law-firm-client-intake"],
   },
   {
     slug: "ai-chatbots",
@@ -294,7 +294,7 @@ export const services: Service[] = [
         a: "Modern models handle dozens of languages natively. We test quality per language you care about rather than assuming.",
       },
     ],
-    caseStudySlugs: ["retail-support-chatbot", "ecommerce-personalization"],
+    caseStudySlugs: ["skincare-support-tickets", "med-spa-front-desk"],
   },
   {
     slug: "workflow-automation",
@@ -368,7 +368,7 @@ export const services: Service[] = [
         a: "Sometimes, where legacy systems have no APIs. But most modern automation is API-first with AI handling the unstructured parts, more reliable and easier to maintain than screen-scraping bots.",
       },
     ],
-    caseStudySlugs: ["logistics-document-ai", "healthcare-rcm-analytics"],
+    caseStudySlugs: ["freight-delivery-paperwork", "bookkeeping-document-collection"],
   },
   {
     slug: "ai-integration",
@@ -437,7 +437,7 @@ export const services: Service[] = [
         a: "Sometimes the add-on is the right call and we'll say so. Custom integration wins when the vendor feature doesn't fit your workflow, locks in your data, or prices per seat what you could run per use.",
       },
     ],
-    caseStudySlugs: ["fintech-trading-automation", "retail-support-chatbot"],
+    caseStudySlugs: ["law-firm-client-intake", "skincare-support-tickets"],
   },
   {
     slug: "web-development",
@@ -506,7 +506,7 @@ export const services: Service[] = [
         a: "Yes, we set up hosting, DNS, SSL, and analytics, and hand over full ownership of every account. No hostage infrastructure.",
       },
     ],
-    caseStudySlugs: ["ecommerce-personalization", "retail-support-chatbot"],
+    caseStudySlugs: ["law-firm-client-intake", "rental-property-reporting"],
   },
   {
     slug: "ui-ux-design",
@@ -575,7 +575,7 @@ export const services: Service[] = [
         a: "Before/after metrics agreed up front: conversion, task completion, bounce, and qualitative user feedback. Design reviews are about evidence, not taste debates.",
       },
     ],
-    caseStudySlugs: ["ecommerce-personalization", "legal-contract-intelligence"],
+    caseStudySlugs: ["law-firm-client-intake", "tutoring-center-scheduling"],
   },
 ];
 

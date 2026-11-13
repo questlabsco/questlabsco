@@ -7,12 +7,17 @@ import RecognitionStrip from "@/components/site/RecognitionStrip";
 import ProcessSteps from "@/components/site/ProcessSteps";
 import TechStackTabs from "@/components/site/TechStackTabs";
 import FAQAccordion from "@/components/site/FAQAccordion";
-import CaseStudyCard from "@/components/site/CaseStudyCard";
-import ContactForm from "@/components/site/ContactForm";
+import ExampleCard from "@/components/site/ExampleCard";
+import BookCall from "@/components/site/BookCall";
+import Img from "@/components/site/Img";
+import JsonLd from "@/components/site/JsonLd";
 import Reveal from "@/components/site/Reveal";
 import { services, getService } from "@/lib/data/services";
 import { getIndustry } from "@/lib/data/industries";
-import { getCaseStudy } from "@/lib/data/case-studies";
+import { getEngagement } from "@/lib/data/engagements";
+import { booking } from "@/lib/data/site";
+import { pageMeta } from "@/lib/seo";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -25,7 +30,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const service = getService((await params).slug);
   if (!service) return {};
-  return { title: service.title, description: service.intro };
+  return pageMeta({
+    title: service.title,
+    description: service.intro,
+    path: `/services/${service.slug}`,
+  });
 }
 
 export default async function ServicePage({
@@ -39,16 +48,24 @@ export default async function ServicePage({
   const relatedIndustries = service.industrySlugs
     .map(getIndustry)
     .filter((i) => i !== undefined);
-  const relatedCases = service.caseStudySlugs
-    .map(getCaseStudy)
-    .filter((c) => c !== undefined);
+  const examples = service.caseStudySlugs
+    .map(getEngagement)
+    .filter((e) => e !== undefined);
 
   return (
     <main>
+      <JsonLd data={serviceSchema(service)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Services", path: "/services" },
+          { name: service.name, path: `/services/${service.slug}` },
+        ])}
+      />
+
       {/* Hero */}
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
-          <Reveal className="max-w-3xl">
+          <div className="max-w-3xl">
             <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
               {service.title}
             </h1>
@@ -56,15 +73,15 @@ export default async function ServicePage({
               {service.intro}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <Link href="/contact/" className="btn-primary group">
-                Let&apos;s talk
+              <Link href={booking.anchor} className="btn-primary btn-lg group">
+                {booking.label}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
-              <Link href="/case-studies/" className="btn-outline-light">
-                View portfolio
+              <Link href="/examples" className="btn-outline-light btn-lg">
+                See example projects
               </Link>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -128,12 +145,10 @@ export default async function ServicePage({
                 <Reveal key={ind.slug} delay={i * 0.05}>
                   <Link href={`/industries/${ind.slug}/`} className="group block">
                     <div className="aspect-[4/3] overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Img
                         src={ind.image}
-                        alt={ind.name}
+                        alt=""
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                        loading="lazy"
                       />
                     </div>
                     <h3 className="mt-4 text-base font-bold text-ink group-hover:text-primary transition-colors">
@@ -189,42 +204,28 @@ export default async function ServicePage({
         </div>
       </section>
 
-      {/* Related case studies */}
-      {relatedCases.length > 0 && (
+      {/* Example projects that use this service */}
+      {examples.length > 0 && (
         <section className="bg-white">
           <div className="container-site py-20 md:py-28">
             <div className="flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading title="Related work" />
+              <SectionHeading title="Example projects" />
               <Reveal delay={0.1} className="mb-12 md:mb-16">
-                <Link href="/case-studies/" className="btn-outline-dark !py-3 !px-6">
-                  View all
+                <Link href="/examples" className="btn-outline-dark !py-3 !px-6">
+                  All examples
                 </Link>
               </Reveal>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-              {relatedCases.map((cs) => (
-                <CaseStudyCard key={cs.slug} cs={cs} />
+              {examples.map((e) => (
+                <ExampleCard key={e.slug} e={e} />
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* Contact */}
-      <section className="bg-ink text-white border-t border-line-dark">
-        <div className="container-site py-20 md:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            <SectionHeading
-              title="Tell us about your project"
-              lede="We'll come back within one business day with an honest read on feasibility, approach, and cost."
-              onDark
-            />
-            <Reveal delay={0.1} className="bg-white p-7 md:p-9">
-              <ContactForm />
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      <BookCall />
     </main>
   );
 }

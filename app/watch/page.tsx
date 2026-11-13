@@ -4,7 +4,7 @@ import Script from "next/script";
 // Unlisted page: only reachable via direct link, not linked from nav/footer,
 // and excluded from search indexing + the sitemap.
 export const metadata: Metadata = {
-  title: "Quest Labs Co.",
+  title: { absolute: "Quest Labs Co." },
   robots: { index: false, follow: false },
 };
 
@@ -23,8 +23,10 @@ export default function WatchPage() {
         <div className="mb-6 md:mb-8">
           <div className="inline-flex size-11 items-center justify-center rounded-lg border border-accent/60 bg-white/5">
             <img
-              src="/logo-mark-light.png"
+              src="/brand/logo-mark-light.webp"
               alt="Quest Labs Co"
+              width={90}
+              height={80}
               className="h-6 w-auto object-contain"
             />
           </div>

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  robots: { index: false, follow: true },
+  // A missing page has no canonical URL of its own.
+  alternates: { canonical: null },
+};
 
 export default function NotFound() {
   return (

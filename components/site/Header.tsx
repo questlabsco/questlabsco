@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X, ArrowRight } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { industries } from "@/lib/data/industries";
+import { booking } from "@/lib/data/site";
 
 const navLinks = [
   { label: "About", href: "/about/" },
@@ -21,6 +22,8 @@ function servicesForIndustry(slug: string) {
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
+  // Desktop mega menu: opens on hover, click, or keyboard (Enter/Space).
+  const [megaOpen, setMegaOpen] = useState(false);
   // Island scroll states: compact after leaving the top, hidden while
   // scrolling down, reappears as soon as the user scrolls up a little.
   const [compact, setCompact] = useState(false);
@@ -50,6 +53,7 @@ export default function Header() {
   const close = () => {
     setMobileOpen(false);
     setOpenSection(null);
+    setMegaOpen(false);
   };
 
   return (
@@ -75,15 +79,19 @@ export default function Header() {
           >
             {compact ? (
               <img
-                src="/logo-mark.png"
+                src="/brand/logo-mark.webp"
                 alt="Quest Labs Co"
+                width={81}
+                height={72}
                 className="h-7 w-auto object-contain transition-all duration-300 group-hover:[filter:var(--logo-hover-filter)]"
                 style={{ ["--logo-hover-filter" as string]: logoFilter }}
               />
             ) : (
               <img
-                src="/logo-full-transparent.png"
+                src="/brand/logo-full.webp"
                 alt="Quest Labs Co"
+                width={623}
+                height={96}
                 className="h-9 md:h-11 w-auto object-contain transition-all duration-300 group-hover:[filter:var(--logo-hover-filter)]"
                 style={{ ["--logo-hover-filter" as string]: logoFilter }}
               />
@@ -91,19 +99,47 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center">
+          <nav aria-label="Primary" className="hidden lg:flex items-center">
             {/* Industries & services: combined mega menu */}
-            <div className="group relative">
-              <button className="flex items-center gap-1.5 px-4 py-4 text-sm font-medium text-ink hover:text-primary transition-colors">
+            <div
+              className="relative"
+              onMouseEnter={() => setMegaOpen(true)}
+              onMouseLeave={() => setMegaOpen(false)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget)) setMegaOpen(false);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setMegaOpen(false);
+              }}
+            >
+              <button
+                type="button"
+                aria-expanded={megaOpen}
+                aria-haspopup="true"
+                aria-controls="mega-menu"
+                // Keyboard activation toggles; a mouse click (already open
+                // from hover) just keeps it open.
+                onClick={(e) => setMegaOpen(e.detail === 0 ? !megaOpen : true)}
+                className="flex items-center gap-1.5 px-4 py-4 text-sm font-medium text-ink hover:text-primary transition-colors"
+              >
                 What we do
-                <ChevronDown className="size-3.5 transition-transform group-hover:rotate-180" />
+                <ChevronDown
+                  aria-hidden="true"
+                  className={`size-3.5 transition-transform ${megaOpen ? "rotate-180" : ""}`}
+                />
               </button>
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-150 absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[880px] max-w-[90vw]">
+              <div
+                id="mega-menu"
+                className={`transition-all duration-150 absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[880px] max-w-[90vw] ${
+                  megaOpen ? "visible opacity-100" : "invisible opacity-0"
+                }`}
+              >
                 <div className="bg-white border border-line shadow-[0_16px_40px_rgba(25,19,49,0.12)] p-8">
                   <div className="grid grid-cols-4 gap-x-8 gap-y-8">
                     {industries.map((ind) => (
                       <div key={ind.slug}>
                         <Link
+                          onClick={close}
                           href={`/industries/${ind.slug}/`}
                           className="block text-[13px] font-semibold text-ink hover:text-primary transition-colors"
                         >
@@ -113,6 +149,7 @@ export default function Header() {
                           {servicesForIndustry(ind.slug).map((s) => (
                             <li key={s.slug}>
                               <Link
+                                onClick={close}
                                 href={`/services/${s.slug}/`}
                                 className="block text-[13px] text-muted-foreground hover:text-primary transition-colors"
                               >
@@ -126,12 +163,14 @@ export default function Header() {
                   </div>
                   <div className="flex items-center gap-8 border-t border-line mt-8 pt-5">
                     <Link
+                      onClick={close}
                       href="/industries/"
                       className="flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
                     >
                       All industries <ArrowRight className="size-4" />
                     </Link>
                     <Link
+                      onClick={close}
                       href="/services/"
                       className="flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
                     >
@@ -159,18 +198,21 @@ export default function Header() {
 
           <div className="hidden lg:block">
             <Link
-              href="/contact/"
+              href={booking.page}
               className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white text-sm font-semibold px-5 py-2.5 transition-colors"
             >
-              Let&apos;s talk
+              {booking.label}
             </Link>
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden p-2 text-ink"
+            type="button"
+            className="lg:hidden size-11 flex items-center justify-center text-ink"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
           >
             {mobileOpen ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
@@ -178,9 +220,11 @@ export default function Header() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <div className="lg:hidden border-t border-line bg-white max-h-[calc(100vh-100px)] overflow-y-auto">
+          <div id="mobile-menu" className="lg:hidden border-t border-line bg-white max-h-[calc(100vh-100px)] overflow-y-auto">
             <div className="px-4 py-4 space-y-1">
               <button
+                type="button"
+                aria-expanded={openSection === "services"}
                 className="flex w-full items-center justify-between py-3 text-sm font-semibold text-ink"
                 onClick={() =>
                   setOpenSection(openSection === "services" ? null : "services")
@@ -210,7 +254,7 @@ export default function Header() {
                             <Link
                               href={`/services/${s.slug}/`}
                               onClick={close}
-                              className="block text-sm text-muted-foreground"
+                              className="block py-1.5 text-sm text-muted-foreground"
                             >
                               {s.name}
                             </Link>
@@ -251,11 +295,11 @@ export default function Header() {
 
               <div className="pt-3 pb-2 border-t border-line">
                 <Link
-                  href="/contact/"
+                  href={booking.page}
                   onClick={close}
-                  className="btn-primary w-full !py-3"
+                  className="btn-primary w-full !py-3.5 !text-base"
                 >
-                  Let&apos;s talk
+                  {booking.label}
                 </Link>
               </div>
             </div>

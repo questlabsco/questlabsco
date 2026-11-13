@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Terms of Service",
   description: "Terms governing the use of the Quest Labs Co. website.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (
@@ -12,11 +14,22 @@ export default function TermsPage() {
       <section className="bg-ink-deep text-white">
         <div className="container-site page-hero pb-12 md:pb-16">
           <h1 className="text-4xl font-bold tracking-tight">Terms of Service</h1>
-          <p className="mt-3 text-sm text-white/50">Effective date: January 1, 2026</p>
+          <p className="mt-3 text-sm text-white/50">
+            Effective date: January 1, 2026 · Last updated: November 12, 2026
+          </p>
         </div>
       </section>
 
       <div className="container-site py-16 max-w-3xl space-y-10 text-sm md:text-base leading-relaxed text-ink/80">
+        <section>
+          <h2 className="text-xl font-bold text-ink mb-3">Who we are</h2>
+          <p>
+            This website is operated by {siteConfig.legalName || siteConfig.name}
+            {siteConfig.location && `, based in ${siteConfig.location}`}. On
+            this site we refer to ourselves as &quot;{siteConfig.name}&quot;,
+            &quot;we&quot;, and &quot;us&quot;.
+          </p>
+        </section>
         <section>
           <h2 className="text-xl font-bold text-ink mb-3">Use of this website</h2>
           <p>
@@ -29,7 +42,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-bold text-ink mb-3">No professional advice</h2>
           <p>
-            Content on this site, including case studies, estimates, and
+            Content on this site, including example projects, estimates, and
             descriptions of typical results, is informational and does not
             constitute a guarantee of outcomes. Every engagement is governed by
             its own written agreement.
@@ -54,8 +67,8 @@ export default function TermsPage() {
         <section>
           <h2 className="text-xl font-bold text-ink mb-3">Changes</h2>
           <p>
-            We may update these terms from time to time; the effective date
-            above reflects the latest revision. Continued use of the site
+            We may update these terms from time to time; the last-updated
+            date above reflects the latest revision. Continued use of the site
             constitutes acceptance of the current terms.
           </p>
         </section>

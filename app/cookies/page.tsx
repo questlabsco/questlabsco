@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Cookie Policy",
   description: "How Quest Labs Co. uses cookies and similar technology on this website.",
-};
+  path: "/cookies",
+});
 
 export default function CookiesPage() {
   return (

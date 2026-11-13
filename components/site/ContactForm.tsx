@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/data/site";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "w-full border border-line bg-white px-4 py-3.5 text-sm text-ink placeholder:text-muted-foreground/70 focus:outline-none focus:border-primary transition-colors";
+  "w-full border border-line bg-white px-4 py-3.5 text-base md:text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -43,7 +43,7 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-line bg-tint p-10 text-center">
+      <div role="status" className="border border-line bg-tint p-10 text-center">
         <CheckCircle2 className="size-10 text-primary mx-auto" />
         <h3 className="mt-4 text-xl font-bold text-ink">Message sent</h3>
         <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">
@@ -123,7 +123,7 @@ export default function ContactForm() {
       />
 
       {status === "error" && (
-        <p className="flex items-center gap-2 text-sm text-red-600">
+        <p role="alert" className="flex items-center gap-2 text-sm text-red-600">
           <AlertCircle className="size-4" />
           Something went wrong. Please try again or email us directly at{" "}
           {siteConfig.email}.
@@ -133,7 +133,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="btn-primary group w-full sm:w-auto disabled:opacity-60"
+        className="btn-primary btn-lg group w-full sm:w-auto disabled:opacity-60"
       >
         {status === "submitting" ? "Sending…" : "Send request"}
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

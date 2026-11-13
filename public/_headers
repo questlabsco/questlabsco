@@ -1,0 +1,22 @@
+# Response headers for Cloudflare static assets.
+
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Next.js build output is content-hashed, so it can be cached forever.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images and logos are not hashed: cache for a week, refresh in the background.
+/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+/brand/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+# Hidden pre-meeting video page: keep it out of search results.
+/watch
+  X-Robots-Tag: noindex, nofollow

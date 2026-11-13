@@ -13,7 +13,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "AI Automation Case Studies",
   description:
-    "Eight client automation projects, one per industry: what we built, how long it took, and the goal each project was measured against.",
+    "Eight client automation projects, one per industry: what we built, how long it took, and the hours it saved.",
   path: "/case-studies",
 });
 
@@ -39,12 +39,11 @@ export default function CaseStudiesPage() {
         <div className="container-site relative pt-8 pb-12 text-center md:pt-10 md:pb-14">
           <Mascot mood="wink" className="mx-auto mb-4 w-16 animate-float md:w-20 xl:hidden" />
           <h1 className="h-page mx-auto max-w-4xl">
-            Case Studies: <span className="hl-blue">Real Projects</span>, Honest Goals
+            Case Studies: <span className="hl-blue">Real Projects</span>, Real Numbers
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
             Eight client projects, one per industry. Each shows what the team was
-            doing by hand, what we built, how long it took and the goal we&apos;re
-            measuring it against.
+            doing by hand, what we built, how long it took and what it saved.
           </p>
           <div className="mt-6 flex justify-center">
             <Link href={booking.page} className="btn-primary btn-lg group">

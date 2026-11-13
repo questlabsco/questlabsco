@@ -5,7 +5,7 @@ import { getIndustry } from "@/lib/data/industries";
 import Img from "./Img";
 
 // "Polaroid" card for a case study: photo in a white frame, industry pill,
-// title, summary and the goal the project is measured against. The whole
+// title, summary and the measured result. The whole
 // card is one link and presses into its shadow on hover.
 export default function CaseStudyCard({ e }: { e: Engagement }) {
   const industry = getIndustry(e.industrySlug);
@@ -31,7 +31,7 @@ export default function CaseStudyCard({ e }: { e: Engagement }) {
 
         <p className="mt-5 rounded-lg border-2 border-ink bg-sun-light px-3.5 py-2.5 text-sm leading-snug text-ink">
           <span className="mr-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em]">
-            Goal
+            Result
           </span>
           <span className="text-lg font-extrabold">{e.target.value}</span>{" "}
           {e.target.label}

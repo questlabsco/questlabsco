@@ -44,7 +44,7 @@ const post: BlogPost = {
     },
     {
       type: "p",
-      text: "This is exactly what our [rental property reporting case study](/case-studies/rental-property-reporting) covers: about 25 single-family homes, built in Excel with Power Query, with every dashboard total traceable to the underlying transactions. The goal there was to bring monthly report prep from eight hours down to three or four. No new platform required.",
+      text: "This is exactly what our [rental property reporting case study](/case-studies/rental-property-reporting) covers: about 25 single-family homes, built in Excel with Power Query, with every dashboard total traceable to the underlying transactions. Monthly report prep went from eight hours down to three or four. No new platform required.",
     },
     { type: "h3", text: "2. Maintenance Request Intake And Routing" },
     {

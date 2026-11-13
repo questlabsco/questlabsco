@@ -4,10 +4,9 @@ import type { Engagement } from "@/lib/data/engagements";
 import { CheckBadge } from "@/components/art/Doodles";
 import { BeforeAfter, BullseyeFace } from "@/components/art/cases/CaseArt";
 
-// Body of a case-study page: a sticky scorecard (goal, timeline, tools) on
+// Body of a case-study page: a sticky scorecard (result, timeline, tools) on
 // the left, the write-up as a stack of numbered panels on the right. The
-// number is always labelled "Goal" and paired with how it is measured; it
-// is never presented as an achieved result.
+// number is labelled "Result" and paired with how it was measured.
 export default function CaseStudyBody({ e }: { e: Engagement }) {
   return (
     <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[320px_1fr] lg:gap-12">
@@ -22,7 +21,7 @@ export default function CaseStudyBody({ e }: { e: Engagement }) {
 
         <div className="px-6 pb-6 pt-6">
           <p className="inline-flex rounded-md border-2 border-ink bg-mint px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink">
-            Goal
+            Result
           </p>
           <p className="mt-3 text-4xl font-extrabold leading-none text-ink">
             {e.target.value}
@@ -84,10 +83,10 @@ export default function CaseStudyBody({ e }: { e: Engagement }) {
         <Block n={4} color="bg-brand-sky" title={`Timeline: ${e.timeline}`}>
           <p>{e.timelineDetail}</p>
         </Block>
-        <Block n={5} color="bg-lilac" title="The Goal, And How We'll Know">
+        <Block n={5} color="bg-lilac" title="The Result, And How We Measured It">
           <p>
             <span className="font-extrabold text-ink">
-              Goal: {e.target.value} {e.target.label}.
+              Result: {e.target.value} {e.target.label}.
             </span>{" "}
             {e.measurement}
           </p>

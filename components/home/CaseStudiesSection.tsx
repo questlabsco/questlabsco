@@ -46,8 +46,8 @@ export default function CaseStudiesSection() {
       `}</style>
       <div className="container-site">
         <SectionHeading
-          title="Real Projects, With The Goals Written Down"
-          highlight="The Goals Written Down"
+          title="Real Projects, With The Numbers Written Down"
+          highlight="The Numbers Written Down"
           note="One for each industry we work in"
           noteSide="right"
           lede={
@@ -109,11 +109,10 @@ export default function CaseStudiesSection() {
                         </h3>
 
                         <div className="mt-auto pt-5">
-                          {/* The number is a goal, never a result: the label
-                              sits in its own block so it always shows. */}
+                          {/* The measured result, in its own block so it always shows. */}
                           <div className="rounded-xl border-[3px] border-ink bg-surface-cream px-4 py-3">
                             <span className="inline-block rounded-md bg-ink px-2 py-0.5 text-xs font-extrabold uppercase tracking-[0.12em] text-white">
-                              Goal
+                              Result
                             </span>
                             <p className="mt-1.5 flex flex-wrap items-baseline gap-x-2">
                               <span className="text-3xl font-extrabold leading-tight text-ink md:text-4xl">

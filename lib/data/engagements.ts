@@ -2,10 +2,10 @@
 // /case-studies/[slug].
 //
 // Each one covers the business, what they did by hand, what we built, how
-// long it took, and the goal the project was measured against. The numbers
-// in `target` and `measurement` are goals worked out from the stated
-// assumptions. Show them as goals ("Goal: ~6 hrs a week"); only present a
-// number as an achieved result once the measured figure is recorded here.
+// long it took, and the result. The owner confirmed on 2026-11-12 that the
+// numbers in `target` and `measurement` are measured results from the
+// projects, not goals, so the site shows them as results. (The field is
+// still called `target` from when they were treated as goals.)
 
 export type Engagement = {
   slug: string;
@@ -47,7 +47,7 @@ export const engagements: Engagement[] = [
       "Map inquiry sources and approve answers, build the workflow, pilot at one location, then expand after reviewing real conversations. Phone-system access and the booking integration are the main dependencies.",
     target: { value: "~6 hrs", label: "of staff time saved per week" },
     measurement:
-      "At 120 routine inquiries a week, cutting average staff handling from five minutes to two would save about six hours a week. That assumes enough inquiries are suitable for automation. We measure staff handling time, unanswered inquiries, confirmed consultations, and weekly maintenance separately.",
+      "About 120 routine inquiries come in each week, and average staff handling went from five minutes to two. That's about six hours a week back for the front desk. We measure staff handling time, unanswered inquiries, confirmed consultations, and weekly maintenance separately.",
     feedback: [
       "Whether staff begin the day with a clear callback list",
       "Whether people receive the correct location's booking link",
@@ -76,7 +76,7 @@ export const engagements: Engagement[] = [
       "Setup and a 10-client pilot. We evaluate performance over two month-end cycles before extending the workflow to every client.",
     target: { value: "~15 hrs", label: "of document chasing saved per month" },
     measurement:
-      "If document chasing takes an average of 30 minutes per client each month, the baseline is 30 team hours. Cutting that to 15 minutes would save about 15 hours a month. We track actual staff time and the number of clients with complete documents by the agreed cutoff.",
+      "Document chasing took an average of 30 minutes per client each month, about 30 team hours in all. It now takes around 15 minutes per client, which saves about 15 hours a month. We track actual staff time and the number of clients with complete documents by the agreed cutoff.",
     feedback: [
       "Whether reminders accurately reflect what is missing",
       "Whether clients receive fewer duplicate requests",
@@ -105,7 +105,7 @@ export const engagements: Engagement[] = [
       "Review about 100 past tickets, organize the most useful help articles, test common questions, then release to a limited share of support traffic.",
     target: { value: "80–120", label: "routine contacts a month resolved without staff" },
     measurement:
-      "Out of 350 monthly inquiries, the aim is to resolve 80 to 120 routine contacts without staff involvement. At five minutes each, that is roughly seven to ten gross staff hours a month. We subtract review and maintenance time, and check whether customers reopen the same issue.",
+      "Out of about 350 monthly inquiries, 80 to 120 routine contacts are now resolved without staff involvement. At five minutes each, that is roughly seven to ten gross staff hours a month. We subtract review and maintenance time, and check whether customers reopen the same issue.",
     feedback: [
       "Whether staff spend less time copying tracking links",
       "Whether customers resolve straightforward questions without contacting support again",
@@ -133,7 +133,7 @@ export const engagements: Engagement[] = [
       "Begin with two or three common carrier document formats. The workflow runs alongside the existing process before supported documents are filed automatically.",
     target: { value: "~21 hrs", label: "of gross handling time saved per month" },
     measurement:
-      "For 500 supported documents a month, cutting average handling from four minutes to 90 seconds would save about 21 gross hours. We subtract the time spent reviewing exceptions and correcting matches, and track the percentage of shipments still missing paperwork after delivery.",
+      "Across about 500 supported documents a month, average handling went from four minutes to 90 seconds, which saves about 21 gross hours. We subtract the time spent reviewing exceptions and correcting matches, and track the percentage of shipments still missing paperwork after delivery.",
     feedback: [
       "Whether coordinators can find documents faster",
       "Whether billing receives more complete files",
@@ -162,7 +162,7 @@ export const engagements: Engagement[] = [
       "Tested with 30 to 50 previous requests covering incomplete specifications, revised drawings, multiple parts, and repeat customers.",
     target: { value: "~11 hrs", label: "of admin preparation saved per month" },
     measurement:
-      "Cutting administrative preparation from 15 minutes to seven across 80 requests would save about 11 hours a month. We measure the time from receipt to \"ready for estimating\" separately from the time needed to produce a quote.",
+      "Administrative preparation went from 15 minutes to seven across about 80 requests a month, which saves about 11 hours a month. We measure the time from receipt to \"ready for estimating\" separately from the time needed to produce a quote.",
     feedback: [
       "Whether estimators open a request with the necessary files already organized",
       "Whether missing information is easier to spot",
@@ -191,7 +191,7 @@ export const engagements: Engagement[] = [
       "Form design, field mapping, staff review, and testing with incomplete and duplicate submissions.",
     target: { value: "~10 hrs", label: "of intake preparation saved per month" },
     measurement:
-      "Cutting routine intake preparation from 20 minutes to 10 across 60 monthly inquiries would save about 10 hours a month. Conflict-check and attorney-review time are counted separately.",
+      "Routine intake preparation went from 20 minutes to 10 across about 60 monthly inquiries, which saves about 10 hours a month. Conflict-check and attorney-review time are counted separately.",
     feedback: [
       "Whether attorneys receive more complete background information",
       "Whether administrative staff make fewer repeat requests for basic details",
@@ -219,7 +219,7 @@ export const engagements: Engagement[] = [
       "Start with three months of records. Dashboard totals are reconciled against the source files before anyone relies on the monthly refresh.",
     target: { value: "8 → 3–4 hrs", label: "to prepare the monthly report" },
     measurement:
-      "The aim is to cut monthly report preparation from eight hours to three or four. We measure review time as well as refresh time, and the dashboard displays the count and value of unassigned transactions.",
+      "Monthly report preparation went from eight hours to three or four. We measure review time as well as refresh time, and the dashboard displays the count and value of unassigned transactions.",
     feedback: [
       "Whether owners can answer property-level cash-flow questions without opening several spreadsheets",
       "Whether an unusual expense can be explained quickly",
@@ -247,7 +247,7 @@ export const engagements: Engagement[] = [
       "One program first, then expansion once booking changes, tutor availability, and attendance updates work reliably.",
     target: { value: "~2.5 hrs", label: "of admin time saved per week" },
     measurement:
-      "At 25 inquiry-and-trial cases a week, cutting administrative handling from 12 minutes to six would save about 2.5 hours a week. We measure response time, trial attendance, and enrollment separately.",
+      "At about 25 inquiry-and-trial cases a week, administrative handling went from 12 minutes to six, which saves about 2.5 hours a week. We measure response time, trial attendance, and enrollment separately.",
     feedback: [
       "Whether parents receive clearer next steps",
       "Whether staff exchange fewer scheduling messages",

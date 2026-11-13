@@ -223,7 +223,7 @@ export default async function IndustryPage({
               <SectionHeading
                 title="A Case Study In This Industry"
                 highlight="Case Study"
-                lede="A real client project from this sector, and the goal we built it to hit."
+                lede="A real client project from this sector, and what it saved."
               />
               <div
                 className={`mx-auto grid grid-cols-1 gap-7 ${

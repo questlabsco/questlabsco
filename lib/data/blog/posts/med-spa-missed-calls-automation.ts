@@ -127,7 +127,7 @@ const post: BlogPost = {
     },
     {
       type: "p",
-      text: "The staff side counts too. Our [med spa front desk case study](/case-studies/med-spa-front-desk) was scoped around two locations sharing one desk team, with a goal of roughly six hours of staff time saved a week, mostly from fewer repeat questions and less hunting for who called. That's a goal worked out from the volume, not a promise, and we measure it after launch.",
+      text: "The staff side counts too. Our [med spa front desk case study](/case-studies/med-spa-front-desk) covers two locations sharing one desk team, and it saves roughly six hours of staff time a week, mostly from fewer repeat questions and less hunting for who called. That number comes from inquiry volume and handling time, both measured after launch.",
     },
     { type: "h2", text: "Can Your Booking System Or Phone System Do This Already?" },
     {

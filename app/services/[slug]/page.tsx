@@ -277,7 +277,7 @@ export default async function ServicePage({
           <SectionHeading
             title="Case Studies"
             highlight="Case Studies"
-            lede={`Real client projects that use ${service.name}. Each one shows the goal it was built to hit.`}
+            lede={`Real client projects that use ${service.name}. Each one shows what it saved.`}
           />
           <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2">
             {examples.map((e) => (

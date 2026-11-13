@@ -16,7 +16,7 @@ import { booking } from "@/lib/data/site";
 // Column widths are shared by the header and the rows.
 const cols = "md:grid-cols-[minmax(0,1fr)_minmax(0,1.7fr)_minmax(0,1.5fr)_minmax(0,0.8fr)_2rem]";
 
-const headers = ["Industry", "What We Automated", "The Goal", "Timeline"];
+const headers = ["Industry", "What We Automated", "The Result", "Timeline"];
 
 export default function CaseStudyGrid() {
   return (
@@ -33,7 +33,7 @@ export default function CaseStudyGrid() {
           highlight="Side By Side"
           lede={
             <>
-              Find your industry and see what we automated, plus what it&apos;s aiming for. If one looks
+              Find your industry and see what we automated, plus what it saved. If one looks
               familiar, bring it up on your{" "}
               <Link href={booking.anchor} className="font-bold text-brand underline">
                 {booking.offer}
@@ -100,7 +100,7 @@ export default function CaseStudyGrid() {
 
                     <div className="rounded-xl border-2 border-ink/15 bg-surface-cream px-3 py-2 md:border-0 md:bg-transparent md:p-0">
                       <span className="block text-xs font-extrabold uppercase tracking-[0.1em] text-brand md:sr-only">
-                        Goal
+                        Result
                       </span>
                       <p className="mt-0.5 leading-snug md:mt-0">
                         <span className="text-lg font-extrabold text-ink">{e.target.value}</span>{" "}

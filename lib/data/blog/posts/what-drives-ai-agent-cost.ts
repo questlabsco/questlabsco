@@ -90,7 +90,7 @@ const post: BlogPost = {
     },
     {
       type: "p",
-      text: "Our case studies set their goals the same way. The [freight paperwork case study](/case-studies/freight-delivery-paperwork), for example, multiplies supported documents by the minutes saved on each, then subtracts the time spent reviewing exceptions and correcting matches. If a vendor's numbers don't show working like that, ask for it.",
+      text: "Our case studies work out their numbers the same way. The [freight paperwork case study](/case-studies/freight-delivery-paperwork), for example, multiplies supported documents by the minutes saved on each, then subtracts the time spent reviewing exceptions and correcting matches. If a vendor's numbers don't show working like that, ask for it.",
     },
     {
       type: "callout",

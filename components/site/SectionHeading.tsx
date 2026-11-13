@@ -1,10 +1,12 @@
 import Reveal from "./Reveal";
 
+// Section opener: optional monospace label, a large light headline, and an
+// optional lede. `onDark` is accepted for older call sites; the whole site
+// is dark now, so it no longer changes anything.
 export default function SectionHeading({
   eyebrow,
   title,
   lede,
-  onDark = false,
   align = "left",
 }: {
   eyebrow?: string;
@@ -15,29 +17,13 @@ export default function SectionHeading({
 }) {
   return (
     <Reveal
-      className={`mb-12 md:mb-16 max-w-3xl ${
+      className={`mb-12 md:mb-20 max-w-4xl ${
         align === "center" ? "mx-auto text-center" : ""
       }`}
     >
-      {eyebrow && (
-        <p className={onDark ? "eyebrow-on-dark" : "eyebrow"}>{eyebrow}</p>
-      )}
-      <h2
-        className={`${eyebrow ? "mt-4" : ""} text-3xl sm:text-4xl md:text-[2.75rem] font-bold leading-[1.1] ${
-          onDark ? "text-white" : "text-ink"
-        }`}
-      >
-        {title}
-      </h2>
-      {lede && (
-        <p
-          className={`mt-5 text-base md:text-lg leading-relaxed ${
-            onDark ? "text-white/70" : "text-muted-foreground"
-          }`}
-        >
-          {lede}
-        </p>
-      )}
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+      <h2 className={`${eyebrow ? "mt-5" : ""} h-section text-white`}>{title}</h2>
+      {lede && <p className="lede mt-6 max-w-2xl">{lede}</p>}
     </Reveal>
   );
 }

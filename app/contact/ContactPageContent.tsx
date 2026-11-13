@@ -31,14 +31,14 @@ export default function ContactPageContent() {
   return (
     <main>
       {/* Hero + calendar: booking is the first thing on the page */}
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-12 lg:gap-20 items-start">
             <div>
-              <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+              <h1 className="h-page">
                 Book a free call
               </h1>
-              <p className="mt-6 text-lg text-white/70 leading-relaxed">
+              <p className="lede mt-7">
                 Pick a time that works for you. We&apos;ll map your
                 workflows, show you what&apos;s automatable, and attach real
                 numbers.
@@ -49,7 +49,7 @@ export default function ContactPageContent() {
                   const Icon = e.icon;
                   return (
                     <div key={e.title} className="flex items-start gap-4">
-                      <div className="size-10 shrink-0 border border-line-dark bg-ink-soft flex items-center justify-center text-accent">
+                      <div className="size-10 shrink-0 border border-line bg-surface-raised flex items-center justify-center text-accent">
                         <Icon className="size-4" />
                       </div>
                       <div>
@@ -69,7 +69,7 @@ export default function ContactPageContent() {
               </p>
             </div>
 
-            <div className="bg-white">
+            <div className="bg-background">
               <CalendlyEmbed />
             </div>
           </div>
@@ -77,11 +77,11 @@ export default function ContactPageContent() {
       </section>
 
       {/* Message form, for people who would rather write */}
-      <section id="message" className="bg-white">
+      <section id="message" className="bg-background">
         <div className="container-site py-20 md:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 items-start">
             <Reveal>
-              <h2 className="text-3xl md:text-4xl font-bold text-ink leading-tight">
+              <h2 className="text-3xl md:text-4xl font-normal text-foreground leading-tight">
                 Or send us a message
               </h2>
               <p className="mt-5 text-base text-muted-foreground leading-relaxed">

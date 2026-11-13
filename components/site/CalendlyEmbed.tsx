@@ -5,8 +5,8 @@ import { CalendarDays } from "lucide-react";
 import { siteConfig } from "@/lib/data/site";
 
 const WIDGET_SRC = "https://assets.calendly.com/assets/external/widget.js";
-// Brand violet for Calendly's buttons.
-const EMBED_URL = `${siteConfig.calendlyUrl}?primary_color=6d28d9`;
+// Dark colours so the calendar sits on the page instead of in a white box.
+const EMBED_URL = `${siteConfig.calendlyUrl}?background_color=0e0e11&text_color=f2f2f3&primary_color=8fa2ff`;
 
 declare global {
   interface Window {
@@ -66,11 +66,11 @@ export default function CalendlyEmbed() {
   }, [near]);
 
   return (
-    <div className="relative bg-white text-ink min-h-[680px]">
+    <div className="relative bg-background text-foreground min-h-[680px]">
       {!ready && (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 p-8 text-center">
           <CalendarDays aria-hidden="true" className="size-10 text-primary" />
-          <p className="text-base font-semibold text-ink">
+          <p className="text-base font-semibold text-foreground">
             Loading the calendar…
           </p>
           <a

@@ -63,13 +63,13 @@ export default async function ServicePage({
       />
 
       {/* Hero */}
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+            <h1 className="h-page">
               {service.title}
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">
+            <p className="lede mt-7 max-w-2xl">
               {service.intro}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
@@ -86,14 +86,14 @@ export default async function ServicePage({
       </section>
 
       {/* Recognition */}
-      <section className="bg-white border-b border-line">
+      <section className="bg-background border-b border-line">
         <div className="container-site py-12 md:py-14">
           <RecognitionStrip />
         </div>
       </section>
 
       {/* Offerings: numbered list */}
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-site py-20 md:py-28">
           <SectionHeading title={`Our ${service.name} services`} />
           <div className="border-t border-line">
@@ -103,13 +103,13 @@ export default async function ServicePage({
                 delay={i * 0.04}
                 className="grid grid-cols-1 md:grid-cols-[80px_280px_1fr] gap-3 md:gap-8 py-7 md:py-8 border-b border-line"
               >
-                <span className="text-2xl font-bold text-tint-strong leading-none">
+                <span className="text-2xl font-bold text-white/15 leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-lg font-bold text-ink leading-snug">
+                <h3 className="text-lg font-bold text-foreground leading-snug">
                   {o.title}
                 </h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                   {o.body}
                 </p>
               </Reveal>
@@ -119,14 +119,14 @@ export default async function ServicePage({
       </section>
 
       {/* Solutions grid */}
-      <section className="bg-tint border-y border-line">
+      <section className="bg-surface border-y border-line">
         <div className="container-site py-20 md:py-28">
           <SectionHeading title="What we build with it" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
             {service.solutions.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.05} className="bg-white p-7">
-                <h3 className="text-base font-bold text-ink">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              <Reveal key={s.title} delay={i * 0.05} className="bg-background p-7">
+                <h3 className="text-base font-bold text-foreground">{s.title}</h3>
+                <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                   {s.body}
                 </p>
               </Reveal>
@@ -137,7 +137,7 @@ export default async function ServicePage({
 
       {/* Industries served */}
       {relatedIndustries.length > 0 && (
-        <section className="bg-white">
+        <section className="bg-background">
           <div className="container-site py-20 md:py-24">
             <SectionHeading title="Where this delivers the most" />
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -151,7 +151,7 @@ export default async function ServicePage({
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                       />
                     </div>
-                    <h3 className="mt-4 text-base font-bold text-ink group-hover:text-primary transition-colors">
+                    <h3 className="mt-4 text-base font-bold text-foreground group-hover:text-primary transition-colors">
                       {ind.name}
                     </h3>
                     <span className="mt-1 inline-flex items-center gap-2 text-sm font-semibold text-primary">
@@ -167,20 +167,20 @@ export default async function ServicePage({
       )}
 
       {/* Process: dark band */}
-      <section className="bg-ink text-white">
+      <section className="bg-background text-white">
         <div className="container-site py-20 md:py-28">
           <SectionHeading
             title="A six-step path from idea to production"
             onDark
           />
-          <div className="[&_.bg-white]:bg-ink-soft [&_h3]:text-white [&_p]:text-white/60 [&_span]:text-white/15">
+          <div className="[&_.bg-background]:bg-surface-raised [&_h3]:text-white [&_p]:text-white/60 [&_span]:text-white/15">
             <ProcessSteps />
           </div>
         </div>
       </section>
 
       {/* Tech stack */}
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-site py-20 md:py-28">
           <SectionHeading
             title="The stack behind the work"
@@ -193,7 +193,7 @@ export default async function ServicePage({
       </section>
 
       {/* FAQ */}
-      <section className="bg-tint border-y border-line">
+      <section className="bg-surface border-y border-line">
         <div className="container-site py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
             <SectionHeading title="Common questions" />
@@ -206,7 +206,7 @@ export default async function ServicePage({
 
       {/* Example projects that use this service */}
       {examples.length > 0 && (
-        <section className="bg-white">
+        <section className="bg-background">
           <div className="container-site py-20 md:py-28">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionHeading title="Example projects" />

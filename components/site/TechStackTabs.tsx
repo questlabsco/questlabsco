@@ -16,7 +16,7 @@ export default function TechStackTabs() {
             className={`px-5 py-4 text-sm font-semibold transition-colors border-b-2 -mb-px ${
               active === i
                 ? "border-primary text-primary"
-                : "border-transparent text-muted-foreground hover:text-ink"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             {tab.label}
@@ -28,7 +28,7 @@ export default function TechStackTabs() {
           {techTabs[active].items.map((item) => (
             <li
               key={item}
-              className="border border-line bg-tint px-4 py-2 text-sm font-medium text-ink"
+              className="border border-line bg-surface px-4 py-2 text-sm font-medium text-foreground"
             >
               {item}
             </li>

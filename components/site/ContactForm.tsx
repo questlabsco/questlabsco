@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/data/site";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "w-full border border-line bg-white px-4 py-3.5 text-base md:text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors";
+  "w-full border border-line bg-background px-4 py-3.5 text-base md:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -43,9 +43,9 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div role="status" className="border border-line bg-tint p-10 text-center">
+      <div role="status" className="border border-line bg-surface p-10 text-center">
         <CheckCircle2 className="size-10 text-primary mx-auto" />
-        <h3 className="mt-4 text-xl font-bold text-ink">Message sent</h3>
+        <h3 className="mt-4 text-xl font-bold text-foreground">Message sent</h3>
         <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">
           Thanks for reaching out. We&apos;ll get back to you within one
           business day at the email you provided.

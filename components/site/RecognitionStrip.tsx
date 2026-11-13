@@ -28,7 +28,7 @@ export default function RecognitionStrip({ onDark = false }: { onDark?: boolean 
             <div>
               <p
                 className={`text-sm font-bold leading-snug ${
-                  onDark ? "text-white" : "text-ink"
+                  onDark ? "text-white" : "text-foreground"
                 }`}
               >
                 {r.title}

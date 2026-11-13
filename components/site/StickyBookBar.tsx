@@ -41,7 +41,7 @@ export default function StickyBookBar() {
 
   return (
     <div
-      className={`lg:hidden fixed inset-x-0 bottom-0 z-40 border-t border-line bg-white/95 backdrop-blur px-4 py-3 transition-transform duration-300 ${
+      className={`lg:hidden fixed inset-x-0 bottom-0 z-40 border-t border-line bg-background/90 backdrop-blur px-4 py-3 transition-transform duration-300 ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
       aria-hidden={!visible}

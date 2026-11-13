@@ -39,7 +39,7 @@ export default function WatchPage() {
             </span>
           </div>
 
-          <h1 className="text-3xl font-black uppercase leading-[1.1] tracking-tight text-white/95 sm:text-4xl md:text-5xl">
+          <h1 className="text-3xl font-normal uppercase leading-[1.1] tracking-tight text-white/95 sm:text-4xl md:text-5xl">
             Important: watch the video below
           </h1>
           <p className="mx-auto mt-3 max-w-xl text-base text-white/50 md:text-lg">
@@ -49,7 +49,7 @@ export default function WatchPage() {
         </div>
 
         <div className="mt-6 rounded-2xl border border-accent/50 p-1.5 md:mt-8 md:p-2">
-          <div className="relative aspect-video overflow-hidden rounded-xl bg-ink">
+          <div className="relative aspect-video overflow-hidden rounded-xl bg-background">
             <Script src="https://fast.wistia.com/player.js" strategy="afterInteractive" />
             <Script
               src={`https://fast.wistia.com/embed/${WISTIA_MEDIA_ID}.js`}

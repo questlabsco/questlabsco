@@ -10,19 +10,19 @@ export const metadata: Metadata = pageMeta({
 
 export default function TermsPage() {
   return (
-    <main className="bg-white">
-      <section className="bg-ink-deep text-white">
+    <main className="bg-background">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-12 md:pb-16">
-          <h1 className="text-4xl font-bold tracking-tight">Terms of Service</h1>
+          <h1 className="h-page">Terms of Service</h1>
           <p className="mt-3 text-sm text-white/50">
             Effective date: January 1, 2026 · Last updated: November 12, 2026
           </p>
         </div>
       </section>
 
-      <div className="container-site py-16 max-w-3xl space-y-10 text-sm md:text-base leading-relaxed text-ink/80">
+      <div className="container-site py-16 max-w-3xl space-y-10 text-base md:text-lg leading-relaxed text-foreground/80">
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">Who we are</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">Who we are</h2>
           <p>
             This website is operated by {siteConfig.legalName || siteConfig.name}
             {siteConfig.location && `, based in ${siteConfig.location}`}. On
@@ -31,7 +31,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">Use of this website</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">Use of this website</h2>
           <p>
             This website is provided for general information about Quest Labs
             Co. and its services. You may browse and contact us freely; you may
@@ -40,7 +40,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">No professional advice</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">No professional advice</h2>
           <p>
             Content on this site, including example projects, estimates, and
             descriptions of typical results, is informational and does not
@@ -49,7 +49,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">Intellectual property</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">Intellectual property</h2>
           <p>
             The content, design, and branding of this website belong to Quest
             Labs Co. Third-party trademarks referenced here belong to their
@@ -57,7 +57,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">Limitation of liability</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">Limitation of liability</h2>
           <p>
             This website is provided &quot;as is.&quot; To the maximum extent
             permitted by law, Quest Labs Co. is not liable for damages arising
@@ -65,7 +65,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">Changes</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">Changes</h2>
           <p>
             We may update these terms from time to time; the last-updated
             date above reflects the latest revision. Continued use of the site
@@ -73,7 +73,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-bold text-ink mb-3">Contact</h2>
+          <h2 className="text-xl font-normal text-foreground mb-3">Contact</h2>
           <p>
             Questions:{" "}
             <a href={`mailto:${siteConfig.email}`} className="text-primary font-medium">

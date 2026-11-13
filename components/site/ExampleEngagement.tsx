@@ -8,15 +8,15 @@ export default function ExampleEngagement({ e }: { e: Engagement }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-10 lg:gap-16 items-start">
       {/* Target, timeline, tools */}
-      <div className="lg:sticky lg:top-32 bg-white border border-line">
+      <div className="lg:sticky lg:top-32 bg-background border border-line">
         <div className="p-7 border-b border-line">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
             Target
           </p>
-          <p className="mt-4 text-4xl md:text-[2.6rem] font-black leading-none text-ink">
+          <p className="mt-4 text-4xl md:text-[2.6rem] font-black leading-none text-foreground">
             {e.target.value}
           </p>
-          <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+          <p className="mt-3 text-base text-muted-foreground leading-relaxed">
             {e.target.label}
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function ExampleEngagement({ e }: { e: Engagement }) {
           <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
             Timeline
           </p>
-          <p className="mt-3 text-xl font-bold text-ink">{e.timeline}</p>
+          <p className="mt-3 text-xl font-bold text-foreground">{e.timeline}</p>
         </div>
         <div className="p-7">
           <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
@@ -34,7 +34,7 @@ export default function ExampleEngagement({ e }: { e: Engagement }) {
             {e.tools.map((t) => (
               <li
                 key={t}
-                className="border border-line bg-tint px-3 py-1.5 text-sm font-medium text-ink"
+                className="border border-line bg-surface px-3 py-1.5 text-sm font-medium text-foreground"
               >
                 {t}
               </li>
@@ -85,8 +85,8 @@ function Block({
 }) {
   return (
     <Reveal className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-3 md:gap-8 py-7 md:py-8 border-b border-line">
-      <h2 className="text-base font-bold text-ink leading-snug">{title}</h2>
-      <div className="space-y-4 text-sm md:text-base text-ink/80 leading-relaxed">
+      <h2 className="text-base font-normal text-foreground leading-snug">{title}</h2>
+      <div className="space-y-4 text-base md:text-lg text-foreground/80 leading-relaxed">
         {children}
       </div>
     </Reveal>

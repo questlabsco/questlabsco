@@ -18,7 +18,7 @@ export default function Footer() {
   if (pathname === "/watch" || pathname === "/watch/") return null;
 
   return (
-    <footer className="bg-ink-deep text-white">
+    <footer className="bg-background text-white border-t border-line">
       <div className="container-site py-16 md:py-20">
         <nav aria-label="Footer" className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
           {/* Brand */}
@@ -33,7 +33,7 @@ export default function Footer() {
                 decoding="async"
                 className="h-9 w-auto object-contain"
               />
-              <span className="text-base font-extrabold tracking-tight text-white">
+              <span className="text-base font-semibold tracking-tight text-white">
                 Quest Labs Co
               </span>
             </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Quest Labs Co. on LinkedIn"
-                className="size-11 border border-line-dark flex items-center justify-center text-white/50 hover:text-white hover:border-accent transition-colors"
+                className="size-11 border border-line flex items-center justify-center text-white/50 hover:text-white hover:border-accent transition-colors"
               >
                 <svg aria-hidden="true" className="size-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -64,7 +64,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Quest Labs Co. on YouTube"
-                className="size-11 border border-line-dark flex items-center justify-center text-white/50 hover:text-white hover:border-accent transition-colors"
+                className="size-11 border border-line flex items-center justify-center text-white/50 hover:text-white hover:border-accent transition-colors"
               >
                 <svg aria-hidden="true" className="size-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -140,7 +140,7 @@ export default function Footer() {
         </nav>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-line-dark flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-14 pt-6 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/40">
             © {new Date().getFullYear()}{" "}
             {(siteConfig.legalName || siteConfig.name).replace(/\.$/, "")}. All

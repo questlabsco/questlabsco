@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="bg-white">
+    <main className="bg-background">
       <div className="container-site page-hero pb-32 text-center">
-        <h1 className="text-4xl font-bold text-ink tracking-tight">
+        <h1 className="text-4xl font-normal text-foreground tracking-tight">
           This page doesn&apos;t exist
         </h1>
         <p className="mt-4 text-base text-muted-foreground">

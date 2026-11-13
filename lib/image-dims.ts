@@ -2,6 +2,7 @@
 // height on <img> so the layout does not shift while images load.
 // Regenerate after adding or replacing images.
 export const imageDims: Record<string, [number, number]> = {
+  "/brand/logo-full-light.webp": [623, 96],
   "/brand/logo-full.webp": [623, 96],
   "/brand/logo-mark-light.webp": [90, 80],
   "/brand/logo-mark.webp": [81, 72],

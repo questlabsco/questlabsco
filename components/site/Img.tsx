@@ -25,7 +25,7 @@ export default function Img({
       height={dims?.[1]}
       loading={priority ? "eager" : "lazy"}
       decoding="async"
-      className={className}
+      className={className ? `photo ${className}` : "photo"}
     />
   );
 }

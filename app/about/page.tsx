@@ -19,14 +19,14 @@ export default function AboutPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+            <h1 className="h-page">
               Bold enough to promise outcomes. Disciplined enough to deliver
               them.
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">
+            <p className="lede mt-7 max-w-2xl">
               Quest Labs Co. exists because most businesses don&apos;t need
               more AI hype. They need someone to find the work worth
               automating, build the system properly, and stick around to keep
@@ -47,7 +47,7 @@ export default function AboutPage() {
       <StatsBar />
 
       {/* Values */}
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-site py-20 md:py-28">
           <SectionHeading title="Five principles we hire, build, and bill by" />
           <div className="border-t border-line">
@@ -57,13 +57,13 @@ export default function AboutPage() {
                 delay={i * 0.04}
                 className="grid grid-cols-1 md:grid-cols-[80px_240px_1fr] gap-3 md:gap-8 py-7 md:py-8 border-b border-line"
               >
-                <span className="text-2xl font-bold text-tint-strong leading-none">
+                <span className="text-2xl font-bold text-white/15 leading-none">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="text-lg font-bold text-ink leading-snug">
+                <h3 className="text-lg font-bold text-foreground leading-snug">
                   {v.title}
                 </h3>
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                   {v.body}
                 </p>
               </Reveal>
@@ -73,7 +73,7 @@ export default function AboutPage() {
       </section>
 
       {/* Recognition */}
-      <section className="bg-tint border-y border-line">
+      <section className="bg-surface border-y border-line">
         <div className="container-site py-20 md:py-24">
           <SectionHeading title="Proof, not just promises" />
           <RecognitionStrip />

@@ -18,13 +18,13 @@ export const metadata: Metadata = pageMeta({
 export default function IndustriesPage() {
   return (
     <main>
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+            <h1 className="h-page">
               AI that speaks your industry&apos;s language
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">
+            <p className="lede mt-7 max-w-2xl">
               Generic AI demos are easy; systems that survive your industry&apos;s
               regulations, formats, and edge cases are not. Here&apos;s where
               we&apos;ve done the homework.
@@ -33,7 +33,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-site py-20 md:py-28">
           <SectionHeading title="Where we work" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -41,9 +41,9 @@ export default function IndustriesPage() {
               <Reveal key={ind.slug} delay={(i % 2) * 0.08}>
                 <Link
                   href={`/industries/${ind.slug}/`}
-                  className="group grid grid-cols-1 sm:grid-cols-[200px_1fr] border border-line bg-white hover:border-primary transition-colors h-full"
+                  className="group grid grid-cols-1 sm:grid-cols-[200px_1fr] border border-line bg-background hover:border-primary transition-colors h-full"
                 >
-                  <div className="aspect-[4/3] sm:aspect-auto sm:h-full overflow-hidden bg-tint">
+                  <div className="aspect-[4/3] sm:aspect-auto sm:h-full overflow-hidden bg-surface">
                     <Img
                       src={ind.image}
                       alt=""
@@ -51,10 +51,10 @@ export default function IndustriesPage() {
                     />
                   </div>
                   <div className="p-6 md:p-7 flex flex-col">
-                    <h3 className="text-lg font-bold text-ink group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                       {ind.name}
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                       {ind.summary}
                     </p>
                     <span className="mt-auto pt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">

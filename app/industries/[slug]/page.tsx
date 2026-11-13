@@ -54,14 +54,14 @@ export default async function IndustryPage({
       />
 
       {/* Hero with image */}
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+              <h1 className="h-page">
                 {industry.title}
               </h1>
-              <p className="mt-6 text-lg text-white/70 leading-relaxed">
+              <p className="lede mt-7">
                 {industry.intro}
               </p>
               <div className="mt-9 flex flex-wrap gap-4">
@@ -71,7 +71,7 @@ export default async function IndustryPage({
                 </Link>
               </div>
             </div>
-            <div className="hidden lg:block border border-line-dark">
+            <div className="hidden lg:block border border-line">
               <Img
                 src={industry.image}
                 alt=""
@@ -84,7 +84,7 @@ export default async function IndustryPage({
       </section>
 
       {/* Use cases */}
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-site py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             <Reveal className="lg:sticky lg:top-32">
@@ -104,12 +104,12 @@ export default async function IndustryPage({
                   delay={i * 0.04}
                   className="grid grid-cols-[48px_1fr] gap-4 py-6 border-b border-line"
                 >
-                  <span className="text-xl font-bold text-tint-strong leading-none">
+                  <span className="text-xl font-bold text-white/15 leading-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <h3 className="text-base font-bold text-ink">{u.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    <h3 className="text-base font-bold text-foreground">{u.title}</h3>
+                    <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                       {u.body}
                     </p>
                   </div>
@@ -121,20 +121,20 @@ export default async function IndustryPage({
       </section>
 
       {/* Outcomes: dark band */}
-      <section className="bg-ink text-white">
+      <section className="bg-background text-white">
         <div className="container-site py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-10 items-center">
             <Reveal>
-              <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+              <h2 className="text-2xl md:text-3xl font-normal text-white leading-tight">
                 What automation delivers in this sector
               </h2>
             </Reveal>
             <ul className="space-y-5">
               {industry.outcomes.map((o, i) => (
                 <Reveal key={o} delay={i * 0.08}>
-                  <li className="flex items-start gap-4 pb-5 border-b border-line-dark last:border-0 last:pb-0">
+                  <li className="flex items-start gap-4 pb-5 border-b border-line last:border-0 last:pb-0">
                     <Check className="size-5 shrink-0 mt-0.5 text-accent" />
-                    <span className="text-sm md:text-base text-white/80">{o}</span>
+                    <span className="text-base md:text-lg text-white/80">{o}</span>
                   </li>
                 </Reveal>
               ))}
@@ -145,7 +145,7 @@ export default async function IndustryPage({
 
       {/* A worked example from this industry */}
       {examples.length > 0 && (
-        <section className="bg-tint border-b border-line">
+        <section className="bg-surface border-b border-line">
           <div className="container-site py-20 md:py-28">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionHeading title="An example in this industry" />

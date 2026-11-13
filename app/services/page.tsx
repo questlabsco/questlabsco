@@ -18,13 +18,13 @@ export default function ServicesPage() {
   return (
     <main>
       {/* Page hero */}
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+            <h1 className="h-page">
               Everything it takes to put AI to work, under one roof
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">
+            <p className="lede mt-7 max-w-2xl">
               Strategy, engineering, and design from a single team. Start with
               a conversation or an audit; scale to systems your business runs
               on.
@@ -36,7 +36,7 @@ export default function ServicesPage() {
       {serviceGroups.map((group, gi) => (
         <section
           key={group}
-          className={gi % 2 === 0 ? "bg-white" : "bg-tint border-y border-line"}
+          className={gi % 2 === 0 ? "bg-background" : "bg-surface border-y border-line"}
         >
           <div className="container-site py-20 md:py-24">
             <SectionHeading
@@ -51,15 +51,15 @@ export default function ServicesPage() {
               {services
                 .filter((s) => s.group === group)
                 .map((s, i) => (
-                  <Reveal key={s.slug} delay={i * 0.05} className="bg-white">
+                  <Reveal key={s.slug} delay={i * 0.05} className="bg-background">
                     <Link
                       href={`/services/${s.slug}/`}
-                      className="group flex flex-col h-full p-7 md:p-8 hover:bg-tint transition-colors"
+                      className="group flex flex-col h-full p-7 md:p-8 hover:bg-surface transition-colors"
                     >
-                      <h3 className="text-lg font-bold text-ink group-hover:text-primary transition-colors">
+                      <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                         {s.name}
                       </h3>
-                      <p className="mt-2.5 text-sm text-muted-foreground leading-relaxed">
+                      <p className="mt-2.5 text-base text-muted-foreground leading-relaxed">
                         {s.summary}
                       </p>
                       <span className="mt-auto pt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">

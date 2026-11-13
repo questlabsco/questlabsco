@@ -10,49 +10,57 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Light-first palette. White base, purple accent, dark ink bands.
-        background: "#FFFFFF",
-        foreground: "#191331",
+        // Dark, type-led palette: near-black base, off-white text, and one
+        // accent taken from the blue stripe in the logo.
+        background: "#08080A",
+        foreground: "#F2F2F3",
+        surface: {
+          DEFAULT: "#0E0E11", // alternate section background
+          raised: "#15151A", // cards and panels on top of a section
+        },
+        // Legacy names kept so older class names still resolve.
         ink: {
-          DEFAULT: "#191331", // dark section background / primary text
-          deep: "#120D24", // darkest band (hero, footer)
-          soft: "#241B45", // raised surfaces inside dark bands
+          DEFAULT: "#F2F2F3",
+          deep: "#08080A",
+          soft: "#15151A",
         },
         primary: {
-          DEFAULT: "#6D28D9", // violet-700 — main action color
-          hover: "#5B21B6", // violet-800
-          foreground: "#FFFFFF",
+          DEFAULT: "#8FA2FF", // accent for links, small details, focus
+          hover: "#B5C1FF",
+          foreground: "#08080A",
         },
         accent: {
-          DEFAULT: "#8B5CF6", // lighter violet for icons/details on dark
-          foreground: "#FFFFFF",
+          DEFAULT: "#8FA2FF",
+          strong: "#4F63FF", // the logo blue, for fills
+          foreground: "#08080A",
         },
         tint: {
-          DEFAULT: "#F5F3FA", // pale lilac alternate-section background
-          strong: "#ECE7F7",
+          DEFAULT: "#0E0E11",
+          strong: "#15151A",
         },
         muted: {
-          DEFAULT: "#F5F3FA",
-          foreground: "#5D5775", // secondary text on white
+          DEFAULT: "#0E0E11",
+          foreground: "#A0A0AB", // secondary text
         },
         card: {
-          DEFAULT: "#FFFFFF",
-          foreground: "#191331",
+          DEFAULT: "#0E0E11",
+          foreground: "#F2F2F3",
         },
         line: {
-          DEFAULT: "#CFC6E4", // hairline borders on white (darkened for visibility)
-          dark: "#453869", // hairline borders on ink bands (darkened for visibility)
+          DEFAULT: "#232329", // hairlines
+          dark: "#232329",
         },
-        border: "#CFC6E4",
-        input: "#CFC6E4",
-        ring: "#6D28D9",
+        border: "#232329",
+        input: "#232329",
+        ring: "#8FA2FF",
       },
       fontFamily: {
         sans: ["var(--font-mona)", "system-ui", "sans-serif"],
         heading: ["var(--font-mona)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       maxWidth: {
-        site: "1240px",
+        site: "1280px",
       },
       keyframes: {
         "fade-up": {

@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #191331;
+  --background: #08080a;
+  --foreground: #f2f2f3;
+  color-scheme: dark;
 }
 
 @layer base {
@@ -13,10 +14,15 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Anchored sections (#book, #message) clear the fixed header. */
+    scroll-padding-top: 5rem;
+    background: #08080a;
   }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-mona), system-ui, sans-serif;
+    /* Backstop against any decorative element pushing the page sideways. */
+    overflow-x: clip;
   }
   h1,
   h2,
@@ -25,44 +31,92 @@
   h5,
   h6 {
     font-family: var(--font-mona), system-ui, sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
   ::selection {
-    background: #6d28d9;
+    background: #4f63ff;
     color: #ffffff;
+  }
+  :focus-visible {
+    outline: 2px solid #8fa2ff;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
 @layer components {
-  /* Standard page gutter + max width, EffectiveSoft-style contained layout */
+  /* Page gutter + max width */
   .container-site {
-    @apply mx-auto w-full max-w-site px-5 md:px-8;
+    @apply mx-auto w-full max-w-site px-5 md:px-10;
   }
 
-  /* Section eyebrow label */
-  .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-primary;
+  /* Type scale. Headlines are large and light; the size does the work. */
+  .h-display {
+    font-size: clamp(2.7rem, 6.6vw, 6rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.045em;
   }
-  .eyebrow-on-dark {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-accent;
+  .h-page {
+    font-size: clamp(2.4rem, 5.2vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.03;
+    letter-spacing: -0.04em;
+  }
+  .h-section {
+    font-size: clamp(2rem, 4.2vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+  .lede {
+    @apply text-lg md:text-xl leading-relaxed text-white/60;
   }
 
-  /* Primary CTA: sharp corners, solid purple */
+  /* Small monospace label above a headline or number */
+  .eyebrow,
+  .eyebrow-on-dark,
+  .label-mono {
+    @apply font-mono text-[11px] md:text-xs font-medium uppercase tracking-[0.16em] text-white/50;
+  }
+
+  /* Primary action: solid off-white, sharp corners */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-primary px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-primary-hover;
+    @apply inline-flex items-center justify-center gap-2 bg-foreground px-6 py-2.5 text-sm font-semibold text-background transition-colors duration-200 hover:bg-primary;
   }
-  /* Outline CTA for dark bands */
-  .btn-outline-light {
-    @apply inline-flex items-center justify-center gap-2 border border-white/40 px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:border-white hover:bg-white/10;
-  }
-  /* Outline CTA for light sections */
+  /* Secondary action */
+  .btn-outline-light,
   .btn-outline-dark {
-    @apply inline-flex items-center justify-center gap-2 border border-ink/30 px-6 py-2.5 text-sm font-semibold text-ink transition-colors duration-200 hover:border-ink hover:bg-ink hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 border border-white/25 px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:border-white hover:bg-white/5;
+  }
+  /* Larger button for the main action on a page: 48px tall, easy to tap. */
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
   }
 
-  /* First section of every page clears the floating island header */
+  /* First section of every page clears the fixed header */
   .page-hero {
-    @apply pt-32 md:pt-40;
+    @apply pt-36 md:pt-48;
+  }
+
+  /* Soft light behind the top of a hero */
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 60% 55% at 50% -10%, rgba(79, 99, 255, 0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 85% 0%, rgba(143, 162, 255, 0.08) 0%, transparent 70%);
+  }
+
+  /* Photos sit back on the dark page until hovered */
+  .photo {
+    filter: grayscale(1) contrast(1.05) brightness(0.8);
+    transition: filter 0.5s ease;
+  }
+  .group:hover .photo {
+    filter: grayscale(0) contrast(1) brightness(0.95);
   }
 }
 
@@ -79,49 +133,18 @@
   }
 }
 
-/* Scrollbar: light theme */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f5f3fa;
+  background: #08080a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cfc8e4;
+  background: #2a2a31;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6d28d9;
-}
-
-/* ---------------------------------------------------------------------- */
-/* Added with the booking redesign                                         */
-/* ---------------------------------------------------------------------- */
-
-@layer base {
-  html {
-    /* Anchored sections (#book, #message) clear the floating header. */
-    scroll-padding-top: 5rem;
-  }
-  body {
-    /* Backstop against any decorative element pushing the page sideways. */
-    overflow-x: clip;
-  }
-  :focus-visible {
-    outline: 2px solid #8b5cf6;
-    outline-offset: 2px;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-  }
-}
-
-@layer components {
-  /* Larger button for the main action on a page: 48px tall, easy to tap. */
-  .btn-lg {
-    @apply px-7 py-3.5 text-base;
-  }
+  background: #8fa2ff;
 }
 
 /* Scroll reveal. Content is visible by default; browsers with scroll-driven
@@ -137,6 +160,28 @@
     transform: none;
   }
 }
+/* Statement lines brighten as they pass the middle of the screen. */
+@keyframes line-lit {
+  from {
+    opacity: 0.22;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes node-pulse {
+  0%,
+  100% {
+    border-color: #232329;
+  }
+  12% {
+    border-color: #8fa2ff;
+  }
+  30% {
+    border-color: #232329;
+  }
+}
+
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
@@ -144,5 +189,28 @@
       animation-timeline: view();
       animation-range: entry 0% cover 16%;
     }
+    .lit-line {
+      animation: line-lit linear both;
+      animation-timeline: view();
+      animation-range: cover 22% cover 46%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flow-node {
+    animation: node-pulse 8s ease-in-out infinite;
+  }
+  .flow-node:nth-child(2) {
+    animation-delay: 1.6s;
+  }
+  .flow-node:nth-child(3) {
+    animation-delay: 3.2s;
+  }
+  .flow-node:nth-child(4) {
+    animation-delay: 4.8s;
+  }
+  .flow-node:nth-child(5) {
+    animation-delay: 6.4s;
   }
 }

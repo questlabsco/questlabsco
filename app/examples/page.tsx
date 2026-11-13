@@ -15,13 +15,13 @@ export const metadata: Metadata = pageMeta({
 export default function ExamplesPage() {
   return (
     <main>
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+            <h1 className="h-page">
               Example projects, scoped the way we would scope yours
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">
+            <p className="lede mt-7 max-w-2xl">
               Eight worked examples, one per industry. Each shows what a
               typical project looks like: the business, what they do by hand
               today, what we build, how long it takes, and the target we
@@ -35,7 +35,7 @@ export default function ExamplesPage() {
         </div>
       </section>
 
-      <section className="bg-tint">
+      <section className="bg-surface">
         <div className="container-site py-20 md:py-28">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {engagements.map((e) => (

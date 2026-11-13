@@ -12,8 +12,8 @@ const onTheCall = [
 // The booking section that closes every main page. It sits at #book so any
 // "Book a free call" button on the same page scrolls straight to it.
 export default function BookCall({
-  title = "Book a free call",
-  body = `${booking.duration} with the team that would do the work. We'll map your workflows, show you what's automatable, and attach real numbers. No sales pitch.`,
+  title = "Book a free call.",
+  body = `${booking.duration} with the team that would do the work. No sales pitch.`,
 }: {
   title?: string;
   body?: string;
@@ -22,64 +22,56 @@ export default function BookCall({
     <section
       id="book"
       aria-labelledby="book-title"
-      className="bg-ink text-white border-t border-line-dark"
+      className="relative border-t border-line overflow-hidden"
     >
-      <div className="container-site py-20 md:py-28">
+      <div className="hero-glow absolute inset-0 pointer-events-none opacity-70" aria-hidden="true" />
+      <div className="container-site relative py-24 md:py-36">
         <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-12 lg:gap-20 items-start">
           <div className="lg:sticky lg:top-28">
             <Reveal>
-              <h2
-                id="book-title"
-                className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold leading-[1.1] text-white"
-              >
+              <p className="label-mono">Free · {booking.duration}</p>
+              <h2 id="book-title" className="h-page mt-5 text-white">
                 {title}
               </h2>
-              <p className="mt-5 text-base md:text-lg text-white/70 leading-relaxed">
-                {body}
-              </p>
+              <p className="lede mt-6">{body}</p>
             </Reveal>
 
-            <ol className="mt-9 border-t border-line-dark">
+            <ol className="mt-10 border-t border-line">
               {onTheCall.map((line, i) => (
                 <li
                   key={line}
-                  className="grid grid-cols-[44px_1fr] gap-3 py-4 border-b border-line-dark"
+                  className="grid grid-cols-[44px_1fr] gap-3 py-5 border-b border-line"
                 >
-                  <span className="text-lg font-bold leading-snug text-white/25">
+                  <span className="font-mono text-sm leading-7 text-white/35">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="text-sm md:text-base text-white/85 leading-relaxed">
+                  <span className="text-base md:text-lg text-white/80 leading-relaxed">
                     {line}
                   </span>
                 </li>
               ))}
             </ol>
 
-            <p className="mt-7 text-sm text-white/60 leading-relaxed">
-              25+ active clients. Tens of thousands of hours of manual work
-              saved. 4.9 / 5 average client rating.
-            </p>
-
-            <p className="mt-5 text-sm text-white/60 leading-relaxed">
+            <p className="mt-8 text-base text-white/50 leading-relaxed">
               Rather write it down?{" "}
               <Link
                 href="/contact#message"
-                className="font-semibold text-accent hover:text-white transition-colors"
+                className="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-colors"
               >
                 Send us a message
               </Link>{" "}
               or email{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="font-semibold text-accent hover:text-white transition-colors"
+                className="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-colors"
               >
                 {siteConfig.email}
               </a>
-              . We reply within one business day.
+              .
             </p>
           </div>
 
-          <div className="bg-white">
+          <div className="border border-line bg-surface">
             <CalendlyEmbed />
           </div>
         </div>

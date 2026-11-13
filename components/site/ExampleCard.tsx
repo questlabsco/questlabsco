@@ -11,9 +11,9 @@ export default function ExampleCard({ e }: { e: Engagement }) {
   return (
     <Link
       href={`/examples/${e.slug}`}
-      className="group flex flex-col border border-line bg-white hover:border-primary transition-colors"
+      className="group flex flex-col border border-line bg-surface hover:border-white/40 transition-colors"
     >
-      <div className="aspect-[16/10] overflow-hidden bg-tint">
+      <div className="aspect-[16/10] overflow-hidden bg-surface">
         <Img
           src={e.image}
           alt=""
@@ -22,22 +22,22 @@ export default function ExampleCard({ e }: { e: Engagement }) {
       </div>
       <div className="flex flex-col flex-1 p-6 md:p-7">
         <div className="flex flex-wrap gap-2 mb-4">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-white bg-primary px-2.5 py-1">
+          <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-background bg-foreground px-2.5 py-1">
             Example
           </span>
           {industry && (
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-primary border border-primary/30 px-2.5 py-1">
+            <span className="font-mono text-[11px] font-medium uppercase tracking-wider text-white/60 border border-line px-2.5 py-1">
               {industry.name}
             </span>
           )}
         </div>
-        <h3 className="text-lg font-bold text-ink leading-snug group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
           {e.title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+        <p className="mt-2 text-base text-muted-foreground leading-relaxed">
           {e.summary}
         </p>
-        <p className="mt-5 pt-5 border-t border-line text-sm text-ink">
+        <p className="mt-5 pt-5 border-t border-line text-sm text-foreground">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
             Target{" "}
           </span>

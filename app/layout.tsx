@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Mona_Sans } from "next/font/google";
+import { Geist_Mono, Mona_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
-import CustomCursor from "@/components/site/CustomCursor";
 import StickyBookBar from "@/components/site/StickyBookBar";
 import JsonLd from "@/components/site/JsonLd";
 import { siteConfig } from "@/lib/data/site";
@@ -13,6 +12,13 @@ import { organizationSchema } from "@/lib/schema";
 const monaSans = Mona_Sans({
   subsets: ["latin"],
   variable: "--font-mona",
+  display: "swap",
+});
+
+// Monospace for small labels and numbers.
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -53,10 +59,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={monaSans.variable}>
+    <html lang="en" className={`${monaSans.variable} ${geistMono.variable}`}>
       <body className="bg-background text-foreground antialiased min-h-screen flex flex-col">
         <JsonLd data={organizationSchema()} />
-        <CustomCursor />
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />

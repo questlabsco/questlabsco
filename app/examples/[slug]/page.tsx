@@ -56,7 +56,7 @@ export default async function ExamplePage({
       />
 
       {/* Hero */}
-      <section className="bg-ink-deep text-white">
+      <section className="bg-background text-white">
         <div className="container-site page-hero pb-16 md:pb-24">
           <div className="max-w-3xl">
             <p className="eyebrow-on-dark">
@@ -73,10 +73,10 @@ export default async function ExamplePage({
                 </>
               )}
             </p>
-            <h1 className="mt-4 text-4xl sm:text-5xl font-bold leading-[1.08] tracking-tight">
+            <h1 className="mt-4 h-page">
               {e.title}
             </h1>
-            <p className="mt-6 text-lg text-white/70 leading-relaxed max-w-2xl">
+            <p className="lede mt-7 max-w-2xl">
               {e.summary}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
@@ -93,7 +93,7 @@ export default async function ExamplePage({
       </section>
 
       {/* The write-up */}
-      <section className="bg-tint border-b border-line">
+      <section className="bg-surface border-b border-line">
         <div className="container-site py-16 md:py-24">
           <p className="mb-10 md:mb-14 max-w-3xl text-base md:text-lg text-muted-foreground leading-relaxed">
             This is an example of how we would scope a project like this one,
@@ -106,7 +106,7 @@ export default async function ExamplePage({
       </section>
 
       {/* More examples */}
-      <section className="bg-white">
+      <section className="bg-background">
         <div className="container-site py-20 md:py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading title="More examples" />

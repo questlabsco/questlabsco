@@ -4,9 +4,9 @@ import { booking } from "@/lib/data/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Book a Free Call",
+  title: "Get Your Free Automation Audit",
   description:
-    `Book a free ${booking.durationAdjective} call with Quest Labs Co. to find out what's worth automating, or send us a message. We reply within one business day.`,
+    `Get a free automation audit: a ${booking.durationAdjective} call with Quest Labs Co. to find out what's worth automating. Or send us a message and we'll reply within one business day.`,
   path: "/contact",
 });
 

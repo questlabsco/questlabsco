@@ -1,30 +1,33 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Mona_Sans } from "next/font/google";
+import { Gochi_Hand, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import StickyBookBar from "@/components/site/StickyBookBar";
+import AnnouncementBar from "@/components/site/AnnouncementBar";
+import LeadPopup from "@/components/site/LeadPopup";
 import JsonLd from "@/components/site/JsonLd";
 import { siteConfig } from "@/lib/data/site";
 import { ogImage } from "@/lib/seo";
 import { organizationSchema } from "@/lib/schema";
 
-const monaSans = Mona_Sans({
+const sans = Open_Sans({
   subsets: ["latin"],
-  variable: "--font-mona",
+  variable: "--font-sans",
   display: "swap",
 });
 
-// Monospace for small labels and numbers.
-const geistMono = Geist_Mono({
+// Handwriting for the side notes that point at things.
+const hand = Gochi_Hand({
   subsets: ["latin"],
-  variable: "--font-mono",
+  weight: "400",
+  variable: "--font-hand",
   display: "swap",
 });
 
-const homeTitle = "Quest Labs Co.: AI Automation & Web Development Agency";
+const homeTitle = "Quest Labs Co.: AI Automation Agency | Free Automation Audit";
 const homeDescription =
-  "AI automation agency building AI agents, workflow automation, and fast websites. 25+ active clients and tens of thousands of hours saved. Book a free call.";
+  "AI automation agency building AI agents, workflow automation, and fast websites for 25+ active clients. Get a free automation audit.";
 
 export const metadata: Metadata = {
   // Makes every relative URL in metadata (canonicals, Open Graph) absolute.
@@ -59,13 +62,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${monaSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${hand.variable}`}>
       <body className="bg-background text-foreground antialiased min-h-screen flex flex-col">
         <JsonLd data={organizationSchema()} />
+        <AnnouncementBar />
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
         <StickyBookBar />
+        <LeadPopup />
       </body>
     </html>
   );

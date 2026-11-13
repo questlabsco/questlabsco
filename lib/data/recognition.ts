@@ -14,7 +14,7 @@ export const recognition: Recognition[] = [
   },
   {
     kind: "report",
-    title: "Every build starts with a priced audit",
+    title: "Every build starts with a priced roadmap",
     detail: "A scoped, written roadmap before a line of code, not a guess dressed up as a proposal",
     image: "/images/recognition/report.webp",
   },

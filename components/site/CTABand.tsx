@@ -1,31 +1,44 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Reveal from "./Reveal";
+import Mascot from "@/components/art/Mascot";
+import BlueSky from "@/components/art/offer/BlueSky";
+import HighlightTitle from "@/components/art/offer/HighlightTitle";
 import { booking } from "@/lib/data/site";
 
 // Compact call-to-action band for pages that don't carry the full booking
 // section (the hubs).
 export default function CTABand({
-  title = "Find out what's worth automating.",
-  body = `Book a free ${booking.durationAdjective} call. We'll come back with an honest read on feasibility, approach, and cost.`,
+  title = "Find Out What's Worth Automating",
+  highlight,
+  body = `A free ${booking.durationAdjective} audit call with the team that would do the work. We'll tell you what's automatable and whether it's worth doing.`,
 }: {
   title?: string;
+  // Phrase of `title` set in the highlight block (defaults to the last words).
+  highlight?: string;
   body?: string;
 }) {
   return (
-    <section className="relative border-t border-line overflow-hidden">
-      <div className="hero-glow absolute inset-0 pointer-events-none opacity-70" aria-hidden="true" />
-      <div className="container-site relative py-24 md:py-36">
-        <Reveal className="max-w-3xl">
-          <h2 className="h-page text-white">{title}</h2>
-          <p className="lede mt-6 max-w-2xl">{body}</p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link href={booking.page} className="btn-primary btn-lg group">
-              {booking.label}
+    <section className="relative overflow-hidden bg-hero text-white">
+      <BlueSky />
+      <div className="container-site relative py-16 md:py-24">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <div aria-hidden="true" className="mx-auto w-20 animate-float md:w-24">
+            <Mascot wave mood="happy" className="w-full" />
+          </div>
+          <h2 className="h-page mt-5 text-white">
+            <HighlightTitle title={title} highlight={highlight} />
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
+            {body}
+          </p>
+          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href={booking.page} className="btn-primary btn-lg group w-full sm:w-auto">
+              {booking.labelLong}
               <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link href="/examples" className="btn-outline-light btn-lg">
-              See example projects
+            <Link href="/case-studies" className="btn-outline-dark btn-lg w-full sm:w-auto">
+              See Case Studies
             </Link>
           </div>
         </Reveal>

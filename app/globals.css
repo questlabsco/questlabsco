@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --background: #08080a;
-  --foreground: #f2f2f3;
-  color-scheme: dark;
+  --background: #ffffff;
+  --foreground: #1b1d4e;
+  --ink: #1b1d4e;
 }
 
 @layer base {
@@ -14,13 +14,12 @@
   }
   html {
     scroll-behavior: smooth;
-    /* Anchored sections (#book, #message) clear the fixed header. */
-    scroll-padding-top: 5rem;
-    background: #08080a;
+    /* Anchored sections (#book, #message) clear the sticky header. */
+    scroll-padding-top: 6rem;
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: var(--font-mona), system-ui, sans-serif;
+    font-family: var(--font-sans), system-ui, sans-serif;
     /* Backstop against any decorative element pushing the page sideways. */
     overflow-x: clip;
   }
@@ -30,20 +29,26 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-mona), system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    letter-spacing: -0.02em;
   }
   ::selection {
-    background: #4f63ff;
-    color: #ffffff;
+    background: #ffcb2e;
+    color: #1b1d4e;
   }
   :focus-visible {
-    outline: 2px solid #8fa2ff;
-    outline-offset: 2px;
+    outline: 3px solid #3b4cff;
+    outline-offset: 3px;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
     }
   }
 }
@@ -51,166 +56,200 @@
 @layer components {
   /* Page gutter + max width */
   .container-site {
-    @apply mx-auto w-full max-w-site px-5 md:px-10;
+    @apply mx-auto w-full max-w-site px-5 md:px-8;
   }
 
-  /* Type scale. Headlines are large and light; the size does the work. */
+  /* ---------------------------------------------------------------- type */
+  /* Headlines: heavy, Title Case, tight. */
   .h-display {
-    font-size: clamp(2.7rem, 6.6vw, 6rem);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.045em;
+    font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.14;
+    letter-spacing: -0.02em;
   }
   .h-page {
-    font-size: clamp(2.4rem, 5.2vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.03;
-    letter-spacing: -0.04em;
+    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
   .h-section {
-    font-size: clamp(2rem, 4.2vw, 3.6rem);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.035em;
+    font-size: clamp(1.75rem, 3.4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
   .lede {
-    @apply text-lg md:text-xl leading-relaxed text-white/60;
+    @apply text-lg md:text-xl leading-relaxed text-foreground/80;
   }
 
-  /* Small monospace label above a headline or number */
+  /* One phrase in a headline, set in a solid block. Use <span class="hl">. */
+  .hl {
+    background: #1b1d4e;
+    color: #ffffff;
+    padding: 0.02em 0.22em 0.08em;
+    border-radius: 0.14em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  .hl-sun {
+    background: #ffcb2e;
+    color: #1b1d4e;
+    padding: 0.02em 0.22em 0.08em;
+    border-radius: 0.14em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  /* On the blue hero: a darker blue block. */
+  .hl-blue {
+    background: rgba(27, 29, 78, 0.55);
+    color: #ffffff;
+    padding: 0.02em 0.22em 0.08em;
+    border-radius: 0.14em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  /* Keep a highlighted phrase together on one line where there is room, and
+     balance headline line lengths. */
+  .h-display,
+  .h-page,
+  .h-section {
+    text-wrap: balance;
+  }
+  @media (min-width: 640px) {
+    .hl,
+    .hl-sun,
+    .hl-blue {
+      white-space: nowrap;
+    }
+  }
+
+  /* Small label above a headline */
   .eyebrow,
   .eyebrow-on-dark,
   .label-mono {
-    @apply font-mono text-[11px] md:text-xs font-medium uppercase tracking-[0.16em] text-white/50;
+    @apply text-xs md:text-[13px] font-extrabold uppercase tracking-[0.12em] text-brand;
   }
 
-  /* Primary action: solid off-white, sharp corners */
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-foreground px-6 py-2.5 text-sm font-semibold text-background transition-colors duration-200 hover:bg-primary;
+  /* Handwritten side note. Pair with <HandArrow /> from components/art. */
+  .note-hand {
+    font-family: var(--font-hand), cursive;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: #1b1d4e;
   }
-  /* Secondary action */
+
+  /* -------------------------------------------------------------- buttons */
+  /* The one action: yellow, navy outline, hard shadow that presses in. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-[3px] border-ink bg-sun px-6 py-2.5 text-sm font-extrabold uppercase tracking-wide text-ink shadow-pop transition-[transform,box-shadow,background-color] duration-150;
+  }
+  .btn-primary:hover {
+    @apply bg-sun-light;
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 0 #1b1d4e;
+  }
+  .btn-primary:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0 0 0 0 #1b1d4e;
+  }
+  /* Secondary: same shape in white. */
   .btn-outline-light,
   .btn-outline-dark {
-    @apply inline-flex items-center justify-center gap-2 border border-white/25 px-6 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:border-white hover:bg-white/5;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-[3px] border-ink bg-white px-6 py-2.5 text-sm font-extrabold uppercase tracking-wide text-ink shadow-pop transition-[transform,box-shadow,background-color] duration-150;
   }
-  /* Larger button for the main action on a page: 48px tall, easy to tap. */
+  .btn-outline-light:hover,
+  .btn-outline-dark:hover {
+    @apply bg-surface;
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 0 #1b1d4e;
+  }
   .btn-lg {
-    @apply px-7 py-3.5 text-base;
+    @apply px-8 py-4 text-base;
   }
 
-  /* First section of every page clears the fixed header */
+  /* --------------------------------------------------------------- panels */
+  /* White panel, thick navy outline, hard shadow. */
+  .card-pop {
+    @apply rounded-xl border-[3px] border-ink bg-white shadow-pop;
+  }
+  .card-pop-lg {
+    @apply rounded-2xl border-[3px] border-ink bg-white shadow-pop-lg;
+  }
+  /* Rounded label, as on the hero illustration. */
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border-[3px] border-ink bg-white px-4 py-1.5 text-sm font-extrabold text-ink shadow-pop-sm;
+  }
+  /* Soft chip for tags and filters. */
+  .chip {
+    @apply inline-flex items-center rounded-lg border-2 border-line bg-white px-3.5 py-1.5 text-sm font-semibold text-ink;
+  }
+
+  /* --------------------------------------------------------------- layout */
+  /* First section of every page clears the sticky header */
   .page-hero {
-    @apply pt-36 md:pt-48;
+    @apply pt-14 md:pt-20;
   }
-
-  /* Soft light behind the top of a hero */
+  /* The blue used on the hero and closing call-to-action */
+  .bg-hero {
+    background: linear-gradient(180deg, #2f3ee8 0%, #3b5bff 45%, #5f95ff 100%);
+  }
+  /* Older class names that no longer do anything. */
   .hero-glow {
-    background:
-      radial-gradient(ellipse 60% 55% at 50% -10%, rgba(79, 99, 255, 0.22) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 85% 0%, rgba(143, 162, 255, 0.08) 0%, transparent 70%);
+    display: none;
   }
-
-  /* Photos sit back on the dark page until hovered */
   .photo {
-    filter: grayscale(1) contrast(1.05) brightness(0.8);
-    transition: filter 0.5s ease;
+    filter: none;
   }
-  .group:hover .photo {
-    filter: grayscale(0) contrast(1) brightness(0.95);
-  }
-}
 
-/* Custom cursor: hide the native one on fine pointers when active */
-@media (pointer: fine) {
-  .has-custom-cursor,
-  .has-custom-cursor a,
-  .has-custom-cursor button,
-  .has-custom-cursor select,
-  .has-custom-cursor input,
-  .has-custom-cursor textarea,
-  .has-custom-cursor [role="button"] {
-    cursor: none;
+  /* Zigzag edge between sections. Put <div class="zigzag text-white" /> at
+     the bottom of a coloured section; `text-*` sets the colour of the teeth,
+     which should match the NEXT section's background. */
+  .zigzag {
+    height: 14px;
+    width: 100%;
+    background:
+      linear-gradient(135deg, currentColor 25%, transparent 25%) -14px 0 / 28px 28px repeat-x,
+      linear-gradient(225deg, currentColor 25%, transparent 25%) -14px 0 / 28px 28px repeat-x;
+    transform: rotate(180deg);
   }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #08080a;
+  background: #f3f6ff;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a31;
+  background: #b9c3f2;
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8fa2ff;
+  background: #3b4cff;
 }
 
 /* Scroll reveal. Content is visible by default; browsers with scroll-driven
-   animations fade it in as it enters the viewport. No JavaScript involved,
+   animations pop it in as it enters the viewport. No JavaScript involved,
    so nothing is ever stuck hidden. */
 @keyframes reveal-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(26px) scale(0.97);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-/* Statement lines brighten as they pass the middle of the screen. */
-@keyframes line-lit {
-  from {
-    opacity: 0.22;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes node-pulse {
-  0%,
-  100% {
-    border-color: #232329;
-  }
-  12% {
-    border-color: #8fa2ff;
-  }
-  30% {
-    border-color: #232329;
-  }
-}
-
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
       animation: reveal-in linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 16%;
+      animation-range: entry 0% cover 18%;
     }
-    .lit-line {
-      animation: line-lit linear both;
-      animation-timeline: view();
-      animation-range: cover 22% cover 46%;
-    }
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .flow-node {
-    animation: node-pulse 8s ease-in-out infinite;
-  }
-  .flow-node:nth-child(2) {
-    animation-delay: 1.6s;
-  }
-  .flow-node:nth-child(3) {
-    animation-delay: 3.2s;
-  }
-  .flow-node:nth-child(4) {
-    animation-delay: 4.8s;
-  }
-  .flow-node:nth-child(5) {
-    animation-delay: 6.4s;
   }
 }

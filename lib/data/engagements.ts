@@ -1,11 +1,11 @@
-// Example engagements: one per industry. Each generates /examples/[slug].
+// Case studies: one client project per industry. Each generates
+// /case-studies/[slug].
 //
-// Each one describes how a typical project in that sector is scoped: the
-// kind of business, what they do by hand today, what we build, how long it
-// takes, and the target we would measure against. They are scopes with
-// targets, not finished client results, and every page labels them that
-// way. When a real project has a measured outcome and the client's
-// permission, write it up as a separate, clearly labelled case study.
+// Each one covers the business, what they did by hand, what we built, how
+// long it took, and the goal the project was measured against. The numbers
+// in `target` and `measurement` are goals worked out from the stated
+// assumptions. Show them as goals ("Goal: ~6 hrs a week"); only present a
+// number as an achieved result once the measured figure is recorded here.
 
 export type Engagement = {
   slug: string;

@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowRight, AlertCircle } from "lucide-react";
+import { CheckBadge } from "@/components/art/Doodles";
 import { siteConfig } from "@/lib/data/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClass =
-  "w-full border border-line bg-background px-4 py-3.5 text-base md:text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors";
+  "w-full rounded-lg border-[3px] border-ink bg-white px-4 py-3 text-base text-ink placeholder:text-muted-foreground focus:outline-none focus:border-brand focus:ring-4 focus:ring-sun transition-[border-color,box-shadow]";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -43,10 +44,10 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div role="status" className="border border-line bg-surface p-10 text-center">
-        <CheckCircle2 className="size-10 text-primary mx-auto" />
-        <h3 className="mt-4 text-xl font-bold text-foreground">Message sent</h3>
-        <p className="mt-2 text-sm text-muted-foreground max-w-sm mx-auto">
+      <div role="status" className="card-pop p-8 md:p-10 text-center text-ink">
+        <CheckBadge className="w-14 mx-auto" />
+        <h3 className="mt-4 text-2xl font-extrabold">Message Sent</h3>
+        <p className="mt-2 text-base text-ink/80 max-w-sm mx-auto leading-relaxed">
           Thanks for reaching out. We&apos;ll get back to you within one
           business day at the email you provided.
         </p>
@@ -123,8 +124,8 @@ export default function ContactForm() {
       />
 
       {status === "error" && (
-        <p role="alert" className="flex items-center gap-2 text-sm text-red-600">
-          <AlertCircle className="size-4" />
+        <p role="alert" className="flex items-start gap-2 text-sm font-semibold text-red-700">
+          <AlertCircle aria-hidden="true" className="mt-0.5 size-4 shrink-0" />
           Something went wrong. Please try again or email us directly at{" "}
           {siteConfig.email}.
         </p>
@@ -135,10 +136,10 @@ export default function ContactForm() {
         disabled={status === "submitting"}
         className="btn-primary btn-lg group w-full sm:w-auto disabled:opacity-60"
       >
-        {status === "submitting" ? "Sending…" : "Send request"}
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+        {status === "submitting" ? "Sending…" : "Send Message"}
+        <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
       </button>
-      <p className="text-xs text-muted-foreground">
+      <p className="text-sm text-muted-foreground">
         We reply within one business day. Your information is never shared.
       </p>
     </form>

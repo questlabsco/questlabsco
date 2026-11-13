@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import Zigzag from "@/components/site/Zigzag";
+import { Cloud, Sparkle } from "@/components/art/Doodles";
 import { pageMeta } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 
@@ -10,19 +13,23 @@ export const metadata: Metadata = pageMeta({
 
 export default function PrivacyPage() {
   return (
-    <main className="bg-background">
-      <section className="bg-background text-white">
-        <div className="container-site page-hero pb-12 md:pb-16">
+    <main>
+      <section className="relative overflow-hidden bg-hero text-white">
+        <Cloud className="hidden md:block absolute right-[8%] top-10 w-24 animate-drift" />
+        <Sparkle className="hidden md:block absolute left-[8%] bottom-8 w-8 animate-twinkle" />
+        <div className="container-site page-hero relative pb-12 md:pb-16 text-center">
           <h1 className="h-page">Privacy Policy</h1>
-          <p className="mt-3 text-sm text-white/50">
+          <p className="mt-4 text-sm md:text-base font-semibold text-white/85">
             Effective date: January 1, 2026 · Last updated: November 12, 2026
           </p>
         </div>
       </section>
+      <Zigzag from="hero" to="white" />
 
-      <div className="container-site py-16 max-w-3xl space-y-10 text-base md:text-lg leading-relaxed text-foreground/80">
+      <div className="bg-white">
+      <div className="container-site py-14 md:py-20 max-w-3xl space-y-10 text-base md:text-lg leading-relaxed text-ink/80">
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Who we are</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Who we are</h2>
           <p>
             This website is operated by {siteConfig.legalName || siteConfig.name}
             {siteConfig.location && `, based in ${siteConfig.location}`}. On
@@ -33,7 +40,7 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Information we collect</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Information we collect</h2>
           <p>
             When you contact us through this website, we collect the information
             you provide: your name, email address, company, phone number, and
@@ -43,7 +50,7 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">How we use it</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">How we use it</h2>
           <p>
             We use your information solely to respond to your inquiry, provide
             our services, and improve this website. We do not sell your data,
@@ -51,7 +58,7 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Third-party services</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Third-party services</h2>
           <p>
             Form submissions are processed by Web3Forms and delivered to our
             inbox. Meeting bookings are handled by Calendly under its own
@@ -60,44 +67,45 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Cookies</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Cookies</h2>
           <p>
             This site uses a minimal set of cookies: essential ones from our
             hosting provider, plus cookies set by embedded tools like
             Calendly and Wistia on the pages that use them. See our{" "}
-            <a href="/cookies/" className="text-primary font-medium">
+            <Link href="/cookies" className="text-brand font-semibold underline underline-offset-2">
               Cookie Policy
-            </a>{" "}
+            </Link>{" "}
             for the full breakdown.
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Data retention</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Data retention</h2>
           <p>
             We keep inquiry correspondence for as long as needed to serve you
             and meet legal obligations, after which it is deleted.
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Your rights</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Your rights</h2>
           <p>
             You may request a copy of the personal data we hold about you, ask
             us to correct it, or ask us to delete it by emailing{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-primary font-medium">
+            <a href={`mailto:${siteConfig.email}`} className="text-brand font-semibold underline underline-offset-2">
               {siteConfig.email}
             </a>
             .
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Contact</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Contact</h2>
           <p>
             Questions about this policy:{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-primary font-medium">
+            <a href={`mailto:${siteConfig.email}`} className="text-brand font-semibold underline underline-offset-2">
               {siteConfig.email}
             </a>
           </p>
         </section>
+      </div>
       </div>
     </main>
   );

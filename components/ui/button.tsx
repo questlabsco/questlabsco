@@ -19,11 +19,11 @@ const buttonVariants = cva(
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         violet:
-          "bg-gradient-to-r from-violet-600 to-violet-500 text-white hover:from-violet-500 hover:to-violet-400 shadow-lg shadow-violet-500/25",
+          "bg-gradient-to-r from-violet-600 to-violet-500 text-foreground hover:from-violet-500 hover:to-violet-400 shadow-lg shadow-violet-500/25",
         "violet-outline":
           "border border-violet-500/40 text-violet-300 hover:bg-violet-500/10 hover:border-violet-400",
         glass:
-          "glass text-white hover:bg-white/10",
+          "glass text-foreground hover:bg-foreground/10",
       },
       size: {
         default: "h-10 px-6 py-2",

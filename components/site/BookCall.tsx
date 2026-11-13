@@ -1,6 +1,10 @@
 import Link from "next/link";
 import CalendlyEmbed from "./CalendlyEmbed";
 import Reveal from "./Reveal";
+import Mascot from "@/components/art/Mascot";
+import { Sparkle } from "@/components/art/Doodles";
+import BlueSky from "@/components/art/offer/BlueSky";
+import HighlightTitle from "@/components/art/offer/HighlightTitle";
 import { booking, siteConfig } from "@/lib/data/site";
 
 const onTheCall = [
@@ -9,69 +13,100 @@ const onTheCall = [
   "You leave with a rough scope and the numbers to decide on.",
 ];
 
-// The booking section that closes every main page. It sits at #book so any
-// "Book a free call" button on the same page scrolls straight to it.
+const proof = [
+  { value: "25+", label: "active clients" },
+  { value: "10,000s", label: "of hours saved" },
+  { value: "4.9 / 5", label: "client rating" },
+];
+
+// The booking section that closes most pages. It sits at #book so any
+// "Get Your Free Audit" button on the same page scrolls straight to it.
 export default function BookCall({
-  title = "Book a free call.",
-  body = `${booking.duration} with the team that would do the work. No sales pitch.`,
+  title = "Get Your Free Automation Audit",
+  highlight = "Free Automation Audit",
+  body = `${booking.duration} with the team that would do the work. No sales pitch, just a straight answer.`,
 }: {
   title?: string;
+  // Phrase of `title` set in the highlight block.
+  highlight?: string;
   body?: string;
 }) {
   return (
     <section
       id="book"
       aria-labelledby="book-title"
-      className="relative border-t border-line overflow-hidden"
+      className="relative overflow-hidden bg-hero text-white"
     >
-      <div className="hero-glow absolute inset-0 pointer-events-none opacity-70" aria-hidden="true" />
-      <div className="container-site relative py-24 md:py-36">
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-12 lg:gap-20 items-start">
-          <div className="lg:sticky lg:top-28">
-            <Reveal>
-              <p className="label-mono">Free · {booking.duration}</p>
-              <h2 id="book-title" className="h-page mt-5 text-white">
-                {title}
-              </h2>
-              <p className="lede mt-6">{body}</p>
-            </Reveal>
+      <BlueSky dense />
+      <div className="container-site relative py-16 md:py-24">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="pill">Free · {booking.duration}</p>
+          <h2 id="book-title" className="h-page mt-5 text-white">
+            <HighlightTitle title={title} highlight={highlight} />
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
+            {body}
+          </p>
+        </Reveal>
 
-            <ol className="mt-10 border-t border-line">
+        <div className="mt-12 grid grid-cols-1 items-start gap-10 lg:grid-cols-[5fr_6fr] lg:gap-14">
+          <div>
+            <h3 className="text-lg font-extrabold text-white">What happens on the call</h3>
+            <ol className="mt-4 space-y-4">
               {onTheCall.map((line, i) => (
-                <li
-                  key={line}
-                  className="grid grid-cols-[44px_1fr] gap-3 py-5 border-b border-line"
-                >
-                  <span className="font-mono text-sm leading-7 text-white/35">
-                    {String(i + 1).padStart(2, "0")}
+                <li key={line} className="card-pop flex items-center gap-4 p-4 text-ink md:p-5">
+                  <span
+                    aria-hidden="true"
+                    className="flex size-10 shrink-0 items-center justify-center rounded-full border-[3px] border-ink bg-sun text-lg font-extrabold shadow-pop-sm"
+                  >
+                    {i + 1}
                   </span>
-                  <span className="text-base md:text-lg text-white/80 leading-relaxed">
-                    {line}
-                  </span>
+                  <span className="text-base font-semibold leading-snug md:text-lg">{line}</span>
                 </li>
               ))}
             </ol>
 
-            <p className="mt-8 text-base text-white/50 leading-relaxed">
+            <ul className="mt-8 grid grid-cols-3 gap-3">
+              {proof.map((s) => (
+                <li
+                  key={s.label}
+                  className="rounded-xl border-[3px] border-ink bg-white px-2 py-3 text-center text-ink shadow-pop-sm"
+                >
+                  <span className="block text-lg font-extrabold leading-tight sm:text-2xl">{s.value}</span>
+                  <span className="mt-1 block text-xs font-semibold leading-tight text-ink/75 sm:text-sm">
+                    {s.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-8 text-base leading-relaxed text-white/90">
               Rather write it down?{" "}
               <Link
                 href="/contact#message"
-                className="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-colors"
+                className="font-bold text-white underline underline-offset-4 hover:text-sun-light"
               >
                 Send us a message
               </Link>{" "}
               or email{" "}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="font-medium text-white underline decoration-white/30 underline-offset-4 hover:decoration-white transition-colors"
+                className="break-words font-bold text-white underline underline-offset-4 hover:text-sun-light"
               >
                 {siteConfig.email}
               </a>
               .
             </p>
+
+            <div aria-hidden="true" className="relative mt-10 hidden w-32 lg:block">
+              <div className="animate-float">
+                <Mascot mood="happy" wave className="w-full" />
+              </div>
+              <Sparkle className="absolute -right-6 top-2 w-7 animate-twinkle" />
+            </div>
           </div>
 
-          <div className="border border-line bg-surface">
+          <div className="card-pop-lg overflow-hidden text-ink">
             <CalendlyEmbed />
           </div>
         </div>

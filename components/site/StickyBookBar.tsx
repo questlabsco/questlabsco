@@ -41,7 +41,7 @@ export default function StickyBookBar() {
 
   return (
     <div
-      className={`lg:hidden fixed inset-x-0 bottom-0 z-40 border-t border-line bg-background/90 backdrop-blur px-4 py-3 transition-transform duration-300 ${
+      className={`lg:hidden fixed inset-x-0 bottom-0 z-40 border-t-[3px] border-ink bg-white px-4 py-3 transition-transform duration-300 ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
       aria-hidden={!visible}
@@ -49,7 +49,7 @@ export default function StickyBookBar() {
       <Link
         href={href}
         tabIndex={visible ? 0 : -1}
-        className="btn-primary w-full !py-3.5 !text-base"
+        className="btn-primary w-full min-h-[48px] !py-3 !text-base"
       >
         {booking.label}
         <ArrowRight aria-hidden="true" className="size-4" />

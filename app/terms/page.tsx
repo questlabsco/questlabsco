@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Zigzag from "@/components/site/Zigzag";
+import { Cloud, Sparkle } from "@/components/art/Doodles";
 import { pageMeta } from "@/lib/seo";
 import { siteConfig } from "@/lib/data/site";
 
@@ -10,19 +12,23 @@ export const metadata: Metadata = pageMeta({
 
 export default function TermsPage() {
   return (
-    <main className="bg-background">
-      <section className="bg-background text-white">
-        <div className="container-site page-hero pb-12 md:pb-16">
+    <main>
+      <section className="relative overflow-hidden bg-hero text-white">
+        <Cloud className="hidden md:block absolute right-[8%] top-10 w-24 animate-drift" />
+        <Sparkle className="hidden md:block absolute left-[8%] bottom-8 w-8 animate-twinkle" />
+        <div className="container-site page-hero relative pb-12 md:pb-16 text-center">
           <h1 className="h-page">Terms of Service</h1>
-          <p className="mt-3 text-sm text-white/50">
+          <p className="mt-4 text-sm md:text-base font-semibold text-white/85">
             Effective date: January 1, 2026 · Last updated: November 12, 2026
           </p>
         </div>
       </section>
+      <Zigzag from="hero" to="white" />
 
-      <div className="container-site py-16 max-w-3xl space-y-10 text-base md:text-lg leading-relaxed text-foreground/80">
+      <div className="bg-white">
+      <div className="container-site py-14 md:py-20 max-w-3xl space-y-10 text-base md:text-lg leading-relaxed text-ink/80">
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Who we are</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Who we are</h2>
           <p>
             This website is operated by {siteConfig.legalName || siteConfig.name}
             {siteConfig.location && `, based in ${siteConfig.location}`}. On
@@ -31,7 +37,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Use of this website</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Use of this website</h2>
           <p>
             This website is provided for general information about Quest Labs
             Co. and its services. You may browse and contact us freely; you may
@@ -40,7 +46,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">No professional advice</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">No professional advice</h2>
           <p>
             Content on this site, including example projects, estimates, and
             descriptions of typical results, is informational and does not
@@ -49,7 +55,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Intellectual property</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Intellectual property</h2>
           <p>
             The content, design, and branding of this website belong to Quest
             Labs Co. Third-party trademarks referenced here belong to their
@@ -57,7 +63,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Limitation of liability</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Limitation of liability</h2>
           <p>
             This website is provided &quot;as is.&quot; To the maximum extent
             permitted by law, Quest Labs Co. is not liable for damages arising
@@ -65,7 +71,7 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Changes</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Changes</h2>
           <p>
             We may update these terms from time to time; the last-updated
             date above reflects the latest revision. Continued use of the site
@@ -73,14 +79,15 @@ export default function TermsPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-xl font-normal text-foreground mb-3">Contact</h2>
+          <h2 className="text-xl md:text-2xl font-extrabold text-ink mb-3">Contact</h2>
           <p>
             Questions:{" "}
-            <a href={`mailto:${siteConfig.email}`} className="text-primary font-medium">
+            <a href={`mailto:${siteConfig.email}`} className="text-brand font-semibold underline underline-offset-2">
               {siteConfig.email}
             </a>
           </p>
         </section>
+      </div>
       </div>
     </main>
   );

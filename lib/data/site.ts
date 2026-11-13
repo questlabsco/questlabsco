@@ -26,9 +26,14 @@ export const siteConfig = {
   },
 };
 
-// The primary action across the site: book a free call.
+// The primary action across the site: the free automation audit, booked as
+// a short call.
 export const booking = {
-  label: "Book a free call",
+  label: "Get Your Free Audit",
+  // Longer form for hero buttons.
+  labelLong: "Get Your Free Automation Audit",
+  // How the offer is named in running text.
+  offer: "free automation audit",
   // Every page that ends with the booking section exposes it at #book.
   anchor: "#book",
   page: "/contact",

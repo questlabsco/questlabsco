@@ -2,6 +2,10 @@ import { Clock, Search, BarChart2, ShieldOff } from "lucide-react";
 import ContactForm from "@/components/site/ContactForm";
 import CalendlyEmbed from "@/components/site/CalendlyEmbed";
 import Reveal from "@/components/site/Reveal";
+import SectionHeading from "@/components/site/SectionHeading";
+import Mascot from "@/components/art/Mascot";
+import { HandArrow } from "@/components/art/Doodles";
+import BlueSky from "@/components/art/offer/BlueSky";
 import { booking, siteConfig } from "@/lib/data/site";
 
 const expectations = [
@@ -31,45 +35,62 @@ export default function ContactPageContent() {
   return (
     <main>
       {/* Hero + calendar: booking is the first thing on the page */}
-      <section className="bg-background text-white">
-        <div className="container-site page-hero pb-16 md:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-12 lg:gap-20 items-start">
-            <div>
-              <h1 className="h-page">
-                Book a free call
-              </h1>
-              <p className="lede mt-7">
-                Pick a time that works for you. We&apos;ll map your
-                workflows, show you what&apos;s automatable, and attach real
-                numbers.
-              </p>
+      <section className="relative overflow-hidden bg-hero text-white">
+        <BlueSky dense />
+        <div className="container-site relative page-hero pb-16 md:pb-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="pill">Free · {booking.duration}</p>
+            <h1 className="h-page mt-5 text-white">
+              Get Your <span className="hl-blue">Free Automation Audit</span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90 md:text-xl">
+              Pick a time that suits you. Tell us about the workflow that eats
+              your team&apos;s week, and we&apos;ll tell you what&apos;s
+              automatable and whether it&apos;s worth doing.
+            </p>
+          </div>
 
-              <div className="mt-10 space-y-6">
+          <div className="mt-12 grid grid-cols-1 items-start gap-10 lg:grid-cols-[5fr_6fr] lg:gap-14">
+            <div>
+              <ul className="space-y-4">
                 {expectations.map((e) => {
                   const Icon = e.icon;
                   return (
-                    <div key={e.title} className="flex items-start gap-4">
-                      <div className="size-10 shrink-0 border border-line bg-surface-raised flex items-center justify-center text-accent">
-                        <Icon className="size-4" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-bold text-white">{e.title}</p>
-                        <p className="mt-1 text-sm text-white/50 leading-relaxed">
+                    <li key={e.title} className="card-pop flex items-start gap-4 p-4 text-ink md:p-5">
+                      <span
+                        aria-hidden="true"
+                        className="flex size-11 shrink-0 items-center justify-center rounded-full border-[3px] border-ink bg-sun shadow-pop-sm"
+                      >
+                        <Icon className="size-5 text-ink" strokeWidth={2.5} />
+                      </span>
+                      <span>
+                        <span className="block text-base font-extrabold leading-snug">{e.title}</span>
+                        <span className="mt-1 block text-sm leading-relaxed text-ink/75 md:text-base">
                           {e.body}
-                        </p>
-                      </div>
-                    </div>
+                        </span>
+                      </span>
+                    </li>
                   );
                 })}
-              </div>
+              </ul>
 
-              <p className="mt-10 text-sm text-white/55 leading-relaxed">
+              <p className="mt-8 text-base font-semibold leading-relaxed text-white/90">
                 25+ active clients. Tens of thousands of hours of manual work
                 saved. 4.9 / 5 average client rating.
               </p>
+
+              <div aria-hidden="true" className="mt-8 hidden items-end gap-3 lg:flex">
+                <div className="w-28 animate-float">
+                  <Mascot wave mood="wink" className="w-full" />
+                </div>
+                <div className="mb-10 flex flex-col items-start">
+                  <span className="note-hand -rotate-3 !text-white">Pick any open slot</span>
+                  <HandArrow className="mt-1 w-12 -rotate-12 [&_path]:stroke-white" />
+                </div>
+              </div>
             </div>
 
-            <div className="bg-background">
+            <div className="card-pop-lg overflow-hidden text-ink">
               <CalendlyEmbed />
             </div>
           </div>
@@ -77,32 +98,29 @@ export default function ContactPageContent() {
       </section>
 
       {/* Message form, for people who would rather write */}
-      <section id="message" className="bg-background">
-        <div className="container-site py-20 md:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 items-start">
-            <Reveal>
-              <h2 className="text-3xl md:text-4xl font-normal text-foreground leading-tight">
-                Or send us a message
-              </h2>
-              <p className="mt-5 text-base text-muted-foreground leading-relaxed">
+      <section id="message" className="bg-white">
+        <div className="container-site py-16 md:py-24">
+          <SectionHeading
+            title="Or Send Us A Message"
+            highlight="A Message"
+            lede={
+              <>
                 A workflow that eats your team&apos;s week, a product idea, a
                 website that needs to work harder: describe it in your own
-                words and we&apos;ll reply within one business day.
-              </p>
-              <p className="mt-6 text-sm text-muted-foreground">
-                Prefer email?{" "}
+                words and we&apos;ll reply within one business day. Prefer
+                email?{" "}
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="font-semibold text-primary hover:text-primary-hover transition-colors"
+                  className="font-bold text-brand underline underline-offset-4"
                 >
                   {siteConfig.email}
                 </a>
-              </p>
-            </Reveal>
-            <Reveal className="border border-line p-7 md:p-9">
-              <ContactForm />
-            </Reveal>
-          </div>
+              </>
+            }
+          />
+          <Reveal className="card-pop-lg mx-auto max-w-3xl p-5 sm:p-7 md:p-10">
+            <ContactForm />
+          </Reveal>
         </div>
       </section>
     </main>

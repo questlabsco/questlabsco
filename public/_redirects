@@ -1,3 +1,3 @@
-# The case-studies section became /examples. Send old links there.
-/case-studies /examples 301
-/case-studies/* /examples 301
+# The project write-ups live at /case-studies. Send the short-lived /examples links there.
+/examples /case-studies 301
+/examples/* /case-studies/:splat 301
